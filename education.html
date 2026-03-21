@@ -372,6 +372,35 @@
       color: var(--text-soft);
     }
 
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: var(--accent);
+      color: var(--button-text);
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); }
+
     .footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -603,6 +632,11 @@
               </p>
             </div>
           </div>
+
+          <div class="cta-row">
+            <a href="contact.html" class="cta-btn" id="ctaBtn1">Go to Contact</a>
+            <a href="conservation.html" class="cta-btn secondary" id="ctaBtn2">Back to Conservation</a>
+          </div>
         </div>
       </div>
     </section>
@@ -663,6 +697,8 @@
         adapt1Text: "Η ίδια διαδρομή μπορεί να προσαρμοστεί με πιο απλά ή πιο σύνθετα missions, ανάλογα με το κοινό και το εκπαιδευτικό πλαίσιο.",
         adapt2Title: "Education beyond the classroom",
         adapt2Text: "Η ATHRIAN ενισχύει την ιδέα ότι η μάθηση δεν περιορίζεται στην τάξη, αλλά μπορεί να πραγματοποιηθεί μέσα από τον χώρο, την εμπειρία και την πολιτιστική αλληλεπίδραση.",
+        ctaBtn1: "Go to Contact",
+        ctaBtn2: "Back to Conservation",
         footerText: "ATHRIAN © 2026 | Εκπαιδευτική αξία και κοινό-στόχος ως πυρήνας της εμπειρίας."
       },
       en: {
@@ -712,6 +748,8 @@
         adapt1Text: "The same route can be adapted with simpler or more advanced missions depending on the audience and educational context.",
         adapt2Title: "Education beyond the classroom",
         adapt2Text: "ATHRIAN reinforces the idea that learning is not limited to the classroom, but can take place through place, experience and cultural interaction.",
+        ctaBtn1: "Go to Contact",
+        ctaBtn2: "Back to Conservation",
         footerText: "ATHRIAN © 2026 | Educational value and target audience at the core of the experience."
       }
     };
