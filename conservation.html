@@ -372,6 +372,35 @@
       color: var(--text-soft);
     }
 
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: var(--accent);
+      color: var(--button-text);
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); }
+
     .footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -464,6 +493,7 @@
       <a href="riddles.html" id="navRiddles">Riddles & Missions</a>
       <a href="technology.html" id="navTechnology">Technology</a>
       <a href="conservation.html" class="active" id="navConservation">Conservation</a>
+      <a href="education.html" id="navEducation">Education</a>
       <a href="contact.html" id="navContact">Επικοινωνία</a>
     </div>
   </nav>
@@ -596,6 +626,11 @@
               </p>
             </div>
           </div>
+
+          <div class="cta-row">
+            <a href="education.html" class="cta-btn" id="ctaBtn1">See Education</a>
+            <a href="technology.html" class="cta-btn secondary" id="ctaBtn2">Back to Technology</a>
+          </div>
         </div>
       </div>
     </section>
@@ -619,6 +654,7 @@
         navRiddles: "Riddles & Missions",
         navTechnology: "Technology",
         navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Επικοινωνία",
         heroEyebrow: "Προστασία, σεβασμός και βιωσιμότητα",
         heroTitle: "Η πολιτιστική εμπειρία οφείλει να προστατεύει το μνημείο",
@@ -653,6 +689,8 @@
         focus1Text: "Η εμπειρία σχεδιάζεται έτσι ώστε ο επισκέπτης να συμμετέχει ενεργά χωρίς να παραβιάζει την αυθεντικότητα και την ακεραιότητα του χώρου.",
         focus2Title: "Protection through education",
         focus2Text: "Όσο περισσότερο ο επισκέπτης κατανοεί την αξία του μνημείου, τόσο περισσότερο ενισχύεται η υπεύθυνη στάση και η κουλτούρα προστασίας.",
+        ctaBtn1: "See Education",
+        ctaBtn2: "Back to Technology",
         footerText: "ATHRIAN © 2026 | Προστασία μνημείου και βιωσιμότητα στην καρδιά της εμπειρίας."
       },
       en: {
@@ -665,6 +703,7 @@
         navRiddles: "Riddles & Missions",
         navTechnology: "Technology",
         navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Contact",
         heroEyebrow: "Protection, respect and sustainability",
         heroTitle: "The cultural experience must protect the monument",
@@ -699,6 +738,8 @@
         focus1Text: "The experience is designed so that the visitor participates actively without violating the authenticity and integrity of the site.",
         focus2Title: "Protection through education",
         focus2Text: "The more visitors understand the monument’s value, the more responsible attitudes and a culture of protection are reinforced.",
+        ctaBtn1: "See Education",
+        ctaBtn2: "Back to Technology",
         footerText: "ATHRIAN © 2026 | Monument protection and sustainability at the heart of the experience."
       }
     };
