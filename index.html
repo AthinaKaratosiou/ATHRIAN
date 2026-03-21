@@ -17,7 +17,6 @@
       --text: #4e2f07;
       --text-soft: #6e4a17;
       --accent: #6b3f0b;
-      --accent-2: #8a5a18;
       --border: rgba(107, 63, 11, 0.18);
       --shadow: 0 10px 30px rgba(78, 47, 7, 0.14);
       --hero-overlay: linear-gradient(135deg, rgba(234, 211, 160, 0.65), rgba(245, 234, 208, 0.78));
@@ -34,7 +33,6 @@
       --text: #f1dfb7;
       --text-soft: #d7be8d;
       --accent: #c99a4a;
-      --accent-2: #e0b86d;
       --border: rgba(201, 154, 74, 0.18);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       --hero-overlay: linear-gradient(135deg, rgba(18, 18, 18, 0.76), rgba(31, 31, 31, 0.82));
@@ -49,16 +47,13 @@
       --text: #ffffff;
       --text-soft: #ffffff;
       --accent: #ffff00;
-      --accent-2: #00ffff;
       --border: #ffffff;
       --shadow: none;
       --hero-overlay: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.92));
       --button-text: #000000;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -84,8 +79,11 @@
       text-decoration: none;
     }
 
-    button {
+    button, select {
       font: inherit;
+    }
+
+    button {
       cursor: pointer;
       border: none;
     }
@@ -101,9 +99,7 @@
       border-radius: 10px;
     }
 
-    .skip-link:focus {
-      left: 10px;
-    }
+    .skip-link:focus { left: 10px; }
 
     .container {
       width: min(1180px, 92%);
@@ -186,8 +182,35 @@
       transform: translateY(-1px);
     }
 
-    .lang-select {
-      outline: none;
+    .lang-select { outline: none; }
+
+    .subnav {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .subnav-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .subnav a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .subnav a:hover { transform: translateY(-1px); }
+
+    .subnav a.active {
+      background: var(--accent);
+      color: var(--button-text);
     }
 
     .hero {
@@ -366,6 +389,14 @@
       gap: 22px;
     }
 
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -375,9 +406,7 @@
       transition: 0.25s ease;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-    }
+    .card:hover { transform: translateY(-4px); }
 
     .card h3 {
       margin-top: 0;
@@ -402,7 +431,6 @@
       border-radius: 22px;
       padding: 22px;
       box-shadow: var(--shadow);
-      position: relative;
     }
 
     .step-number {
@@ -460,6 +488,10 @@
         grid-template-columns: 1fr 1fr;
       }
 
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
       .quick-info {
         grid-template-columns: 1fr;
       }
@@ -468,13 +500,15 @@
     @media (max-width: 700px) {
       .hero-grid,
       .grid-3,
-      .journey {
+      .journey,
+      .grid-2 {
         grid-template-columns: 1fr;
       }
 
       .topbar-inner,
       .brand,
-      .controls {
+      .controls,
+      .subnav-inner {
         justify-content: center;
       }
 
@@ -526,8 +560,17 @@
     </div>
   </header>
 
+  <nav class="subnav" aria-label="Δευτερεύουσα πλοήγηση">
+    <div class="container subnav-inner">
+      <a href="index.html" class="active" id="navHome">Αρχική</a>
+      <a href="about.html" id="navAbout">Η Ιδέα</a>
+      <a href="quest.html" id="navQuest">The Quest</a>
+      <a href="contact.html" id="navContact">Επικοινωνία</a>
+    </div>
+  </nav>
+
   <main id="main-content">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
           <span class="eyebrow" id="heroEyebrow">Πολιτισμός • Τεχνολογία • Εμπειρία</span>
@@ -539,7 +582,7 @@
 
           <div class="hero-actions">
             <a href="about.html" class="btn-primary" id="heroBtn1">Ανακάλυψε την εμπειρία</a>
-            <a href="#journey" class="btn-secondary" id="heroBtn2">Πώς λειτουργεί</a>
+            <a href="quest.html" class="btn-secondary" id="heroBtn2">Πώς λειτουργεί</a>
           </div>
 
           <div class="quick-info" aria-label="Σύντομα στοιχεία">
@@ -558,7 +601,7 @@
           </div>
         </div>
 
-        <aside class="hero-card" aria-labelledby="card-title">
+        <aside class="hero-card">
           <h3 id="cardTitle">Τι προσφέρει η ATHRIAN</h3>
           <ul>
             <li>
@@ -574,12 +617,12 @@
               <span id="card3Text">Multi-language περιβάλλον, dark mode, font controls και read-aloud.</span>
             </li>
           </ul>
-          <a href="#contact" class="btn-primary" id="cardBtn">Επικοινωνία</a>
+          <a href="contact.html" class="btn-primary" id="cardBtn">Επικοινωνία</a>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section">
       <div class="container">
         <div class="section-title">
           <h2 id="aboutTitle">Η ιδέα πίσω από το ATHRIAN</h2>
@@ -608,7 +651,7 @@
       </div>
     </section>
 
-    <section class="section" id="journey">
+    <section class="section">
       <div class="container">
         <div class="section-title">
           <h2 id="journeyTitle">Πώς λειτουργεί η εμπειρία</h2>
@@ -646,7 +689,7 @@
       </div>
     </section>
 
-    <section class="section" id="audience">
+    <section class="section">
       <div class="container">
         <div class="section-title">
           <h2 id="audienceTitle">Σε ποιους απευθύνεται</h2>
@@ -669,7 +712,7 @@
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section">
       <div class="container">
         <div class="section-title">
           <h2 id="contactTitle">Επόμενο βήμα</h2>
@@ -679,7 +722,7 @@
           </p>
         </div>
 
-        <div class="grid-3">
+        <div class="grid-2">
           <article class="card">
             <h3 id="contactCard1Title">Πολυγλωσσικό περιβάλλον</h3>
             <p id="contactCard1Text">Το περιεχόμενο προσαρμόζεται σε 6 γλώσσες για πιο ανοιχτή διεθνή εμπειρία.</p>
@@ -688,11 +731,6 @@
           <article class="card">
             <h3 id="contactCard2Title">Προσβασιμότητα</h3>
             <p id="contactCard2Text">Με read-aloud, font controls, contrast mode και σωστή πλοήγηση.</p>
-          </article>
-
-          <article class="card">
-            <h3 id="contactCard3Title">Επόμενες σελίδες</h3>
-            <p id="contactCard3Text">Στη συνέχεια θα χτίσουμε τις About, Quest, Riddles, Technology και Contact pages.</p>
           </article>
         </div>
       </div>
@@ -711,6 +749,10 @@
         pageTitle: "ATHRIAN | The Secret Guardians of Knowledge",
         brandTagline: "Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση",
         logoAlt: "Λογότυπο ATHRIAN",
+        navHome: "Αρχική",
+        navAbout: "Η Ιδέα",
+        navQuest: "The Quest",
+        navContact: "Επικοινωνία",
         heroEyebrow: "Πολιτισμός • Τεχνολογία • Εμπειρία",
         heroTitle: "The Secret Guardians of Knowledge",
         heroDescription: "Το ATHRIAN μετατρέπει την επίσκεψη στη Βιβλιοθήκη του Αδριανού σε μια διαδραστική πολιτιστική εμπειρία, όπου οι επισκέπτες ανακαλύπτουν ιστορία, λύνουν γρίφους και γίνονται φύλακες της χαμένης γνώσης.",
@@ -762,14 +804,16 @@
         contactCard1Text: "Το περιεχόμενο προσαρμόζεται σε 6 γλώσσες για πιο ανοιχτή διεθνή εμπειρία.",
         contactCard2Title: "Προσβασιμότητα",
         contactCard2Text: "Με read-aloud, font controls, contrast mode και σωστή πλοήγηση.",
-        contactCard3Title: "Επόμενες σελίδες",
-        contactCard3Text: "Στη συνέχεια θα χτίσουμε τις About, Quest, Riddles, Technology και Contact pages.",
         footerText: "ATHRIAN © 2026 | Πολιτισμός, γνώση και τεχνολογία σε μία εμπειρία."
       },
       en: {
         pageTitle: "ATHRIAN | The Secret Guardians of Knowledge",
         brandTagline: "In ATHens you WANDER and UNcover knowledge",
         logoAlt: "ATHRIAN logo",
+        navHome: "Home",
+        navAbout: "The Idea",
+        navQuest: "The Quest",
+        navContact: "Contact",
         heroEyebrow: "Culture • Technology • Experience",
         heroTitle: "The Secret Guardians of Knowledge",
         heroDescription: "ATHRIAN transforms the visit to Hadrian's Library into an interactive cultural experience where visitors discover history, solve riddles and become guardians of lost knowledge.",
@@ -821,14 +865,16 @@
         contactCard1Text: "Content adapts to 6 languages for a more open international experience.",
         contactCard2Title: "Accessibility",
         contactCard2Text: "With read-aloud, font controls, contrast mode and proper navigation.",
-        contactCard3Title: "Next pages",
-        contactCard3Text: "Next, we will build the About, Quest, Riddles, Technology and Contact pages.",
         footerText: "ATHRIAN © 2026 | Culture, knowledge and technology in one experience."
       },
       it: {
         pageTitle: "ATHRIAN | The Secret Guardians of Knowledge",
         brandTagline: "Ad Atene vaghi e scopri la conoscenza",
         logoAlt: "Logo ATHRIAN",
+        navHome: "Home",
+        navAbout: "L'idea",
+        navQuest: "La Quest",
+        navContact: "Contatto",
         heroEyebrow: "Cultura • Tecnologia • Esperienza",
         heroTitle: "The Secret Guardians of Knowledge",
         heroDescription: "ATHRIAN trasforma la visita alla Biblioteca di Adriano in un'esperienza culturale interattiva, dove i visitatori scoprono la storia, risolvono enigmi e diventano custodi della conoscenza perduta.",
@@ -880,14 +926,16 @@
         contactCard1Text: "Il contenuto si adatta a 6 lingue per un'esperienza internazionale più aperta.",
         contactCard2Title: "Accessibilità",
         contactCard2Text: "Con lettura vocale, controlli del font, modalità contrasto e navigazione corretta.",
-        contactCard3Title: "Pagine successive",
-        contactCard3Text: "Successivamente costruiremo le pagine About, Quest, Riddles, Technology e Contact.",
         footerText: "ATHRIAN © 2026 | Cultura, conoscenza e tecnologia in un'unica esperienza."
       },
       de: {
         pageTitle: "ATHRIAN | The Secret Guardians of Knowledge",
         brandTagline: "In Athen wanderst du und entdeckst Wissen",
         logoAlt: "ATHRIAN-Logo",
+        navHome: "Startseite",
+        navAbout: "Die Idee",
+        navQuest: "Die Quest",
+        navContact: "Kontakt",
         heroEyebrow: "Kultur • Technologie • Erlebnis",
         heroTitle: "The Secret Guardians of Knowledge",
         heroDescription: "ATHRIAN verwandelt den Besuch der Hadriansbibliothek in ein interaktives Kulturerlebnis, bei dem Besucher Geschichte entdecken, Rätsel lösen und zu Hütern verlorenen Wissens werden.",
@@ -939,14 +987,16 @@
         contactCard1Text: "Die Inhalte passen sich an 6 Sprachen an und schaffen ein offeneres internationales Erlebnis.",
         contactCard2Title: "Barrierefreiheit",
         contactCard2Text: "Mit Vorlesefunktion, Schriftgrößensteuerung, Kontrastmodus und korrekter Navigation.",
-        contactCard3Title: "Nächste Seiten",
-        contactCard3Text: "Als Nächstes erstellen wir die Seiten About, Quest, Riddles, Technology und Contact.",
         footerText: "ATHRIAN © 2026 | Kultur, Wissen und Technologie in einem Erlebnis."
       },
       es: {
         pageTitle: "ATHRIAN | The Secret Guardians of Knowledge",
         brandTagline: "En Atenas recorres y descubres conocimiento",
         logoAlt: "Logotipo ATHRIAN",
+        navHome: "Inicio",
+        navAbout: "La Idea",
+        navQuest: "La Quest",
+        navContact: "Contacto",
         heroEyebrow: "Cultura • Tecnología • Experiencia",
         heroTitle: "The Secret Guardians of Knowledge",
         heroDescription: "ATHRIAN transforma la visita a la Biblioteca de Adriano en una experiencia cultural interactiva donde los visitantes descubren historia, resuelven enigmas y se convierten en guardianes del conocimiento perdido.",
@@ -998,14 +1048,16 @@
         contactCard1Text: "El contenido se adapta a 6 idiomas para una experiencia internacional más abierta.",
         contactCard2Title: "Accesibilidad",
         contactCard2Text: "Con lectura en voz alta, controles de fuente, modo contraste y navegación adecuada.",
-        contactCard3Title: "Próximas páginas",
-        contactCard3Text: "A continuación construiremos las páginas About, Quest, Riddles, Technology y Contact.",
         footerText: "ATHRIAN © 2026 | Cultura, conocimiento y tecnología en una sola experiencia."
       },
       fr: {
         pageTitle: "ATHRIAN | The Secret Guardians of Knowledge",
         brandTagline: "À Athènes, vous explorez et découvrez le savoir",
         logoAlt: "Logo ATHRIAN",
+        navHome: "Accueil",
+        navAbout: "L'idée",
+        navQuest: "La Quête",
+        navContact: "Contact",
         heroEyebrow: "Culture • Technologie • Expérience",
         heroTitle: "The Secret Guardians of Knowledge",
         heroDescription: "ATHRIAN transforme la visite de la Bibliothèque d'Hadrien en une expérience culturelle interactive où les visiteurs découvrent l'histoire, résolvent des énigmes et deviennent les gardiens du savoir perdu.",
@@ -1057,8 +1109,6 @@
         contactCard1Text: "Le contenu s'adapte à 6 langues pour une expérience internationale plus ouverte.",
         contactCard2Title: "Accessibilité",
         contactCard2Text: "Avec lecture vocale, contrôle de la police, mode contraste et navigation adaptée.",
-        contactCard3Title: "Pages suivantes",
-        contactCard3Text: "Ensuite, nous construirons les pages About, Quest, Riddles, Technology et Contact.",
         footerText: "ATHRIAN © 2026 | Culture, savoir et technologie dans une seule expérience."
       }
     };
@@ -1075,7 +1125,7 @@
         if (!element) return;
 
         if (id === "logoAlt") {
-          element.setAttribute("alt", selected[id]);
+          document.getElementById("logoAlt").setAttribute("alt", selected[id]);
         } else {
           element.textContent = selected[id];
         }
@@ -1085,9 +1135,7 @@
     }
 
     const languageSelect = document.getElementById("languageSelect");
-    languageSelect.addEventListener("change", (e) => {
-      applyLanguage(e.target.value);
-    });
+    languageSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
 
     const savedLanguage = localStorage.getItem("athrian-language") || "el";
     languageSelect.value = savedLanguage;
