@@ -372,6 +372,35 @@
       color: var(--text-soft);
     }
 
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: var(--accent);
+      color: var(--button-text);
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); }
+
     .footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -463,6 +492,8 @@
       <a href="quest.html" id="navQuest">The Quest</a>
       <a href="riddles.html" id="navRiddles">Riddles & Missions</a>
       <a href="technology.html" class="active" id="navTechnology">Technology</a>
+      <a href="conservation.html" id="navConservation">Conservation</a>
+      <a href="education.html" id="navEducation">Education</a>
       <a href="contact.html" id="navContact">Επικοινωνία</a>
     </div>
   </nav>
@@ -595,6 +626,11 @@
               </p>
             </div>
           </div>
+
+          <div class="cta-row">
+            <a href="conservation.html" class="cta-btn" id="ctaBtn1">Go to Conservation</a>
+            <a href="education.html" class="cta-btn secondary" id="ctaBtn2">Go to Education</a>
+          </div>
         </div>
       </div>
     </section>
@@ -617,6 +653,8 @@
         navQuest: "The Quest",
         navRiddles: "Riddles & Missions",
         navTechnology: "Technology",
+        navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Επικοινωνία",
         heroEyebrow: "Καινοτομία και ψηφιακή εμπειρία",
         heroTitle: "Η τεχνολογία ως γέφυρα πολιτισμού και εμπειρίας",
@@ -651,6 +689,8 @@
         feature1Text: "Η τεχνολογία λειτουργεί υποστηρικτικά, ενισχύοντας την κατανόηση και τη ροή της εμπειρίας χωρίς να απομακρύνει τον επισκέπτη από το ίδιο το μνημείο.",
         feature2Title: "Culture remains central",
         feature2Text: "Το μνημείο, η γνώση και η πολιτιστική αφήγηση παραμένουν στο επίκεντρο, ενώ τα ψηφιακά εργαλεία λειτουργούν ως γέφυρα συμμετοχής και κατανόησης.",
+        ctaBtn1: "Go to Conservation",
+        ctaBtn2: "Go to Education",
         footerText: "ATHRIAN © 2026 | Τεχνολογία και καινοτομία στην υπηρεσία της πολιτιστικής εμπειρίας."
       },
       en: {
@@ -662,6 +702,8 @@
         navQuest: "The Quest",
         navRiddles: "Riddles & Missions",
         navTechnology: "Technology",
+        navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Contact",
         heroEyebrow: "Innovation and digital experience",
         heroTitle: "Technology as a bridge between culture and experience",
@@ -696,11 +738,218 @@
         feature1Text: "Technology works in a supportive role, strengthening understanding and the flow of the experience without distancing the visitor from the monument itself.",
         feature2Title: "Culture remains central",
         feature2Text: "The monument, knowledge and cultural narrative remain central, while digital tools act as a bridge to participation and understanding.",
+        ctaBtn1: "Go to Conservation",
+        ctaBtn2: "Go to Education",
         footerText: "ATHRIAN © 2026 | Technology and innovation in service of the cultural experience."
+      },
+      it: {
+        pageTitle: "ATHRIAN | Tecnologia e Innovazione",
+        brandTagline: "Ad Atene esplori e scopri la conoscenza",
+        logoAlt: "Logo ATHRIAN",
+        navHome: "Home",
+        navAbout: "L'Idea",
+        navQuest: "The Quest",
+        navRiddles: "Enigmi e Missioni",
+        navTechnology: "Tecnologia",
+        navConservation: "Conservazione",
+        navEducation: "Educazione",
+        navContact: "Contatto",
+        heroEyebrow: "Innovazione ed esperienza digitale",
+        heroTitle: "La tecnologia come ponte tra cultura ed esperienza",
+        heroText1: "ATHRIAN non considera la tecnologia come un elemento decorativo, ma come uno strumento essenziale che rafforza partecipazione, apprendimento, accessibilità e l’esperienza complessiva del visitatore.",
+        heroText2: "Attraverso strumenti digitali, strutture gamificate e un ambiente multilingue, la visita culturale si trasforma in un viaggio moderno e interattivo della conoscenza.",
+        heroPanelTitle: "Cosa supporta la tecnologia in ATHRIAN",
+        heroPoint1: "Guida interattiva del visitatore",
+        heroPoint2: "Enigmi e missioni con supporto digitale",
+        heroPoint3: "Ambiente multilingue e accessibile",
+        heroPoint4: "Un’esperienza culturale moderna, coinvolgente e internazionale",
+        pillarsTitle: "Pilastri tecnologici fondamentali",
+        pillarsText: "L’identità tecnologica di ATHRIAN si basa su strumenti che non alterano il suo carattere culturale, ma lo rafforzano in modo moderno e accogliente per il visitatore.",
+        pillar1Title: "Esperienza mobile-first",
+        pillar1Text: "L’esperienza è facilmente accessibile da dispositivi mobili, con un design pulito e intuitivo.",
+        pillar2Title: "Interfaccia multilingue",
+        pillar2Text: "La piattaforma supporta più lingue, rendendosi accessibile a un pubblico internazionale.",
+        pillar3Title: "Interazione gamificata",
+        pillar3Text: "La tecnologia integra enigmi, missioni e feedback loop che rafforzano il coinvolgimento.",
+        pillar4Title: "Funzionalità di accessibilità",
+        pillar4Text: "Controlli dei caratteri, opzioni di contrasto, lettura vocale e design inclusivo per una maggiore accessibilità.",
+        toolsTitle: "Strumenti indicativi dell’esperienza",
+        toolsText: "Gli elementi seguenti mostrano come la tecnologia possa supportare il percorso del visitatore senza distrarre dal nucleo culturale dell’esperienza.",
+        tool1Title: "Interazione basata su QR",
+        tool1Text: "Il visitatore accede a indizi, spiegazioni o missioni tramite punti QR lungo il percorso.",
+        tool2Title: "Guida digitale",
+        tool2Text: "Il percorso acquisisce guida e coerenza narrativa tramite navigazione digitale e fasi di avanzamento.",
+        tool3Title: "Supporto di lettura vocale",
+        tool3Text: "La lettura audio dei contenuti rafforza l’inclusione e offre accessibilità a più utenti.",
+        balanceTitle: "L’equilibrio tra cultura e tecnologia",
+        balanceText: "Il design di ATHRIAN si basa sul principio che la tecnologia debba servire l’esperienza e non oscurarla.",
+        feature1Title: "Tecnologia come supporto",
+        feature1Text: "La tecnologia svolge un ruolo di supporto, rafforzando comprensione e flusso dell’esperienza senza allontanare il visitatore dal monumento stesso.",
+        feature2Title: "La cultura resta centrale",
+        feature2Text: "Il monumento, la conoscenza e la narrazione culturale restano centrali, mentre gli strumenti digitali fungono da ponte verso partecipazione e comprensione.",
+        ctaBtn1: "Vai a Conservazione",
+        ctaBtn2: "Vai a Educazione",
+        footerText: "ATHRIAN © 2026 | Tecnologia e innovazione al servizio dell’esperienza culturale."
+      },
+      de: {
+        pageTitle: "ATHRIAN | Technologie und Innovation",
+        brandTagline: "In Athen erkundest du Wissen",
+        logoAlt: "ATHRIAN-Logo",
+        navHome: "Startseite",
+        navAbout: "Die Idee",
+        navQuest: "The Quest",
+        navRiddles: "Rätsel & Missionen",
+        navTechnology: "Technologie",
+        navConservation: "Erhaltung",
+        navEducation: "Bildung",
+        navContact: "Kontakt",
+        heroEyebrow: "Innovation und digitales Erlebnis",
+        heroTitle: "Technologie als Brücke zwischen Kultur und Erlebnis",
+        heroText1: "ATHRIAN betrachtet Technologie nicht als dekoratives Element, sondern als wesentliches Werkzeug, das Beteiligung, Lernen, Zugänglichkeit und das gesamte Besuchserlebnis stärkt.",
+        heroText2: "Durch digitale Werkzeuge, gamifizierte Strukturen und eine mehrsprachige Umgebung wird der Kulturbesuch zu einer modernen und interaktiven Wissensreise.",
+        heroPanelTitle: "Was Technologie in ATHRIAN unterstützt",
+        heroPoint1: "Interaktive Besucherführung",
+        heroPoint2: "Rätsel und Missionen mit digitaler Unterstützung",
+        heroPoint3: "Mehrsprachige und zugängliche Umgebung",
+        heroPoint4: "Ein modernes, ansprechendes und internationales Kulturerlebnis",
+        pillarsTitle: "Zentrale technologische Säulen",
+        pillarsText: "Die technologische Identität von ATHRIAN basiert auf Werkzeugen, die ihren kulturellen Charakter nicht verändern, sondern ihn auf moderne und besucherfreundliche Weise stärken.",
+        pillar1Title: "Mobile-first-Erlebnis",
+        pillar1Text: "Das Erlebnis ist leicht über mobile Geräte zugänglich, mit klarem und intuitivem Design.",
+        pillar2Title: "Mehrsprachige Oberfläche",
+        pillar2Text: "Die Plattform unterstützt mehrere Sprachen und bleibt so für ein internationales Publikum zugänglich.",
+        pillar3Title: "Gamifizierte Interaktion",
+        pillar3Text: "Die Technologie integriert Rätsel, Missionen und Feedback-Schleifen, die das Engagement stärken.",
+        pillar4Title: "Funktionen der Barrierefreiheit",
+        pillar4Text: "Schriftgrößensteuerung, Kontrastoptionen, Vorlesefunktion und inklusives Interface-Design für mehr Zugänglichkeit.",
+        toolsTitle: "Beispielhafte Werkzeuge des Erlebnisses",
+        toolsText: "Die folgenden Elemente zeigen, wie Technologie den Weg des Besuchers unterstützen kann, ohne vom kulturellen Kern des Erlebnisses abzulenken.",
+        tool1Title: "QR-basierte Interaktion",
+        tool1Text: "Besucher erhalten über QR-Punkte entlang der Route Zugang zu Hinweisen, Erklärungen oder Missionen.",
+        tool2Title: "Digitale Führung",
+        tool2Text: "Die Route erhält durch digitale Navigation und Fortschrittsstufen Orientierung und erzählerische Kohärenz.",
+        tool3Title: "Vorleseunterstützung",
+        tool3Text: "Das akustische Vorlesen von Inhalten stärkt Inklusion und bietet mehr Nutzern Zugänglichkeit.",
+        balanceTitle: "Das Gleichgewicht zwischen Kultur und Technologie",
+        balanceText: "Das Design von ATHRIAN basiert auf dem Prinzip, dass Technologie dem Erlebnis dienen und es nicht überschatten soll.",
+        feature1Title: "Technologie als Unterstützung",
+        feature1Text: "Technologie übernimmt eine unterstützende Rolle, stärkt Verständnis und Ablauf des Erlebnisses, ohne den Besucher vom Monument selbst zu entfernen.",
+        feature2Title: "Kultur bleibt zentral",
+        feature2Text: "Das Monument, das Wissen und die kulturelle Erzählung bleiben zentral, während digitale Werkzeuge als Brücke zu Teilnahme und Verständnis dienen.",
+        ctaBtn1: "Zu Erhaltung",
+        ctaBtn2: "Zu Bildung",
+        footerText: "ATHRIAN © 2026 | Technologie und Innovation im Dienst des Kulturerlebnisses."
+      },
+      es: {
+        pageTitle: "ATHRIAN | Tecnología e Innovación",
+        brandTagline: "En Atenas exploras y descubres conocimiento",
+        logoAlt: "Logotipo ATHRIAN",
+        navHome: "Inicio",
+        navAbout: "La Idea",
+        navQuest: "The Quest",
+        navRiddles: "Acertijos y Misiones",
+        navTechnology: "Tecnología",
+        navConservation: "Conservación",
+        navEducation: "Educación",
+        navContact: "Contacto",
+        heroEyebrow: "Innovación y experiencia digital",
+        heroTitle: "La tecnología como puente entre cultura y experiencia",
+        heroText1: "ATHRIAN no trata la tecnología como un elemento decorativo, sino como una herramienta esencial que refuerza la participación, el aprendizaje, la accesibilidad y la experiencia global del visitante.",
+        heroText2: "A través de herramientas digitales, estructuras gamificadas y un entorno multilingüe, la visita cultural se transforma en un viaje moderno e interactivo del conocimiento.",
+        heroPanelTitle: "Qué apoya la tecnología en ATHRIAN",
+        heroPoint1: "Guía interactiva del visitante",
+        heroPoint2: "Acertijos y misiones con refuerzo digital",
+        heroPoint3: "Entorno multilingüe y accesible",
+        heroPoint4: "Una experiencia cultural moderna, atractiva e internacional",
+        pillarsTitle: "Pilares tecnológicos centrales",
+        pillarsText: "La identidad tecnológica de ATHRIAN se basa en herramientas que no alteran su carácter cultural, sino que lo fortalecen de forma moderna y amigable para el visitante.",
+        pillar1Title: "Experiencia mobile-first",
+        pillar1Text: "La experiencia puede accederse fácilmente desde dispositivos móviles, con un diseño limpio e intuitivo.",
+        pillar2Title: "Interfaz multilingüe",
+        pillar2Text: "La plataforma admite múltiples idiomas para seguir siendo accesible a una audiencia internacional.",
+        pillar3Title: "Interacción gamificada",
+        pillar3Text: "La tecnología incorpora acertijos, misiones y ciclos de retroalimentación que aumentan el compromiso.",
+        pillar4Title: "Funciones de accesibilidad",
+        pillar4Text: "Controles de fuente, opciones de contraste, lectura en voz alta y diseño inclusivo para una mayor accesibilidad.",
+        toolsTitle: "Herramientas indicativas de la experiencia",
+        toolsText: "Los siguientes elementos muestran cómo la tecnología puede apoyar el recorrido del visitante sin distraer del núcleo cultural de la experiencia.",
+        tool1Title: "Interacción basada en QR",
+        tool1Text: "Los visitantes acceden a pistas, explicaciones o misiones mediante puntos QR a lo largo de la ruta.",
+        tool2Title: "Guía digital",
+        tool2Text: "La ruta gana orientación y coherencia narrativa mediante navegación digital y etapas de progreso.",
+        tool3Title: "Soporte de lectura en voz alta",
+        tool3Text: "La lectura de contenidos en voz alta refuerza la inclusión y ofrece accesibilidad a más usuarios.",
+        balanceTitle: "El equilibrio entre cultura y tecnología",
+        balanceText: "El diseño de ATHRIAN se basa en el principio de que la tecnología debe servir a la experiencia y no eclipsarla.",
+        feature1Title: "Tecnología como apoyo",
+        feature1Text: "La tecnología funciona en un papel de apoyo, reforzando la comprensión y el flujo de la experiencia sin alejar al visitante del propio monumento.",
+        feature2Title: "La cultura sigue siendo central",
+        feature2Text: "El monumento, el conocimiento y la narrativa cultural siguen siendo centrales, mientras que las herramientas digitales actúan como puente hacia la participación y la comprensión.",
+        ctaBtn1: "Ir a Conservación",
+        ctaBtn2: "Ir a Educación",
+        footerText: "ATHRIAN © 2026 | Tecnología e innovación al servicio de la experiencia cultural."
+      },
+      fr: {
+        pageTitle: "ATHRIAN | Technologie et Innovation",
+        brandTagline: "À Athènes, vous explorez et découvrez le savoir",
+        logoAlt: "Logo ATHRIAN",
+        navHome: "Accueil",
+        navAbout: "L'idée",
+        navQuest: "The Quest",
+        navRiddles: "Énigmes et Missions",
+        navTechnology: "Technologie",
+        navConservation: "Conservation",
+        navEducation: "Éducation",
+        navContact: "Contact",
+        heroEyebrow: "Innovation et expérience numérique",
+        heroTitle: "La technologie comme pont entre culture et expérience",
+        heroText1: "ATHRIAN ne considère pas la technologie comme un élément décoratif, mais comme un outil essentiel qui renforce la participation, l’apprentissage, l’accessibilité et l’expérience globale du visiteur.",
+        heroText2: "Grâce à des outils numériques, des structures gamifiées et un environnement multilingue, la visite culturelle devient un voyage moderne et interactif du savoir.",
+        heroPanelTitle: "Ce que la technologie soutient dans ATHRIAN",
+        heroPoint1: "Guidage interactif du visiteur",
+        heroPoint2: "Énigmes et missions avec soutien numérique",
+        heroPoint3: "Environnement multilingue et accessible",
+        heroPoint4: "Une expérience culturelle moderne, engageante et internationale",
+        pillarsTitle: "Piliers technologiques centraux",
+        pillarsText: "L’identité technologique d’ATHRIAN repose sur des outils qui n’altèrent pas son caractère culturel, mais le renforcent de façon moderne et conviviale pour le visiteur.",
+        pillar1Title: "Expérience mobile-first",
+        pillar1Text: "L’expérience est facilement accessible via les appareils mobiles, avec un design clair et intuitif.",
+        pillar2Title: "Interface multilingue",
+        pillar2Text: "La plateforme prend en charge plusieurs langues afin de rester accessible à un public international.",
+        pillar3Title: "Interaction gamifiée",
+        pillar3Text: "La technologie intègre des énigmes, des missions et des boucles de feedback qui renforcent l’engagement.",
+        pillar4Title: "Fonctionnalités d’accessibilité",
+        pillar4Text: "Contrôle de la taille des caractères, options de contraste, lecture vocale et design inclusif pour une accessibilité élargie.",
+        toolsTitle: "Outils indicatifs de l’expérience",
+        toolsText: "Les éléments suivants montrent comment la technologie peut soutenir le parcours du visiteur sans détourner du cœur culturel de l’expérience.",
+        tool1Title: "Interaction basée sur QR",
+        tool1Text: "Les visiteurs accèdent à des indices, des explications ou des missions grâce à des points QR tout au long du parcours.",
+        tool2Title: "Guidage numérique",
+        tool2Text: "Le parcours gagne en orientation et en cohérence narrative grâce à la navigation numérique et aux étapes de progression.",
+        tool3Title: "Support de lecture vocale",
+        tool3Text: "La lecture audio des contenus renforce l’inclusion et offre l’accessibilité à davantage d’utilisateurs.",
+        balanceTitle: "L’équilibre entre culture et technologie",
+        balanceText: "La conception d’ATHRIAN repose sur le principe selon lequel la technologie doit servir l’expérience et non l’éclipser.",
+        feature1Title: "La technologie comme soutien",
+        feature1Text: "La technologie joue un rôle de soutien, renforçant la compréhension et le déroulement de l’expérience sans éloigner le visiteur du monument lui-même.",
+        feature2Title: "La culture reste centrale",
+        feature2Text: "Le monument, le savoir et le récit culturel restent centraux, tandis que les outils numériques agissent comme un pont vers la participation et la compréhension.",
+        ctaBtn1: "Aller à Conservation",
+        ctaBtn2: "Aller à Éducation",
+        footerText: "ATHRIAN © 2026 | Technologie et innovation au service de l’expérience culturelle."
       }
     };
 
     const ids = Object.keys(translations.el);
+
+    const speechLangMap = {
+      el: "el-GR",
+      en: "en-US",
+      it: "it-IT",
+      de: "de-DE",
+      es: "es-ES",
+      fr: "fr-FR"
+    };
 
     function applyLanguage(lang) {
       const selected = translations[lang] || translations.el;
@@ -791,7 +1040,7 @@
     document.getElementById("readPage").addEventListener("click", () => {
       speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(getReadableText());
-      utterance.lang = languageSelect.value === "el" ? "el-GR" : languageSelect.value;
+      utterance.lang = speechLangMap[languageSelect.value] || "en-US";
       utterance.rate = 0.95;
       utterance.pitch = 1;
       speechSynthesis.speak(utterance);
