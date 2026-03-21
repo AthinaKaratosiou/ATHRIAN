@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHRIAN | Contact</title>
+  <meta
+    name="description"
+    content="Επικοινώνησε με την ATHRIAN για συνεργασίες, εκπαιδευτικές δράσεις, ομαδικές συμμετοχές και πληροφορίες για την εμπειρία."
+  />
+  <style>
+    :root {
+      --bg: #ead3a0;
+      --bg-soft: #f5ead0;
+      --surface: rgba(255, 248, 236, 0.82);
+      --surface-strong: rgba(255, 248, 236, 0.96);
+      --text: #4e2f07;
+      --text-soft: #6e4a17;
+      --accent: #6b3f0b;
+      --accent-2: #8a5a18;
+      --border: rgba(107, 63, 11, 0.18);
+      --shadow: 0 10px 30px rgba(78, 47, 7, 0.14);
+      --button-text: #fffdf8;
+      --font-scale: 1;
+    }
+
+    body.dark-mode {
+      --bg: #121212;
+      --bg-soft: #1b1b1b;
+      --surface: rgba(35, 35, 35, 0.9);
+      --surface-strong: rgba(42, 42, 42, 0.96);
+      --text: #f1dfb7;
+      --text-soft: #d7be8d;
+      --accent: #c99a4a;
+      --accent-2: #e0b86d;
+      --border: rgba(201, 154, 74, 0.18);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --button-text: #1b1207;
+    }
+
+    body.high-contrast {
+      --bg: #000000;
+      --bg-soft: #000000;
+      --surface: #000000;
+      --surface-strong: #000000;
+      --text: #ffffff;
+      --text-soft: #ffffff;
+      --accent: #ffff00;
+      --accent-2: #00ffff;
+      --border: #ffffff;
+      --shadow: none;
+      --button-text: #000000;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: calc(16px * var(--font-scale));
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 10px;
+      background: #000;
+      color: #fff;
+      padding: 10px 14px;
+      z-index: 9999;
+      border-radius: 10px;
+    }
+
+    .skip-link:focus { left: 10px; }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(234, 211, 160, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.dark-mode .topbar,
+    body.high-contrast .topbar {
+      background: rgba(0, 0, 0, 0.92);
+    }
+
+    .topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .control-btn,
+    .lang-select {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .control-btn:hover,
+    .lang-select:hover {
+      transform: translateY(-1px);
+    }
+
+    .lang-select { outline: none; }
+
+    .subnav {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .subnav-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .subnav a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .subnav a:hover { transform: translateY(-1px); }
+
+    .subnav a.active {
+      background: var(--accent);
+      color: var(--button-text);
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+
+    .hero-box {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(107, 63, 11, 0.12);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      line-height: 1.08;
+      margin: 0 0 16px;
+    }
+
+    .hero-text p {
+      color: var(--text-soft);
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .hero-panel {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .hero-panel h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.3rem;
+    }
+
+    .hero-panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+    }
+
+    .hero-panel li + li {
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 36px 0 76px;
+    }
+
+    .section-title {
+      max-width: 800px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .info-card,
+    .form-card,
+    .mini-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card h3,
+    .form-card h3,
+    .mini-card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.25rem;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .info-item {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info-item span,
+    .info-card p,
+    .form-card p,
+    .mini-card p {
+      color: var(--text-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: var(--accent);
+      color: var(--button-text);
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      margin-top: 20px;
+    }
+
+    .footer p {
+      margin: 0;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 1000px) {
+      .hero-box,
+      .content-grid,
+      .cards-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inner,
+      .brand,
+      .controls,
+      .subnav-inner {
+        justify-content: center;
+      }
+
+      .hero-box,
+      .info-card,
+      .form-card,
+      .mini-card {
+        padding: 22px;
+      }
+
+      .hero-text h2 {
+        font-size: 2.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Μετάβαση στο περιεχόμενο</a>
+
+  <header class="topbar" aria-label="Κύρια μπάρα πλοήγησης">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Λογότυπο ATHRIAN" id="logoAlt" />
+        <div class="brand-text">
+          <h1>ATHRIAN</h1>
+          <p id="brandTagline">Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση</p>
+        </div>
+      </div>
+
+      <div class="controls" aria-label="Εργαλεία γλώσσας και προσβασιμότητας">
+        <select id="languageSelect" class="lang-select" aria-label="Επιλογή γλώσσας">
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="it">Italiano</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <button class="control-btn" id="decreaseFont" aria-label="Μείωση μεγέθους γραμμάτων">A-</button>
+        <button class="control-btn" id="increaseFont" aria-label="Αύξηση μεγέθους γραμμάτων">A+</button>
+        <button class="control-btn" id="toggleContrast" aria-label="Εναλλαγή υψηλής αντίθεσης">Contrast</button>
+        <button class="control-btn" id="toggleTheme" aria-label="Εναλλαγή φωτεινής ή σκοτεινής λειτουργίας">🌙</button>
+        <button class="control-btn" id="readPage" aria-label="Ανάγνωση σελίδας">🔊</button>
+        <button class="control-btn" id="stopReading" aria-label="Διακοπή ανάγνωσης">⏹</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="Δευτερεύουσα πλοήγηση">
+    <div class="container subnav-inner">
+      <a href="index.html" id="navHome">Αρχική</a>
+      <a href="about.html" id="navAbout">Η Ιδέα</a>
+      <a href="quest.html" id="navQuest">The Quest</a>
+      <a href="contact.html" class="active" id="navContact">Επικοινωνία</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <div class="hero-text">
+            <span class="eyebrow" id="heroEyebrow">Επικοινωνία & συνεργασίες</span>
+            <h2 id="heroTitle">Ας συνδεθούμε με την εμπειρία ATHRIAN</h2>
+            <p id="heroText1">
+              Η σελίδα αυτή λειτουργεί ως σημείο επαφής για επισκέπτες, σχολεία, πολιτιστικούς φορείς,
+              τουριστικές ομάδες και πιθανούς συνεργάτες που ενδιαφέρονται για την πολιτιστική εμπειρία ATHRIAN.
+            </p>
+            <p id="heroText2">
+              Εδώ ο επισκέπτης μπορεί να ζητήσει πληροφορίες, να δηλώσει ενδιαφέρον για εκπαιδευτική συνεργασία
+              ή να εκφράσει ενδιαφέρον για συμμετοχή σε ομαδική ή θεματική αποστολή.
+            </p>
+          </div>
+
+          <aside class="hero-panel">
+            <h3 id="heroPanelTitle">Τι μπορείς να ζητήσεις εδώ</h3>
+            <ul>
+              <li id="heroPoint1">Πληροφορίες για την εμπειρία</li>
+              <li id="heroPoint2">Συνεργασίες με σχολεία και φορείς</li>
+              <li id="heroPoint3">Ομαδικές συμμετοχές και ειδικές δράσεις</li>
+              <li id="heroPoint4">Επικοινωνία για πολιτιστικά ή εκπαιδευτικά προγράμματα</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="contactSectionTitle">Στείλε το ενδιαφέρον σου</h2>
+          <p id="contactSectionText">
+            Η φόρμα αυτή λειτουργεί ως demo contact form για την ιστοσελίδα της ATHRIAN και δείχνει πώς θα μπορούσε
+            να οργανωθεί η επικοινωνία με διαφορετικές κατηγορίες κοινού.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3 id="infoTitle">Στοιχεία επικοινωνίας</h3>
+            <p id="infoText">
+              Παρακάτω παρουσιάζεται ένα ενδεικτικό πρότυπο επικοινωνίας που μπορεί να αξιοποιηθεί
+              για ενημερώσεις, συνεργασίες και requests ενδιαφέροντος.
+            </p>
+
+            <div class="info-list">
+              <div class="info-item">
+                <strong id="infoItem1Title">Email</strong>
+                <span id="infoItem1Text">info@athrian.gr</span>
+              </div>
+              <div class="info-item">
+                <strong id="infoItem2Title">Location</strong>
+                <span id="infoItem2Text">Hadrian’s Library, Athens, Greece</span>
+              </div>
+              <div class="info-item">
+                <strong id="infoItem3Title">Partnership Type</strong>
+                <span id="infoItem3Text">Schools, cultural institutions, tourism groups, educational programs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 id="formTitle">Φόρμα ενδιαφέροντος</h3>
+            <p id="formText">
+              Συμπλήρωσε τα στοιχεία σου για να δείξεις πώς θα λειτουργούσε ένα επαγγελματικό inquiry form.
+            </p>
+
+            <form class="form-grid" onsubmit="event.preventDefault(); showSuccessMessage();">
+              <div class="field">
+                <label for="name" id="labelName">Ονοματεπώνυμο</label>
+                <input id="name" type="text" placeholder="Γράψε το όνομά σου" />
+              </div>
+
+              <div class="field">
+                <label for="email" id="labelEmail">Email</label>
+                <input id="email" type="email" placeholder="example@email.com" />
+              </div>
+
+              <div class="field">
+                <label for="interest" id="labelInterest">Τύπος ενδιαφέροντος</label>
+                <select id="interest">
+                  <option id="interestOption1">Γενικές πληροφορίες</option>
+                  <option id="interestOption2">Σχολική συνεργασία</option>
+                  <option id="interestOption3">Ομαδική επίσκεψη</option>
+                  <option id="interestOption4">Πολιτιστική συνεργασία</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message" id="labelMessage">Μήνυμα</label>
+                <textarea id="message" placeholder="Γράψε το μήνυμά σου"></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn">Αποστολή</button>
+              <p id="successMessage" style="display:none; color: var(--text-soft); margin: 8px 0 0;"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="audienceTitle">Σε ποιους απευθύνεται η επικοινωνία</h2>
+          <p id="audienceText">
+            Η σελίδα αυτή εξυπηρετεί διαφορετικά κοινά που θα μπορούσαν να αλληλεπιδράσουν με την ATHRIAN
+            σε πολιτιστικό, εκπαιδευτικό ή οργανωτικό επίπεδο.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="mini-card">
+            <h3 id="audienceCard1Title">Schools & Educators</h3>
+            <p id="audienceCard1Text">Για εκπαιδευτικά προγράμματα, σχολικές επισκέψεις και βιωματικές δράσεις μάθησης.</p>
+          </article>
+
+          <article class="mini-card">
+            <h3 id="audienceCard2Title">Cultural Partners</h3>
+            <p id="audienceCard2Text">Για συνέργειες με μουσεία, πολιτιστικούς φορείς και οργανισμούς πολιτιστικής διαχείρισης.</p>
+          </article>
+
+          <article class="mini-card">
+            <h3 id="audienceCard3Title">Visitors & Groups</h3>
+            <p id="audienceCard3Text">Για επισκέπτες, τουριστικές ομάδες και άτομα που θέλουν να μάθουν περισσότερα για την εμπειρία.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p id="footerText">ATHRIAN © 2026 | Επικοινωνία, συνεργασία και σύνδεση με την πολιτιστική εμπειρία.</p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      el: {
+        pageTitle: "ATHRIAN | Contact",
+        brandTagline: "Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση",
+        logoAlt: "Λογότυπο ATHRIAN",
+        navHome: "Αρχική",
+        navAbout: "Η Ιδέα",
+        navQuest: "The Quest",
+        navContact: "Επικοινωνία",
+        heroEyebrow: "Επικοινωνία & συνεργασίες",
+        heroTitle: "Ας συνδεθούμε με την εμπειρία ATHRIAN",
+        heroText1: "Η σελίδα αυτή λειτουργεί ως σημείο επαφής για επισκέπτες, σχολεία, πολιτιστικούς φορείς, τουριστικές ομάδες και πιθανούς συνεργάτες που ενδιαφέρονται για την πολιτιστική εμπειρία ATHRIAN.",
+        heroText2: "Εδώ ο επισκέπτης μπορεί να ζητήσει πληροφορίες, να δηλώσει ενδιαφέρον για εκπαιδευτική συνεργασία ή να εκφράσει ενδιαφέρον για συμμετοχή σε ομαδική ή θεματική αποστολή.",
+        heroPanelTitle: "Τι μπορείς να ζητήσεις εδώ",
+        heroPoint1: "Πληροφορίες για την εμπειρία",
+        heroPoint2: "Συνεργασίες με σχολεία και φορείς",
+        heroPoint3: "Ομαδικές συμμετοχές και ειδικές δράσεις",
+        heroPoint4: "Επικοινωνία για πολιτιστικά ή εκπαιδευτικά προγράμματα",
+        contactSectionTitle: "Στείλε το ενδιαφέρον σου",
+        contactSectionText: "Η φόρμα αυτή λειτουργεί ως demo contact form για την ιστοσελίδα της ATHRIAN και δείχνει πώς θα μπορούσε να οργανωθεί η επικοινωνία με διαφορετικές κατηγορίες κοινού.",
+        infoTitle: "Στοιχεία επικοινωνίας",
+        infoText: "Παρακάτω παρουσιάζεται ένα ενδεικτικό πρότυπο επικοινωνίας που μπορεί να αξιοποιηθεί για ενημερώσεις, συνεργασίες και requests ενδιαφέροντος.",
+        infoItem1Title: "Email",
+        infoItem1Text: "info@athrian.gr",
+        infoItem2Title: "Τοποθεσία",
+        infoItem2Text: "Βιβλιοθήκη του Αδριανού, Αθήνα, Ελλάδα",
+        infoItem3Title: "Τύπος συνεργασίας",
+        infoItem3Text: "Σχολεία, πολιτιστικοί φορείς, τουριστικές ομάδες, εκπαιδευτικά προγράμματα",
+        formTitle: "Φόρμα ενδιαφέροντος",
+        formText: "Συμπλήρωσε τα στοιχεία σου για να δείξεις πώς θα λειτουργούσε ένα επαγγελματικό inquiry form.",
+        labelName: "Ονοματεπώνυμο",
+        labelEmail: "Email",
+        labelInterest: "Τύπος ενδιαφέροντος",
+        labelMessage: "Μήνυμα",
+        interestOption1: "Γενικές πληροφορίες",
+        interestOption2: "Σχολική συνεργασία",
+        interestOption3: "Ομαδική επίσκεψη",
+        interestOption4: "Πολιτιστική συνεργασία",
+        submitBtn: "Αποστολή",
+        audienceTitle: "Σε ποιους απευθύνεται η επικοινωνία",
+        audienceText: "Η σελίδα αυτή εξυπηρετεί διαφορετικά κοινά που θα μπορούσαν να αλληλεπιδράσουν με την ATHRIAN σε πολιτιστικό, εκπαιδευτικό ή οργανωτικό επίπεδο.",
+        audienceCard1Title: "Schools & Educators",
+        audienceCard1Text: "Για εκπαιδευτικά προγράμματα, σχολικές επισκέψεις και βιωματικές δράσεις μάθησης.",
+        audienceCard2Title: "Cultural Partners",
+        audienceCard2Text: "Για συνέργειες με μουσεία, πολιτιστικούς φορείς και οργανισμούς πολιτιστικής διαχείρισης.",
+        audienceCard3Title: "Visitors & Groups",
+        audienceCard3Text: "Για επισκέπτες, τουριστικές ομάδες και άτομα που θέλουν να μάθουν περισσότερα για την εμπειρία.",
+        footerText: "ATHRIAN © 2026 | Επικοινωνία, συνεργασία και σύνδεση με την πολιτιστική εμπειρία.",
+        successMessage: "Το μήνυμα καταχωρήθηκε επιτυχώς σε demo μορφή."
+      },
+      en: {
+        pageTitle: "ATHRIAN | Contact",
+        brandTagline: "In ATHens you WANDER and UNcover knowledge",
+        logoAlt: "ATHRIAN logo",
+        navHome: "Home",
+        navAbout: "The Idea",
+        navQuest: "The Quest",
+        navContact: "Contact",
+        heroEyebrow: "Contact & partnerships",
+        heroTitle: "Let’s connect through the ATHRIAN experience",
+        heroText1: "This page acts as a contact point for visitors, schools, cultural institutions, tourism groups and potential partners interested in the ATHRIAN cultural experience.",
+        heroText2: "Here, visitors can request information, express interest in educational collaboration or explore group and themed participation options.",
+        heroPanelTitle: "What you can request here",
+        heroPoint1: "Information about the experience",
+        heroPoint2: "Partnerships with schools and institutions",
+        heroPoint3: "Group participation and special events",
+        heroPoint4: "Communication for cultural or educational programs",
+        contactSectionTitle: "Send your interest",
+        contactSectionText: "This form works as a demo contact form for the ATHRIAN website and shows how communication with different audiences could be organized.",
+        infoTitle: "Contact details",
+        infoText: "Below is an indicative communication template that can be used for information, partnerships and interest requests.",
+        infoItem1Title: "Email",
+        infoItem1Text: "info@athrian.gr",
+        infoItem2Title: "Location",
+        infoItem2Text: "Hadrian’s Library, Athens, Greece",
+        infoItem3Title: "Partnership Type",
+        infoItem3Text: "Schools, cultural institutions, tourism groups, educational programs",
+        formTitle: "Interest form",
+        formText: "Fill in your details to demonstrate how a professional inquiry form could work.",
+        labelName: "Full name",
+        labelEmail: "Email",
+        labelInterest: "Type of interest",
+        labelMessage: "Message",
+        interestOption1: "General information",
+        interestOption2: "School collaboration",
+        interestOption3: "Group visit",
+        interestOption4: "Cultural partnership",
+        submitBtn: "Send",
+        audienceTitle: "Who this communication is for",
+        audienceText: "This page serves different audiences that could interact with ATHRIAN on a cultural, educational or organizational level.",
+        audienceCard1Title: "Schools & Educators",
+        audienceCard1Text: "For educational programs, school visits and experiential learning activities.",
+        audienceCard2Title: "Cultural Partners",
+        audienceCard2Text: "For collaborations with museums, cultural institutions and heritage management organizations.",
+        audienceCard3Title: "Visitors & Groups",
+        audienceCard3Text: "For visitors, tourism groups and people who want to learn more about the experience.",
+        footerText: "ATHRIAN © 2026 | Communication, collaboration and connection with the cultural experience.",
+        successMessage: "The message was submitted successfully in demo mode."
+      }
+    };
+
+    const ids = Object.keys(translations.el);
+
+    function applyLanguage(lang) {
+      const selected = translations[lang] || translations.el;
+      document.documentElement.lang = lang;
+      document.title = selected.pageTitle;
+
+      ids.forEach((id) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        if (id === "logoAlt") {
+          element.setAttribute("alt", selected[id]);
+        } else {
+          element.textContent = selected[id];
+        }
+      });
+
+      localStorage.setItem("athrian-language", lang);
+    }
+
+    const languageSelect = document.getElementById("languageSelect");
+    languageSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
+
+    const savedLanguage = localStorage.getItem("athrian-language") || "el";
+    languageSelect.value = savedLanguage;
+    applyLanguage(savedLanguage);
+
+    const root = document.documentElement;
+    let fontScale = Number(localStorage.getItem("athrian-font-scale")) || 1;
+
+    function updateFontScale() {
+      fontScale = Math.min(1.35, Math.max(0.9, fontScale));
+      root.style.setProperty("--font-scale", fontScale);
+      localStorage.setItem("athrian-font-scale", fontScale);
+    }
+
+    document.getElementById("increaseFont").addEventListener("click", () => {
+      fontScale += 0.05;
+      updateFontScale();
+    });
+
+    document.getElementById("decreaseFont").addEventListener("click", () => {
+      fontScale -= 0.05;
+      updateFontScale();
+    });
+
+    updateFontScale();
+
+    const body = document.body;
+    const savedTheme = localStorage.getItem("athrian-theme");
+    if (savedTheme === "dark") {
+      body.classList.add("dark-mode");
+      document.getElementById("toggleTheme").textContent = "☀️";
+    }
+
+    document.getElementById("toggleTheme").addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      const isDark = body.classList.contains("dark-mode");
+      localStorage.setItem("athrian-theme", isDark ? "dark" : "light");
+      document.getElementById("toggleTheme").textContent = isDark ? "☀️" : "🌙";
+    });
+
+    const savedContrast = localStorage.getItem("athrian-contrast");
+    if (savedContrast === "high") {
+      body.classList.add("high-contrast");
+    }
+
+    document.getElementById("toggleContrast").addEventListener("click", () => {
+      body.classList.toggle("high-contrast");
+      localStorage.setItem(
+        "athrian-contrast",
+        body.classList.contains("high-contrast") ? "high" : "normal"
+      );
+    });
+
+    function getReadableText() {
+      const currentLang = languageSelect.value;
+      const t = translations[currentLang] || translations.el;
+      return `
+        ${t.heroTitle}.
+        ${t.heroText1}
+        ${t.heroText2}
+        ${t.contactSectionTitle}. ${t.contactSectionText}
+        ${t.audienceTitle}. ${t.audienceText}
+      `;
+    }
+
+    document.getElementById("readPage").addEventListener("click", () => {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(getReadableText());
+      utterance.lang = languageSelect.value === "el" ? "el-GR" : languageSelect.value;
+      utterance.rate = 0.95;
+      utterance.pitch = 1;
+      speechSynthesis.speak(utterance);
+    });
+
+    document.getElementById("stopReading").addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+
+    function showSuccessMessage() {
+      const currentLang = languageSelect.value;
+      const t = translations[currentLang] || translations.el;
+      const message = document.getElementById("successMessage");
+      message.textContent = t.successMessage;
+      message.style.display = "block";
+    }
+  </script>
+</body>
+</html>
