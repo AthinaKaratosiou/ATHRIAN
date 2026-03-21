@@ -21,7 +21,6 @@
       --border: rgba(107, 63, 11, 0.18);
       --shadow: 0 10px 30px rgba(78, 47, 7, 0.14);
       --button-text: #fffdf8;
-      --card-radius: 22px;
       --font-scale: 1;
     }
 
@@ -409,6 +408,8 @@
       margin-top: 26px;
       display: flex;
       justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .cta-btn {
@@ -422,6 +423,12 @@
       color: var(--button-text);
       transition: 0.25s ease;
       box-shadow: var(--shadow);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
     .cta-btn:hover {
@@ -513,6 +520,10 @@
       <a href="index.html" id="navHome">Αρχική</a>
       <a href="about.html" id="navAbout">Η Ιδέα</a>
       <a href="quest.html" class="active" id="navQuest">The Quest</a>
+      <a href="riddles.html" id="navRiddles">Riddles & Missions</a>
+      <a href="technology.html" id="navTechnology">Technology</a>
+      <a href="conservation.html" id="navConservation">Conservation</a>
+      <a href="education.html" id="navEducation">Education</a>
       <a href="contact.html" id="navContact">Επικοινωνία</a>
     </div>
   </nav>
@@ -671,7 +682,8 @@
             τη συμμετοχή και τη συμβολική έννοια της προστασίας της γνώσης.
           </p>
           <div class="cta-row">
-            <a href="contact.html" class="cta-btn" id="finalBtn">Επικοινώνησε μαζί μας</a>
+            <a href="riddles.html" class="cta-btn" id="finalBtn1">See the Riddles</a>
+            <a href="contact.html" class="cta-btn secondary" id="finalBtn2">Επικοινώνησε μαζί μας</a>
           </div>
         </div>
       </div>
@@ -693,6 +705,10 @@
         navHome: "Αρχική",
         navAbout: "Η Ιδέα",
         navQuest: "The Quest",
+        navRiddles: "Riddles & Missions",
+        navTechnology: "Technology",
+        navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Επικοινωνία",
         heroEyebrow: "Το αφήγημα της εμπειρίας",
         heroTitle: "Μια αποστολή χαμένης γνώσης",
@@ -731,7 +747,8 @@
         designCard2Text: "Η γνώση μεταδίδεται πιο αποτελεσματικά όταν ο επισκέπτης την ανακαλύπτει μέσα από αποστολή.",
         finalTitle: "Στο τέλος, ο επισκέπτης δεν φεύγει απλώς ενημερωμένος",
         finalText: "Φεύγει έχοντας βιώσει μια πολιτιστική αποστολή που συνδέει τον χώρο με την ανακάλυψη, τη μνήμη, τη συμμετοχή και τη συμβολική έννοια της προστασίας της γνώσης.",
-        finalBtn: "Επικοινώνησε μαζί μας",
+        finalBtn1: "See the Riddles",
+        finalBtn2: "Επικοινώνησε μαζί μας",
         footerText: "ATHRIAN © 2026 | The Quest εμπειρία ως πολιτιστικό ταξίδι γνώσης."
       },
       en: {
@@ -741,6 +758,10 @@
         navHome: "Home",
         navAbout: "The Idea",
         navQuest: "The Quest",
+        navRiddles: "Riddles & Missions",
+        navTechnology: "Technology",
+        navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Contact",
         heroEyebrow: "The narrative of the experience",
         heroTitle: "A mission of lost knowledge",
@@ -779,200 +800,9 @@
         designCard2Text: "Knowledge is transmitted more effectively when the visitor discovers it through a mission.",
         finalTitle: "In the end, the visitor does not simply leave informed",
         finalText: "They leave having experienced a cultural mission that connects the site with discovery, memory, participation and the symbolic meaning of protecting knowledge.",
-        finalBtn: "Contact us",
+        finalBtn1: "See the Riddles",
+        finalBtn2: "Contact us",
         footerText: "ATHRIAN © 2026 | The Quest experience as a cultural journey of knowledge."
-      },
-      it: {
-        pageTitle: "ATHRIAN | The Quest",
-        brandTagline: "Ad Atene vaghi e scopri la conoscenza",
-        logoAlt: "Logo ATHRIAN",
-        navHome: "Home",
-        navAbout: "L'idea",
-        navQuest: "La Quest",
-        navContact: "Contatto",
-        heroEyebrow: "La narrazione dell'esperienza",
-        heroTitle: "Una missione di conoscenza perduta",
-        heroText1: "Nel mondo di ATHRIAN, la Biblioteca di Adriano non è semplicemente un monumento storico. È un luogo dove frammenti di conoscenza, tracce segrete e narrazioni dimenticate attendono di essere scoperte.",
-        heroText2: "Il visitatore è invitato a diventare parte di una quest culturale, seguire indizi nello spazio e avanzare gradualmente verso il ruolo simbolico di Guardian of Knowledge.",
-        heroPanelTitle: "Il ruolo del visitatore",
-        heroPanelText: "Il visitatore non agisce come osservatore passivo, ma come ricercatore attivo, esploratore e custode della memoria.",
-        heroBadge: "Guardians of the Lost Knowledge",
-        storyTitle: "Lo scenario della quest",
-        storyText: "Dopo il declino della biblioteca, preziose tracce di conoscenza si ritiene siano state disperse nello spazio. La missione del visitatore è ricomporle attraverso osservazione, pensiero e interazione.",
-        storyParagraph1: "ATHRIAN trasforma la visita culturale in una narrazione di mistero, struttura e culminazione emotiva. Il sito acquisisce un nuovo ruolo: non è solo qualcosa da osservare, ma un campo attivo di esplorazione.",
-        storyParagraph2: "Ogni tappa della quest funziona come punto di rivelazione. Ogni enigma diventa un ponte tra la conoscenza storica e l'esperienza personale del visitatore.",
-        timelineTitle: "Come si sviluppa la missione",
-        timelineText: "L'esperienza segue un percorso chiaro, così il visitatore percepisce di partecipare a un viaggio della conoscenza completo e progressivamente evolutivo.",
-        step1Title: "Ingresso nella narrazione",
-        step1Text: "Il visitatore conosce il background della missione e il suo ruolo simbolico.",
-        step2Title: "Ricerca di indizi",
-        step2Text: "Osserva il sito, individua punti di interesse e raccoglie segnali.",
-        step3Title: "Risoluzione di enigmi",
-        step3Text: "Decodifica enigmi legati a storia, architettura e conoscenza.",
-        step4Title: "Completamento della missione",
-        step4Text: "Riunisce i risultati e completa la sua transizione al ruolo di guardian.",
-        experienceTitle: "Cosa vive il visitatore",
-        experienceText: "La quest non si limita alla risoluzione delle missioni. È progettata per offrire senso di partecipazione, connessione con il luogo e scoperta personale.",
-        experienceCard1Title: "Scoperta",
-        experienceCard1Text: "Il visitatore percepisce di rivelare un significato culturale nascosto.",
-        experienceCard2Title: "Partecipazione",
-        experienceCard2Text: "L'esperienza si fonda sul coinvolgimento attivo e non sulla semplice osservazione.",
-        experienceCard3Title: "Connessione",
-        experienceCard3Text: "La conoscenza diventa più significativa perché si collega ad azione ed emozione.",
-        designTitle: "Perché questa struttura è importante",
-        designText: "La progressione graduale dell'esperienza rafforza comprensione, coinvolgimento e valore memorabile della visita.",
-        designCard1Title: "Progressione narrativa",
-        designCard1Text: "La narrazione crea un inizio, uno sviluppo e un culmine chiari, offrendo coerenza all'esperienza.",
-        designCard2Title: "Coinvolgimento educativo",
-        designCard2Text: "La conoscenza si trasmette in modo più efficace quando il visitatore la scopre attraverso una missione.",
-        finalTitle: "Alla fine, il visitatore non se ne va semplicemente informato",
-        finalText: "Se ne va dopo aver vissuto una missione culturale che connette il luogo con scoperta, memoria, partecipazione e significato simbolico della protezione della conoscenza.",
-        finalBtn: "Contattaci",
-        footerText: "ATHRIAN © 2026 | L'esperienza Quest come viaggio culturale della conoscenza."
-      },
-      de: {
-        pageTitle: "ATHRIAN | The Quest",
-        brandTagline: "In Athen wanderst du und entdeckst Wissen",
-        logoAlt: "ATHRIAN-Logo",
-        navHome: "Startseite",
-        navAbout: "Die Idee",
-        navQuest: "Die Quest",
-        navContact: "Kontakt",
-        heroEyebrow: "Die Erzählung des Erlebnisses",
-        heroTitle: "Eine Mission verlorenen Wissens",
-        heroText1: "In der Welt von ATHRIAN ist die Hadriansbibliothek nicht einfach nur ein historisches Monument. Sie ist ein Ort, an dem Wissensfragmente, geheime Spuren und vergessene Erzählungen darauf warten, entdeckt zu werden.",
-        heroText2: "Der Besucher wird eingeladen, Teil einer kulturellen Quest zu werden, Hinweisen im Raum zu folgen und sich schrittweise in die symbolische Rolle des Guardian of Knowledge zu bewegen.",
-        heroPanelTitle: "Die Rolle des Besuchers",
-        heroPanelText: "Der Besucher handelt nicht als passiver Beobachter, sondern als aktiver Forscher, Entdecker und Träger der Erinnerung.",
-        heroBadge: "Guardians of the Lost Knowledge",
-        storyTitle: "Das Szenario der Quest",
-        storyText: "Nach dem Niedergang der Bibliothek sollen wertvolle Spuren des Wissens im Raum verstreut worden sein. Die Mission des Besuchers besteht darin, sie durch Beobachtung, Denken und Interaktion wieder zu vereinen.",
-        storyParagraph1: "ATHRIAN verwandelt den Kulturbesuch in eine Erzählung voller Geheimnis, Struktur und emotionaler Zuspitzung. Der Ort erhält eine neue Rolle: Er ist nicht nur etwas zum Betrachten, sondern ein aktives Feld der Erkundung.",
-        storyParagraph2: "Jeder Halt der Quest wirkt als Punkt der Offenbarung. Jedes Rätsel wird zu einer Brücke zwischen historischem Wissen und der persönlichen Erfahrung des Besuchers.",
-        timelineTitle: "Wie sich die Mission entwickelt",
-        timelineText: "Das Erlebnis folgt einem klaren Verlauf, damit der Besucher spürt, an einer vollständigen und sich schrittweise entwickelnden Wissensreise teilzunehmen.",
-        step1Title: "Eintritt in die Erzählung",
-        step1Text: "Der Besucher lernt den Hintergrund der Mission und seine symbolische Rolle kennen.",
-        step2Title: "Suche nach Hinweisen",
-        step2Text: "Er beobachtet den Ort, identifiziert interessante Punkte und sammelt Anzeichen.",
-        step3Title: "Rätsel lösen",
-        step3Text: "Er entschlüsselt Rätsel zu Geschichte, Architektur und Wissen.",
-        step4Title: "Abschluss der Mission",
-        step4Text: "Er verbindet seine Funde und vollendet seinen Übergang in die Rolle des Guardians.",
-        experienceTitle: "Was der Besucher erlebt",
-        experienceText: "Die Quest beschränkt sich nicht auf das Lösen von Missionen. Sie ist so gestaltet, dass sie Teilhabe, Verbindung mit dem Ort und persönliche Entdeckung vermittelt.",
-        experienceCard1Title: "Entdeckung",
-        experienceCard1Text: "Der Besucher fühlt, dass er eine verborgene kulturelle Bedeutung enthüllt.",
-        experienceCard2Title: "Teilnahme",
-        experienceCard2Text: "Das Erlebnis basiert auf aktiver Beteiligung und nicht auf bloßer Beobachtung.",
-        experienceCard3Title: "Verbindung",
-        experienceCard3Text: "Wissen wird bedeutungsvoller, weil es mit Handlung und Emotion verknüpft wird.",
-        designTitle: "Warum diese Struktur wichtig ist",
-        designText: "Der schrittweise Aufbau des Erlebnisses stärkt Verständnis, Bindung und Erinnerungswert des Besuchs.",
-        designCard1Title: "Narrativer Fortschritt",
-        designCard1Text: "Die Erzählung schafft einen klaren Anfang, eine Entwicklung und einen Höhepunkt und gibt dem Erlebnis Kohärenz.",
-        designCard2Title: "Pädagogische Einbindung",
-        designCard2Text: "Wissen wird wirksamer vermittelt, wenn der Besucher es durch eine Mission entdeckt.",
-        finalTitle: "Am Ende verlässt der Besucher den Ort nicht einfach nur informiert",
-        finalText: "Er geht mit der Erfahrung einer kulturellen Mission, die den Ort mit Entdeckung, Erinnerung, Teilnahme und der symbolischen Bedeutung des Schutzes von Wissen verbindet.",
-        finalBtn: "Kontaktieren Sie uns",
-        footerText: "ATHRIAN © 2026 | Die Quest-Erfahrung als kulturelle Wissensreise."
-      },
-      es: {
-        pageTitle: "ATHRIAN | The Quest",
-        brandTagline: "En Atenas recorres y descubres conocimiento",
-        logoAlt: "Logotipo ATHRIAN",
-        navHome: "Inicio",
-        navAbout: "La Idea",
-        navQuest: "La Quest",
-        navContact: "Contacto",
-        heroEyebrow: "La narrativa de la experiencia",
-        heroTitle: "Una misión de conocimiento perdido",
-        heroText1: "En el mundo de ATHRIAN, la Biblioteca de Adriano no es simplemente un monumento histórico. Es un lugar donde fragmentos de conocimiento, huellas secretas y narrativas olvidadas esperan ser descubiertas.",
-        heroText2: "El visitante está invitado a convertirse en parte de una quest cultural, seguir pistas por el espacio y avanzar gradualmente hacia el papel simbólico de Guardian of Knowledge.",
-        heroPanelTitle: "El papel del visitante",
-        heroPanelText: "El visitante no actúa como observador pasivo, sino como investigador activo, explorador y portador de memoria.",
-        heroBadge: "Guardians of the Lost Knowledge",
-        storyTitle: "El escenario de la quest",
-        storyText: "Tras el declive de la biblioteca, se cree que valiosas huellas de conocimiento quedaron dispersas por el lugar. La misión del visitante es reunirlas mediante observación, reflexión e interacción.",
-        storyParagraph1: "ATHRIAN transforma la visita cultural en una narrativa de misterio, estructura y culminación emocional. El sitio adquiere un nuevo papel: ya no es solo algo que observar, sino un campo activo de exploración.",
-        storyParagraph2: "Cada parada de la quest funciona como un punto de revelación. Cada enigma se convierte en un puente entre el conocimiento histórico y la experiencia personal del visitante.",
-        timelineTitle: "Cómo evoluciona la misión",
-        timelineText: "La experiencia sigue un recorrido claro para que el visitante sienta que participa en un viaje de conocimiento completo y progresivamente evolutivo.",
-        step1Title: "Entrada en la narrativa",
-        step1Text: "El visitante conoce el trasfondo de la misión y su papel simbólico.",
-        step2Title: "Búsqueda de pistas",
-        step2Text: "Observa el sitio, identifica puntos de interés y recoge indicios.",
-        step3Title: "Resolución de enigmas",
-        step3Text: "Descifra enigmas relacionados con la historia, la arquitectura y el conocimiento.",
-        step4Title: "Finalización de la misión",
-        step4Text: "Integra sus hallazgos y completa su transición hacia el papel de guardian.",
-        experienceTitle: "Qué vive el visitante",
-        experienceText: "La quest no se limita a resolver misiones. Está diseñada para ofrecer sensación de participación, conexión con el lugar y descubrimiento personal.",
-        experienceCard1Title: "Descubrimiento",
-        experienceCard1Text: "El visitante siente que revela un significado cultural oculto.",
-        experienceCard2Title: "Participación",
-        experienceCard2Text: "La experiencia se basa en la implicación activa y no en la simple observación.",
-        experienceCard3Title: "Conexión",
-        experienceCard3Text: "El conocimiento se vuelve más significativo porque se conecta con acción y emoción.",
-        designTitle: "Por qué esta estructura es importante",
-        designText: "La evolución gradual de la experiencia fortalece la comprensión, el compromiso y el valor memorable de la visita.",
-        designCard1Title: "Progresión narrativa",
-        designCard1Text: "La narrativa crea un inicio, desarrollo y clímax claros, aportando coherencia a la experiencia.",
-        designCard2Title: "Compromiso educativo",
-        designCard2Text: "El conocimiento se transmite con mayor eficacia cuando el visitante lo descubre a través de una misión.",
-        finalTitle: "Al final, el visitante no se marcha simplemente informado",
-        finalText: "Se marcha habiendo vivido una misión cultural que conecta el lugar con el descubrimiento, la memoria, la participación y el significado simbólico de proteger el conocimiento.",
-        finalBtn: "Contáctanos",
-        footerText: "ATHRIAN © 2026 | La experiencia Quest como viaje cultural del conocimiento."
-      },
-      fr: {
-        pageTitle: "ATHRIAN | The Quest",
-        brandTagline: "À Athènes, vous explorez et découvrez le savoir",
-        logoAlt: "Logo ATHRIAN",
-        navHome: "Accueil",
-        navAbout: "L'idée",
-        navQuest: "La Quête",
-        navContact: "Contact",
-        heroEyebrow: "La narration de l'expérience",
-        heroTitle: "Une mission de savoir perdu",
-        heroText1: "Dans l'univers de ATHRIAN, la Bibliothèque d'Hadrien n'est pas simplement un monument historique. C'est un lieu où fragments de savoir, traces secrètes et récits oubliés attendent d'être découverts.",
-        heroText2: "Le visiteur est invité à devenir partie prenante d'une quête culturelle, à suivre des indices dans l'espace et à progresser vers le rôle symbolique de Guardian of Knowledge.",
-        heroPanelTitle: "Le rôle du visiteur",
-        heroPanelText: "Le visiteur n'agit pas comme un observateur passif, mais comme un chercheur actif, un explorateur et un porteur de mémoire.",
-        heroBadge: "Guardians of the Lost Knowledge",
-        storyTitle: "Le scénario de la quête",
-        storyText: "Après le déclin de la bibliothèque, de précieuses traces de savoir auraient été dispersées dans le lieu. La mission du visiteur est de les réunir par l'observation, la réflexion et l'interaction.",
-        storyParagraph1: "ATHRIAN transforme la visite culturelle en une narration de mystère, de structure et de culmination émotionnelle. Le site acquiert un nouveau rôle : il n'est plus seulement un objet d'observation, mais un champ actif d'exploration.",
-        storyParagraph2: "Chaque étape de la quête agit comme un point de révélation. Chaque énigme devient un pont entre le savoir historique et l'expérience personnelle du visiteur.",
-        timelineTitle: "Comment la mission évolue",
-        timelineText: "L'expérience suit un parcours clair afin que le visiteur ressente sa participation à un voyage de connaissance complet et progressivement évolutif.",
-        step1Title: "Entrée dans la narration",
-        step1Text: "Le visiteur découvre le contexte de la mission et son rôle symbolique.",
-        step2Title: "Recherche d'indices",
-        step2Text: "Il observe le site, identifie des points d'intérêt et recueille des indices.",
-        step3Title: "Résolution d'énigmes",
-        step3Text: "Il décode des énigmes liées à l'histoire, à l'architecture et au savoir.",
-        step4Title: "Achèvement de la mission",
-        step4Text: "Il rassemble ses découvertes et achève sa transition vers le rôle de guardian.",
-        experienceTitle: "Ce que vit le visiteur",
-        experienceText: "La quête ne se limite pas à résoudre des missions. Elle est conçue pour offrir un sentiment de participation, de connexion au lieu et de découverte personnelle.",
-        experienceCard1Title: "Découverte",
-        experienceCard1Text: "Le visiteur a le sentiment de révéler une signification culturelle cachée.",
-        experienceCard2Title: "Participation",
-        experienceCard2Text: "L'expérience repose sur l'implication active et non sur la simple observation.",
-        experienceCard3Title: "Connexion",
-        experienceCard3Text: "Le savoir devient plus significatif car il se relie à l'action et à l'émotion.",
-        designTitle: "Pourquoi cette structure est importante",
-        designText: "La progression graduelle de l'expérience renforce la compréhension, l'engagement et la valeur mémorielle de la visite.",
-        designCard1Title: "Progression narrative",
-        designCard1Text: "La narration crée un début, un développement et un point culminant clairs, donnant de la cohérence à l'expérience.",
-        designCard2Title: "Engagement éducatif",
-        designCard2Text: "Le savoir se transmet plus efficacement lorsque le visiteur le découvre à travers une mission.",
-        finalTitle: "À la fin, le visiteur ne repart pas simplement informé",
-        finalText: "Il repart après avoir vécu une mission culturelle reliant le lieu à la découverte, à la mémoire, à la participation et à la signification symbolique de la protection du savoir.",
-        finalBtn: "Contactez-nous",
-        footerText: "ATHRIAN © 2026 | L'expérience Quest comme voyage culturel du savoir."
       }
     };
 
