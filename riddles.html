@@ -6,7 +6,7 @@
   <title>ATHRIAN | Riddles & Missions</title>
   <meta
     name="description"
-    content="Ανακάλυψε τους γρίφους και τις αποστολές της ATHRIAN, μέσα από μια πολιτιστική εμπειρία που συνδυάζει γνώση, μυστήριο και εξερεύνηση."
+    content="Ανακάλυψε τους γρίφους και τις αποστολές της ATHRIAN μέσα από μια premium πολιτιστική εμπειρία με γνώσεις, μυστήριο, πρόοδο και διαδραστικότητα."
   />
   <style>
     :root {
@@ -14,6 +14,7 @@
       --bg-soft: #f5ead0;
       --surface: rgba(255, 248, 236, 0.82);
       --surface-strong: rgba(255, 248, 236, 0.96);
+      --surface-dark: rgba(82, 54, 17, 0.08);
       --text: #4e2f07;
       --text-soft: #6e4a17;
       --accent: #6b3f0b;
@@ -33,6 +34,7 @@
       --bg-soft: #1b1b1b;
       --surface: rgba(35, 35, 35, 0.92);
       --surface-strong: rgba(42, 42, 42, 0.98);
+      --surface-dark: rgba(255,255,255,0.04);
       --text: #f1dfb7;
       --text-soft: #d7be8d;
       --accent: #c99a4a;
@@ -51,6 +53,7 @@
       --bg-soft: #000000;
       --surface: #000000;
       --surface-strong: #000000;
+      --surface-dark: #000000;
       --text: #ffffff;
       --text-soft: #ffffff;
       --accent: #ffff00;
@@ -75,11 +78,13 @@
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(107,63,11,0.1), transparent 24%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
       color: var(--text);
       line-height: 1.65;
       transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
     }
 
     img {
@@ -92,7 +97,7 @@
       text-decoration: none;
     }
 
-    button, select, input, textarea {
+    button, select, input {
       font: inherit;
     }
 
@@ -227,12 +232,12 @@
     }
 
     .hero {
-      padding: 72px 0 28px;
+      padding: 72px 0 26px;
     }
 
     .hero-box {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 24px;
       align-items: stretch;
       background: var(--surface);
@@ -250,8 +255,14 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(107,63,11,0.08), transparent 24%);
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(107,63,11,0.08), transparent 26%);
+    }
+
+    .hero-text,
+    .hero-side {
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
@@ -263,75 +274,70 @@
       border-radius: 999px;
       font-weight: 700;
       margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-text,
-    .hero-panel {
-      position: relative;
-      z-index: 1;
     }
 
     .hero-text h2 {
-      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-size: clamp(2rem, 4.5vw, 4.1rem);
       line-height: 1.08;
       margin: 0 0 16px;
     }
 
     .hero-text p {
       color: var(--text-soft);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       font-size: 1.05rem;
     }
 
-    .hero-panel {
+    .hero-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .side-card {
       background: var(--surface-strong);
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 24px;
+      padding: 22px;
     }
 
-    .hero-panel h3 {
+    .side-card h3 {
       margin-top: 0;
-      margin-bottom: 14px;
-      font-size: 1.3rem;
+      margin-bottom: 12px;
     }
 
-    .hero-panel ul {
+    .side-card ul {
       margin: 0;
       padding-left: 18px;
       color: var(--text-soft);
     }
 
-    .hero-panel li + li {
-      margin-top: 10px;
+    .side-card li + li {
+      margin-top: 8px;
     }
 
-    .panel-stats {
-      margin-top: 18px;
+    .quick-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
-    .stat-box {
+    .quick-stat {
+      text-align: center;
       padding: 14px;
       border-radius: 18px;
+      background: var(--surface-strong);
       border: 1px solid var(--border);
-      background: var(--surface);
-      text-align: center;
     }
 
-    .stat-box strong {
+    .quick-stat strong {
       display: block;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       margin-bottom: 4px;
     }
 
-    .stat-box span {
-      font-size: 0.9rem;
+    .quick-stat span {
       color: var(--text-soft);
+      font-size: 0.9rem;
     }
 
     .section {
@@ -356,33 +362,42 @@
 
     .dashboard {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: stretch;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
       margin-bottom: 28px;
     }
 
     .dashboard-card,
-    .rank-card,
-    .card,
-    .example-box,
-    .flow-box,
     .mission-board,
-    .certificate-box {
+    .card,
+    .certificate-box,
+    .info-box {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 28px;
-      padding: 28px;
+      padding: 24px;
       box-shadow: var(--shadow);
     }
 
     .dashboard-card h3,
-    .rank-card h3,
     .mission-board h3,
-    .certificate-box h3 {
+    .certificate-box h3,
+    .info-box h3 {
       margin-top: 0;
-      margin-bottom: 14px;
-      font-size: 1.25rem;
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .dashboard-value {
+      font-size: 1.55rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .dashboard-sub {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin: 0;
     }
 
     .progress-shell {
@@ -402,34 +417,14 @@
       transition: width 0.35s ease;
     }
 
-    .dashboard-meta,
-    .rank-meta {
-      color: var(--text-soft);
-      margin: 0;
-    }
-
-    .rank-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(107,63,11,0.12);
-      border: 1px solid var(--border);
-      font-weight: 800;
-      margin-top: 12px;
-    }
-
     .cards-4,
-    .cards-3,
-    .cards-2 {
+    .cards-3 {
       display: grid;
       gap: 22px;
     }
 
     .cards-4 { grid-template-columns: repeat(4, 1fr); }
     .cards-3 { grid-template-columns: repeat(3, 1fr); }
-    .cards-2 { grid-template-columns: repeat(2, 1fr); }
 
     .card {
       transition: 0.25s ease;
@@ -461,7 +456,7 @@
     }
 
     .mission-board {
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .mission-tabs {
@@ -478,11 +473,18 @@
       background: var(--surface-strong);
       color: var(--text);
       font-weight: 700;
+      opacity: 0.8;
     }
 
     .mission-tab.active {
       background: var(--accent);
       color: var(--button-text);
+      opacity: 1;
+    }
+
+    .mission-tab.locked {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
 
     .mission-card {
@@ -507,7 +509,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 14px;
     }
 
@@ -529,17 +531,14 @@
       color: var(--text-soft);
     }
 
-    .mission-brief,
-    .mission-question,
-    .mission-context,
-    .mission-result {
-      margin-top: 16px;
+    .mission-block {
+      margin-top: 14px;
     }
 
     .mission-label {
+      display: block;
       font-weight: 800;
       margin-bottom: 8px;
-      display: block;
     }
 
     .answer-row {
@@ -612,22 +611,16 @@
       background: var(--surface);
     }
 
-    .feedback-box.show {
-      display: block;
-    }
-
+    .feedback-box.show { display: block; }
     .feedback-box.success {
       border-color: rgba(47,107,47,0.35);
       background: rgba(47,107,47,0.1);
     }
-
     .feedback-box.warning {
       border-color: rgba(138,90,24,0.35);
       background: rgba(138,90,24,0.1);
     }
-
     .feedback-box.info {
-      border-color: var(--border);
       background: rgba(107,63,11,0.08);
     }
 
@@ -645,35 +638,6 @@
     .hint-box.show,
     .solution-box.show {
       display: block;
-    }
-
-    .example-box {
-      margin-top: 12px;
-    }
-
-    .example-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 22px;
-    }
-
-    .example-card {
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .example-card strong {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 1.05rem;
-    }
-
-    .example-card p {
-      margin: 0;
-      color: var(--text-soft);
     }
 
     .flow-box {
@@ -704,6 +668,35 @@
       color: var(--text-soft);
     }
 
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: var(--accent);
+      color: var(--button-text);
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); }
+
     .certificate-box {
       text-align: center;
       background:
@@ -711,15 +704,15 @@
         var(--surface);
     }
 
-    .certificate-box p {
-      color: var(--text-soft);
-      max-width: 780px;
-      margin: 0 auto;
+    .certificate-medal {
+      font-size: 2.7rem;
+      margin-bottom: 12px;
     }
 
-    .certificate-medal {
-      font-size: 2.6rem;
-      margin-bottom: 12px;
+    .certificate-box p {
+      color: var(--text-soft);
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     .footer {
@@ -735,15 +728,104 @@
       color: var(--text-soft);
     }
 
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 20px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(760px, 100%);
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(107,63,11,0.08), transparent 26%);
+    }
+
+    .modal-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-card h3 {
+      margin-top: 0;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .modal-card p {
+      color: var(--text-soft);
+      max-width: 620px;
+      margin: 0 auto 18px;
+    }
+
+    .modal-medal {
+      font-size: 3.2rem;
+      margin-bottom: 12px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1.1rem;
+      z-index: 2;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -20px;
+      width: 10px;
+      height: 16px;
+      opacity: 0.9;
+      z-index: 4000;
+      animation: fall linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(700deg);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 1100px) {
       .hero-box,
-      .dashboard,
       .cards-4,
       .cards-3,
-      .cards-2,
-      .example-grid,
+      .dashboard,
       .flow-steps,
-      .feature-grid {
+      .quick-stats {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -754,14 +836,11 @@
 
     @media (max-width: 700px) {
       .hero-box,
-      .dashboard,
       .cards-4,
       .cards-3,
-      .cards-2,
-      .example-grid,
+      .dashboard,
       .flow-steps,
-      .feature-grid,
-      .panel-stats {
+      .quick-stats {
         grid-template-columns: 1fr;
       }
 
@@ -773,13 +852,12 @@
       }
 
       .hero-box,
-      .card,
-      .example-box,
-      .flow-box,
       .dashboard-card,
-      .rank-card,
       .mission-board,
-      .certificate-box {
+      .card,
+      .certificate-box,
+      .info-box,
+      .modal-card {
         padding: 22px;
       }
 
@@ -852,30 +930,32 @@
             </p>
           </div>
 
-          <aside class="hero-panel">
-            <h3 id="heroPanelTitle">Τι προσφέρουν οι αποστολές</h3>
-            <ul>
-              <li id="heroPoint1">Ενεργή συμμετοχή και όχι παθητική παρακολούθηση</li>
-              <li id="heroPoint2">Μάθηση μέσα από ανακάλυψη</li>
-              <li id="heroPoint3">Σύνδεση ιστορίας, χώρου και προσωπικής εμπειρίας</li>
-              <li id="heroPoint4">Σταδιακή οικοδόμηση του ρόλου του Guardian</li>
-            </ul>
+          <div class="hero-side">
+            <div class="side-card">
+              <h3 id="heroPanelTitle">Τι προσφέρουν οι αποστολές</h3>
+              <ul>
+                <li id="heroPoint1">Ενεργή συμμετοχή και όχι παθητική παρακολούθηση</li>
+                <li id="heroPoint2">Μάθηση μέσα από ανακάλυψη</li>
+                <li id="heroPoint3">Σύνδεση ιστορίας, χώρου και προσωπικής εμπειρίας</li>
+                <li id="heroPoint4">Σταδιακή οικοδόμηση του ρόλου του Guardian</li>
+              </ul>
+            </div>
 
-            <div class="panel-stats">
-              <div class="stat-box">
+            <div class="quick-stats">
+              <div class="quick-stat">
                 <strong id="statValue1">3</strong>
                 <span id="statLabel1">Live Missions</span>
               </div>
-              <div class="stat-box">
+              <div class="quick-stat">
                 <strong id="statValue2">6</strong>
                 <span id="statLabel2">Languages</span>
               </div>
-              <div class="stat-box">
-                <strong id="statValue3">100%</strong>
+              <div class="quick-stat">
+                <strong id="statValue3">XP</strong>
                 <span id="statLabel3">Immersive Flow</span>
               </div>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
@@ -885,20 +965,29 @@
         <div class="dashboard">
           <div class="dashboard-card">
             <h3 id="progressTitle">Mission Progress</h3>
-            <p id="progressSubtitle">Ολοκλήρωσε τους γρίφους για να ξεκλειδώσεις τον τίτλο Guardian of Knowledge.</p>
             <div class="progress-shell" aria-hidden="true">
               <div class="progress-bar" id="progressBar"></div>
             </div>
-            <p class="dashboard-meta"><span id="progressCount">0</span>/3 <span id="progressMeta">missions completed</span></p>
+            <div class="dashboard-value"><span id="progressCount">0</span>/3</div>
+            <p class="dashboard-sub" id="progressMeta">missions completed</p>
           </div>
 
-          <div class="rank-card">
+          <div class="dashboard-card">
             <h3 id="rankTitle">Guardian Rank</h3>
-            <p class="rank-meta" id="rankSubtitle">Ξεκινάς ως Seeker. Με κάθε σωστή αποκάλυψη, προχωράς προς τον ρόλο του Guardian.</p>
-            <div class="rank-badge">
-              <span>🏛️</span>
-              <span id="rankValue">Seeker</span>
-            </div>
+            <div class="dashboard-value" id="rankValue">Seeker</div>
+            <p class="dashboard-sub" id="rankSubtitle">Ξεκινάς ως Seeker. Με κάθε σωστή αποκάλυψη, προχωράς προς τον ρόλο του Guardian.</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h3 id="xpTitle">XP Score</h3>
+            <div class="dashboard-value"><span id="xpValue">0</span> XP</div>
+            <p class="dashboard-sub" id="xpSubtitle">Κάθε σωστή λύση αυξάνει το επίπεδο εμπλοκής σου.</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h3 id="timerTitle">Quest Timer</h3>
+            <div class="dashboard-value" id="timerValue">00:00</div>
+            <p class="dashboard-sub" id="timerSubtitle">Ο χρόνος καταγράφει το προσωπικό σου ταξίδι γνώσης.</p>
           </div>
         </div>
 
@@ -943,31 +1032,29 @@
         <div class="mission-board">
           <div class="section-title" style="margin-bottom: 18px;">
             <h2 id="boardTitle">Interactive Mission Board</h2>
-            <p id="boardText">Εδώ ο επισκέπτης δεν διαβάζει απλώς τους γρίφους — τους λύνει, παίρνει feedback και προχωρά στο επόμενο στάδιο.</p>
+            <p id="boardText">Εδώ ο επισκέπτης δεν διαβάζει απλώς τους γρίφους — τους λύνει, παίρνει feedback, κερδίζει XP και ξεκλειδώνει το επόμενο στάδιο.</p>
           </div>
 
           <div class="mission-tabs" role="tablist" aria-label="Mission selector">
             <button class="mission-tab active" data-mission="mission1" id="missionTab1">Mission I</button>
-            <button class="mission-tab" data-mission="mission2" id="missionTab2">Mission II</button>
-            <button class="mission-tab" data-mission="mission3" id="missionTab3">Mission III</button>
+            <button class="mission-tab locked" data-mission="mission2" id="missionTab2">Mission II 🔒</button>
+            <button class="mission-tab locked" data-mission="mission3" id="missionTab3">Mission III 🔒</button>
           </div>
 
           <div class="mission-card active" id="mission1">
             <div class="mission-head">
-              <div>
-                <div class="mission-pill" id="mission1Type">Architecture Mission</div>
-              </div>
+              <div class="mission-pill" id="mission1Type">Architecture Mission</div>
               <div class="mission-pill" id="mission1Difficulty">Level: Explorer</div>
             </div>
             <h4 id="mission1Title">The Silent Columns</h4>
             <p id="mission1Intro">Παρατήρησε τον χώρο σαν να ήταν ένας χάρτης γνώσης. Ο πρώτος γρίφος σχετίζεται με τη μορφή και τη λειτουργία του μνημείου.</p>
 
-            <div class="mission-context">
+            <div class="mission-block">
               <span class="mission-label" id="mission1StoryLabel">Story clue</span>
               <p id="mission1Story">«Εκεί όπου οι γραμμές του χώρου ορίζουν τη μνήμη, η είσοδος προς τη γνώση αποκαλύπτεται μέσα από την τάξη της αρχιτεκτονικής.»</p>
             </div>
 
-            <div class="mission-question">
+            <div class="mission-block">
               <span class="mission-label" id="mission1QuestionLabel">Riddle</span>
               <p id="mission1Question">Ποιο βασικό στοιχείο της αρχιτεκτονικής συνδέεται περισσότερο με την έννοια της στήριξης και της επιβλητικής εισόδου σε έναν αρχαίο χώρο γνώσης;</p>
             </div>
@@ -989,20 +1076,18 @@
 
           <div class="mission-card" id="mission2">
             <div class="mission-head">
-              <div>
-                <div class="mission-pill" id="mission2Type">Knowledge Mission</div>
-              </div>
+              <div class="mission-pill" id="mission2Type">Knowledge Mission</div>
               <div class="mission-pill" id="mission2Difficulty">Level: Interpreter</div>
             </div>
             <h4 id="mission2Title">The Lost Manuscript</h4>
             <p id="mission2Intro">Η δεύτερη αποστολή σε φέρνει πιο κοντά στη συμβολική αποστολή της βιβλιοθήκης ως χώρου διαφύλαξης γνώσης.</p>
 
-            <div class="mission-context">
+            <div class="mission-block">
               <span class="mission-label" id="mission2StoryLabel">Story clue</span>
               <p id="mission2Story">«Δεν χάθηκε μόνο ένα αντικείμενο. Χάθηκε κάτι που μετέφερε ιδέες από άνθρωπο σε άνθρωπο και από εποχή σε εποχή.»</p>
             </div>
 
-            <div class="mission-question">
+            <div class="mission-block">
               <span class="mission-label" id="mission2QuestionLabel">Riddle</span>
               <p id="mission2Question">Αν η βιβλιοθήκη έχανε το πιο συμβολικό της αντικείμενο, ποια λέξη το περιγράφει καλύτερα: κάτι που φυλάσσει κείμενο, μνήμη και γνώση;</p>
             </div>
@@ -1024,20 +1109,18 @@
 
           <div class="mission-card" id="mission3">
             <div class="mission-head">
-              <div>
-                <div class="mission-pill" id="mission3Type">Philosophy Mission</div>
-              </div>
+              <div class="mission-pill" id="mission3Type">Philosophy Mission</div>
               <div class="mission-pill" id="mission3Difficulty">Level: Guardian</div>
             </div>
             <h4 id="mission3Title">The Value Behind Knowledge</h4>
             <p id="mission3Intro">Η τελευταία αποστολή δεν ελέγχει μόνο τι είδες — αλλά τι κατάλαβες για τη βαθύτερη αξία της γνώσης.</p>
 
-            <div class="mission-context">
+            <div class="mission-block">
               <span class="mission-label" id="mission3StoryLabel">Story clue</span>
               <p id="mission3Story">«Η γνώση δεν ζει μόνο στα κείμενα. Ζει σε εκείνο που επιτρέπει στον άνθρωπο να θυμάται, να κρίνει και να προχωρά.»</p>
             </div>
 
-            <div class="mission-question">
+            <div class="mission-block">
               <span class="mission-label" id="mission3QuestionLabel">Riddle</span>
               <p id="mission3Question">Αν έπρεπε να επιλέξεις μία μόνο αξία που προστατεύει η βιβλιοθήκη στον χρόνο, ποια έννοια βρίσκεται πιο κοντά στον πυρήνα της: μνήμη, δύναμη ή σιωπή;</p>
             </div>
@@ -1062,39 +1145,7 @@
 
     <section class="section">
       <div class="container">
-        <div class="example-box">
-          <div class="section-title" style="margin-bottom: 10px;">
-            <h2 id="examplesTitle">Ενδεικτικά παραδείγματα εμπλουτισμένων missions</h2>
-            <p id="examplesText">
-              Παρακάτω παρουσιάζονται παραδείγματα για το πώς ένας γρίφος μπορεί να συνδέει τον χώρο,
-              τη γνώση, την αφήγηση και τη βιωματική ανακάλυψη.
-            </p>
-          </div>
-
-          <div class="example-grid">
-            <div class="example-card">
-              <strong id="example1Title">Παράδειγμα 1: Αρχιτεκτονικό ίχνος</strong>
-              <p id="example1Text">
-                «Ποιο σημείο του χώρου αποκαλύπτει τη λειτουργία της βιβλιοθήκης ως τόπου δημόσιας γνώσης;»
-                Ο επισκέπτης δεν απαντά μόνο περιγραφικά, αλλά συνδέει μορφή, χρήση και πολιτιστική λειτουργία.
-              </p>
-            </div>
-
-            <div class="example-card">
-              <strong id="example2Title">Παράδειγμα 2: Συμβολισμός γνώσης</strong>
-              <p id="example2Text">
-                «Αν ένα χαμένο χειρόγραφο αντιπροσώπευε μία μόνο αξία, ποια θα ήταν αυτή;»
-                Ο γρίφος ενεργοποιεί ερμηνεία, φιλοσοφική σκέψη και προσωπική σύνδεση με τη γνώση.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="flow-box">
+        <div class="info-box flow-box">
           <div class="section-title" style="margin-bottom: 10px;">
             <h2 id="flowTitle">Η πορεία του επισκέπτη μέσα από τους γρίφους</h2>
             <p id="flowText">
@@ -1144,6 +1195,22 @@
     </section>
   </main>
 
+  <div class="modal-backdrop" id="certificateModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closeCertificate()">✕</button>
+      <div class="modal-content">
+        <div class="modal-medal">🏛️🏆</div>
+        <h3 id="modalTitle">Guardian of Knowledge Unlocked</h3>
+        <p id="modalText">
+          Συγχαρητήρια. Ολοκλήρωσες όλες τις αποστολές της ATHRIAN και έγινες συμβολικά Guardian of Knowledge.
+        </p>
+        <div class="cta-row">
+          <button class="cta-btn" onclick="closeCertificate()" id="modalBtn">Continue the Experience</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container">
       <p id="footerText">ATHRIAN © 2026 | Γρίφοι και αποστολές ως ζωντανή εμπειρία γνώσης.</p>
@@ -1176,14 +1243,20 @@
         statLabel1: "Live Missions",
         statLabel2: "Languages",
         statLabel3: "Immersive Flow",
+
         progressTitle: "Mission Progress",
-        progressSubtitle: "Ολοκλήρωσε τους γρίφους για να ξεκλειδώσεις τον τίτλο Guardian of Knowledge.",
         progressMeta: "missions completed",
         rankTitle: "Guardian Rank",
         rankSubtitle: "Ξεκινάς ως Seeker. Με κάθε σωστή αποκάλυψη, προχωράς προς τον ρόλο του Guardian.",
+        xpTitle: "XP Score",
+        xpSubtitle: "Κάθε σωστή λύση αυξάνει το επίπεδο εμπλοκής σου.",
+        timerTitle: "Quest Timer",
+        timerSubtitle: "Ο χρόνος καταγράφει το προσωπικό σου ταξίδι γνώσης.",
+
         rankSeeker: "Seeker",
         rankInterpreter: "Interpreter",
         rankGuardian: "Guardian of Knowledge",
+
         typesTitle: "Βασικοί τύποι γρίφων",
         typesText: "Οι αποστολές της ATHRIAN μπορούν να οργανωθούν σε διαφορετικές θεματικές κατηγορίες, ώστε η εμπειρία να παραμένει πλούσια, πολυεπίπεδη και εκπαιδευτικά ουσιαστική.",
         type1Title: "Γρίφος Αρχιτεκτονικής",
@@ -1194,11 +1267,14 @@
         type3Text: "Απαιτεί σύνθεση πληροφοριών και κατανόηση ιστορικών, πολιτιστικών ή εκπαιδευτικών στοιχείων.",
         type4Title: "Γρίφος Φιλοσοφίας",
         type4Text: "Καλεί τον επισκέπτη να ερμηνεύσει έννοιες, αξίες και νοήματα που σχετίζονται με τη γνώση και την αναζήτησή της.",
+
         boardTitle: "Interactive Mission Board",
-        boardText: "Εδώ ο επισκέπτης δεν διαβάζει απλώς τους γρίφους — τους λύνει, παίρνει feedback και προχωρά στο επόμενο στάδιο.",
+        boardText: "Εδώ ο επισκέπτης δεν διαβάζει απλώς τους γρίφους — τους λύνει, παίρνει feedback, κερδίζει XP και ξεκλειδώνει το επόμενο στάδιο.",
         missionTab1: "Mission I",
-        missionTab2: "Mission II",
-        missionTab3: "Mission III",
+        missionTab2Locked: "Mission II 🔒",
+        missionTab2Open: "Mission II",
+        missionTab3Locked: "Mission III 🔒",
+        missionTab3Open: "Mission III",
 
         mission1Type: "Αποστολή Αρχιτεκτονικής",
         mission1Difficulty: "Επίπεδο: Explorer",
@@ -1228,7 +1304,7 @@
         mission2HintBtn: "Hint",
         mission2SolutionBtn: "Reveal Solution",
         mission2Hint: "Δεν είναι ο χώρος. Είναι το μέσο που μεταφέρει και φυλάσσει τη γνώση.",
-        mission2Solution: "Πιθανή απάντηση: χειρόγραφο / πάπυρος / κείμενο / βιβλίο. Η βιβλιοθήκη συμβολίζει τη διατήρηση της γνώσης μέσα από το γραπτό ίχνος.",
+        mission2Solution: "Πιθανή απάντηση: χειρόγραφο / πάπυρος / βιβλίο / κείμενο. Η βιβλιοθήκη συμβολίζει τη διατήρηση της γνώσης μέσα από το γραπτό ίχνος.",
 
         mission3Type: "Αποστολή Φιλοσοφίας",
         mission3Difficulty: "Επίπεδο: Guardian",
@@ -1248,12 +1324,10 @@
         correctMessage: "Σωστά! Η αποστολή ολοκληρώθηκε και ξεκλείδωσες νέο στάδιο της εμπειρίας.",
         wrongMessage: "Καλή προσπάθεια. Δοκίμασε ξανά ή χρησιμοποίησε το hint για να πλησιάσεις περισσότερο.",
         alreadySolved: "Αυτή η αποστολή έχει ήδη ολοκληρωθεί.",
-        examplesTitle: "Ενδεικτικά παραδείγματα εμπλουτισμένων missions",
-        examplesText: "Παρακάτω παρουσιάζονται παραδείγματα για το πώς ένας γρίφος μπορεί να συνδέει τον χώρο, τη γνώση, την αφήγηση και τη βιωματική ανακάλυψη.",
-        example1Title: "Παράδειγμα 1: Αρχιτεκτονικό ίχνος",
-        example1Text: "«Ποιο σημείο του χώρου αποκαλύπτει τη λειτουργία της βιβλιοθήκης ως τόπου δημόσιας γνώσης;» Ο επισκέπτης δεν απαντά μόνο περιγραφικά, αλλά συνδέει μορφή, χρήση και πολιτιστική λειτουργία.",
-        example2Title: "Παράδειγμα 2: Συμβολισμός γνώσης",
-        example2Text: "«Αν ένα χαμένο χειρόγραφο αντιπροσώπευε μία μόνο αξία, ποια θα ήταν αυτή;» Ο γρίφος ενεργοποιεί ερμηνεία, φιλοσοφική σκέψη και προσωπική σύνδεση με τη γνώση.",
+        unlockedMission2: "Ξεκλείδωσες τη δεύτερη αποστολή.",
+        unlockedMission3: "Ξεκλείδωσες την τελική αποστολή.",
+        xpAward: "Κέρδισες 100 XP.",
+
         flowTitle: "Η πορεία του επισκέπτη μέσα από τους γρίφους",
         flowText: "Οι αποστολές δεν είναι αποσπασματικές. Δημιουργούν μια εξελικτική διαδρομή που οδηγεί από την απλή περιέργεια στη βαθύτερη κατανόηση και τελικά στη συμβολική ταυτότητα του Guardian.",
         flow1Title: "Curiosity",
@@ -1266,8 +1340,12 @@
         flow4Text: "Η εμπειρία κορυφώνεται στην αίσθηση ότι ο επισκέπτης έγινε φορέας γνώσης.",
         ctaBtn1: "See the Technology",
         ctaBtn2: "Back to The Quest",
+
         certificateTitle: "Guardian Unlock",
         certificateText: "Όταν ολοκληρωθούν όλες οι αποστολές, ο επισκέπτης ξεκλειδώνει συμβολικά την ιδιότητα του Guardian of Knowledge και ολοκληρώνει το πολιτιστικό του ταξίδι με αίσθηση επιτεύγματος.",
+        modalTitle: "Guardian of Knowledge Unlocked",
+        modalText: "Συγχαρητήρια. Ολοκλήρωσες όλες τις αποστολές της ATHRIAN και έγινες συμβολικά Guardian of Knowledge.",
+        modalBtn: "Continue the Experience",
         footerText: "ATHRIAN © 2026 | Γρίφοι και αποστολές ως ζωντανή εμπειρία γνώσης."
       },
 
@@ -1295,14 +1373,20 @@
         statLabel1: "Live Missions",
         statLabel2: "Languages",
         statLabel3: "Immersive Flow",
+
         progressTitle: "Mission Progress",
-        progressSubtitle: "Complete the riddles to unlock the title Guardian of Knowledge.",
         progressMeta: "missions completed",
         rankTitle: "Guardian Rank",
         rankSubtitle: "You begin as a Seeker. With every correct revelation, you move closer to the role of Guardian.",
+        xpTitle: "XP Score",
+        xpSubtitle: "Every correct answer increases your level of engagement.",
+        timerTitle: "Quest Timer",
+        timerSubtitle: "Time records your personal journey through knowledge.",
+
         rankSeeker: "Seeker",
         rankInterpreter: "Interpreter",
         rankGuardian: "Guardian of Knowledge",
+
         typesTitle: "Main types of riddles",
         typesText: "ATHRIAN’s missions can be organized into different thematic categories so the experience remains rich, multilayered and educationally meaningful.",
         type1Title: "Architecture Riddle",
@@ -1313,11 +1397,14 @@
         type3Text: "It requires synthesis of information and understanding of historical, cultural or educational elements.",
         type4Title: "Philosophy Riddle",
         type4Text: "It invites the visitor to interpret concepts, values and meanings related to knowledge and its pursuit.",
+
         boardTitle: "Interactive Mission Board",
-        boardText: "Here the visitor does not simply read the riddles — they solve them, receive feedback and advance to the next stage.",
+        boardText: "Here the visitor does not simply read the riddles — they solve them, receive feedback, earn XP and unlock the next stage.",
         missionTab1: "Mission I",
-        missionTab2: "Mission II",
-        missionTab3: "Mission III",
+        missionTab2Locked: "Mission II 🔒",
+        missionTab2Open: "Mission II",
+        missionTab3Locked: "Mission III 🔒",
+        missionTab3Open: "Mission III",
 
         mission1Type: "Architecture Mission",
         mission1Difficulty: "Level: Explorer",
@@ -1341,762 +1428,34 @@
         mission2StoryLabel: "Story clue",
         mission2Story: "“It was not only an object that was lost. Something was lost that carried ideas from person to person and from age to age.”",
         mission2QuestionLabel: "Riddle",
-        mission2Question: "If the library lost its most symbolic object, which word describes it best: something that preserves text, memory and knowledge?",
+        mission2Question: "What is the true value of a manuscript beyond its physical form?",
         mission2Placeholder: "Write your answer",
         mission2CheckBtn: "Check Answer",
         mission2HintBtn: "Hint",
         mission2SolutionBtn: "Reveal Solution",
-        mission2Hint: "It is not the building itself. It is the medium that carries and preserves knowledge.",
-        mission2Solution: "Possible answer: manuscript / scroll / text / book. The library symbolizes the preservation of knowledge through the written trace.",
+        mission2Hint: "Think about what knowledge does, not what it looks like.",
+        mission2Solution: "Possible answers: knowledge / ideas / memory. A manuscript represents the transmission of knowledge across time.",
 
         mission3Type: "Philosophy Mission",
         mission3Difficulty: "Level: Guardian",
-        mission3Title: "The Value Behind Knowledge",
-        mission3Intro: "The final mission tests not only what you saw — but what you understood about the deeper value of knowledge.",
+        mission3Title: "The Meaning of Knowledge",
+        mission3Intro: "The final mission is not about observing the space, but about understanding its deeper meaning.",
         mission3StoryLabel: "Story clue",
-        mission3Story: "“Knowledge does not live only in texts. It lives in what allows people to remember, judge and move forward.”",
+        mission3Story: "“Knowledge is not what you see, but what you understand and carry with you after you leave.”",
         mission3QuestionLabel: "Riddle",
-        mission3Question: "If you had to choose only one value that the library protects through time, which concept lies closest to its core: memory, power or silence?",
+        mission3Question: "When does knowledge truly exist?",
         mission3Placeholder: "Write your answer",
         mission3CheckBtn: "Check Answer",
         mission3HintBtn: "Hint",
         mission3SolutionBtn: "Reveal Solution",
-        mission3Hint: "It is the one that links the past with the continuity of knowledge.",
-        mission3Solution: "Possible answer: memory. The library acts as a carrier of memory, preservation and transmission of knowledge through time.",
+        mission3Hint: "Think beyond objects. Think about the human mind.",
+        mission3Solution: "Possible answers: when it is understood / when it is shared / when it is internalized. Knowledge exists through human understanding and experience.",
 
-        correctMessage: "Correct! The mission is complete and you have unlocked a new stage of the experience.",
-        wrongMessage: "Good attempt. Try again or use the hint to get closer.",
-        alreadySolved: "This mission has already been completed.",
-        examplesTitle: "Indicative enriched mission examples",
-        examplesText: "Below are examples of how a riddle can connect place, knowledge, narrative and experiential discovery.",
-        example1Title: "Example 1: Architectural trace",
-        example1Text: "“Which point of the site reveals the function of the library as a place of public knowledge?” The visitor does not answer only descriptively, but connects form, use and cultural function.",
-        example2Title: "Example 2: Symbolism of knowledge",
-        example2Text: "“If a lost manuscript represented only one value, what would it be?” The riddle activates interpretation, philosophical thought and personal connection with knowledge.",
-        flowTitle: "The visitor’s path through the riddles",
-        flowText: "The missions are not fragmented. They create an evolving path leading from simple curiosity to deeper understanding and finally to the symbolic identity of the Guardian.",
-        flow1Title: "Curiosity",
-        flow1Text: "The visitor is drawn in by mystery and begins the exploration.",
-        flow2Title: "Observation",
-        flow2Text: "They observe elements of the site and recognize the first traces of knowledge.",
-        flow3Title: "Understanding",
-        flow3Text: "Solving riddles reveals historical and cultural meaning.",
-        flow4Title: "Transformation",
-        flow4Text: "The experience culminates in the feeling that the visitor has become a bearer of knowledge.",
+        finalUnlockTitle: "Final Revelation Unlocked",
+        finalUnlockText: "You are no longer just a visitor. You have completed the journey of understanding and become a Guardian of Knowledge.",
+        finalUnlockBtn: "Download Certificate",
+        finalUnlockSubtitle: "ATHRIAN certifies your completion of the cultural quest.",
+
         ctaBtn1: "See the Technology",
         ctaBtn2: "Back to The Quest",
-        certificateTitle: "Guardian Unlock",
-        certificateText: "When all missions are completed, the visitor symbolically unlocks the title Guardian of Knowledge and completes the cultural journey with a sense of achievement.",
         footerText: "ATHRIAN © 2026 | Riddles and missions as a living experience of knowledge."
-      },
-
-      it: {
-        pageTitle: "ATHRIAN | Enigmi e Missioni",
-        brandTagline: "Ad Atene esplori e scopri la conoscenza",
-        logoAlt: "Logo ATHRIAN",
-        navHome: "Home",
-        navAbout: "L'Idea",
-        navQuest: "The Quest",
-        navRiddles: "Enigmi e Missioni",
-        navTechnology: "Tecnologia",
-        navConservation: "Conservazione",
-        navEducation: "Educazione",
-        navContact: "Contatto",
-        heroEyebrow: "Enigmi, missioni e scoperte",
-        heroTitle: "La conoscenza si sblocca attraverso le missioni",
-        heroText1: "In ATHRIAN, gli enigmi non funzionano solo come gioco. Sono meccanismi di apprendimento, scoperta e connessione con il sito archeologico.",
-        heroText2: "Ogni missione spinge il visitatore a osservare, pensare, collegare idee e avvicinarsi alla Biblioteca di Adriano in modo attivo ed esperienziale.",
-        heroPanelTitle: "Cosa offrono le missioni",
-        heroPoint1: "Partecipazione attiva invece di osservazione passiva",
-        heroPoint2: "Apprendimento attraverso la scoperta",
-        heroPoint3: "Connessione tra storia, luogo ed esperienza personale",
-        heroPoint4: "Costruzione graduale del ruolo di Guardian",
-        statLabel1: "Missioni Live",
-        statLabel2: "Lingue",
-        statLabel3: "Flusso Immersivo",
-        progressTitle: "Progresso Missione",
-        progressSubtitle: "Completa gli enigmi per sbloccare il titolo Guardian of Knowledge.",
-        progressMeta: "missioni completate",
-        rankTitle: "Grado Guardian",
-        rankSubtitle: "Inizi come Seeker. Con ogni rivelazione corretta, ti avvicini al ruolo di Guardian.",
-        rankSeeker: "Seeker",
-        rankInterpreter: "Interpreter",
-        rankGuardian: "Guardian of Knowledge",
-        typesTitle: "Principali tipi di enigmi",
-        typesText: "Le missioni di ATHRIAN possono essere organizzate in diverse categorie tematiche affinché l’esperienza resti ricca, multilivello e significativa sul piano educativo.",
-        type1Title: "Enigma di Architettura",
-        type1Text: "Il visitatore osserva strutture, percorsi ed elementi architettonici del sito per arrivare alla risposta.",
-        type2Title: "Enigma di Manoscritti",
-        type2Text: "Si concentra sul valore simbolico della conoscenza, dei testi e della memoria associati alla biblioteca.",
-        type3Title: "Enigma di Conoscenza",
-        type3Text: "Richiede sintesi di informazioni e comprensione di elementi storici, culturali o educativi.",
-        type4Title: "Enigma di Filosofia",
-        type4Text: "Invita il visitatore a interpretare concetti, valori e significati legati alla conoscenza e alla sua ricerca.",
-        boardTitle: "Interactive Mission Board",
-        boardText: "Qui il visitatore non legge semplicemente gli enigmi — li risolve, riceve feedback e avanza allo stadio successivo.",
-        missionTab1: "Missione I",
-        missionTab2: "Missione II",
-        missionTab3: "Missione III",
-
-        mission1Type: "Missione di Architettura",
-        mission1Difficulty: "Livello: Explorer",
-        mission1Title: "Le Colonne Silenziose",
-        mission1Intro: "Osserva il sito come se fosse una mappa della conoscenza. Il primo enigma riguarda la forma e la funzione del monumento.",
-        mission1StoryLabel: "Indizio narrativo",
-        mission1Story: "«Là dove le linee dello spazio definiscono la memoria, l’ingresso alla conoscenza si rivela attraverso l’ordine dell’architettura.»",
-        mission1QuestionLabel: "Enigma",
-        mission1Question: "Quale elemento architettonico di base è più collegato all’idea di sostegno e di ingresso imponente a un antico luogo della conoscenza?",
-        mission1Placeholder: "Scrivi la tua risposta",
-        mission1CheckBtn: "Controlla risposta",
-        mission1HintBtn: "Suggerimento",
-        mission1SolutionBtn: "Mostra soluzione",
-        mission1Hint: "Pensa a un elemento architettonico verticale che sostiene e definisce un ingresso.",
-        mission1Solution: "Possibile risposta: colonna / pilastro. L’enigma collega l’architettura al sostegno e all’accesso imponente alla conoscenza.",
-
-        mission2Type: "Missione di Conoscenza",
-        mission2Difficulty: "Livello: Interpreter",
-        mission2Title: "Il Manoscritto Perduto",
-        mission2Intro: "La seconda missione ti avvicina al ruolo simbolico della biblioteca come spazio di conservazione del sapere.",
-        mission2StoryLabel: "Indizio narrativo",
-        mission2Story: "«Non è andato perduto solo un oggetto. È andato perduto qualcosa che portava idee da persona a persona e da epoca a epoca.»",
-        mission2QuestionLabel: "Enigma",
-        mission2Question: "Se la biblioteca perdesse il suo oggetto più simbolico, quale parola lo descriverebbe meglio: qualcosa che custodisce testo, memoria e conoscenza?",
-        mission2Placeholder: "Scrivi la tua risposta",
-        mission2CheckBtn: "Controlla risposta",
-        mission2HintBtn: "Suggerimento",
-        mission2SolutionBtn: "Mostra soluzione",
-        mission2Hint: "Non è l’edificio stesso. È il mezzo che trasporta e conserva il sapere.",
-        mission2Solution: "Possibile risposta: manoscritto / pergamena / testo / libro. La biblioteca simboleggia la conservazione del sapere attraverso la traccia scritta.",
-
-        mission3Type: "Missione di Filosofia",
-        mission3Difficulty: "Livello: Guardian",
-        mission3Title: "Il Valore Dietro la Conoscenza",
-        mission3Intro: "La missione finale verifica non solo ciò che hai visto, ma ciò che hai compreso sul valore più profondo della conoscenza.",
-        mission3StoryLabel: "Indizio narrativo",
-        mission3Story: "«La conoscenza non vive solo nei testi. Vive in ciò che permette all’essere umano di ricordare, giudicare e andare avanti.»",
-        mission3QuestionLabel: "Enigma",
-        mission3Question: "Se dovessi scegliere un solo valore che la biblioteca protegge nel tempo, quale concetto è più vicino al suo nucleo: memoria, potere o silenzio?",
-        mission3Placeholder: "Scrivi la tua risposta",
-        mission3CheckBtn: "Controlla risposta",
-        mission3HintBtn: "Suggerimento",
-        mission3SolutionBtn: "Mostra soluzione",
-        mission3Hint: "È ciò che collega il passato con la continuità del sapere.",
-        mission3Solution: "Possibile risposta: memoria. La biblioteca agisce come portatrice di memoria, conservazione e trasmissione del sapere nel tempo.",
-
-        correctMessage: "Corretto! La missione è completata e hai sbloccato una nuova fase dell’esperienza.",
-        wrongMessage: "Buon tentativo. Riprova oppure usa il suggerimento per avvicinarti.",
-        alreadySolved: "Questa missione è già stata completata.",
-        examplesTitle: "Esempi indicativi di missioni arricchite",
-        examplesText: "Di seguito alcuni esempi di come un enigma possa collegare luogo, conoscenza, narrazione e scoperta esperienziale.",
-        example1Title: "Esempio 1: Traccia architettonica",
-        example1Text: "«Quale punto del sito rivela la funzione della biblioteca come luogo di conoscenza pubblica?» Il visitatore collega forma, uso e funzione culturale.",
-        example2Title: "Esempio 2: Simbolismo della conoscenza",
-        example2Text: "«Se un manoscritto perduto rappresentasse un solo valore, quale sarebbe?» L’enigma attiva interpretazione, riflessione filosofica e connessione personale con il sapere.",
-        flowTitle: "Il percorso del visitatore attraverso gli enigmi",
-        flowText: "Le missioni non sono frammentarie. Creano un percorso evolutivo che conduce dalla semplice curiosità a una comprensione più profonda e infine all’identità simbolica del Guardian.",
-        flow1Title: "Curiosità",
-        flow1Text: "Il visitatore è attratto dal mistero e inizia l’esplorazione.",
-        flow2Title: "Osservazione",
-        flow2Text: "Osserva elementi del sito e riconosce le prime tracce di conoscenza.",
-        flow3Title: "Comprensione",
-        flow3Text: "La soluzione degli enigmi rivela significati storici e culturali.",
-        flow4Title: "Trasformazione",
-        flow4Text: "L’esperienza culmina nella sensazione che il visitatore sia diventato portatore di conoscenza.",
-        ctaBtn1: "Vedi la Tecnologia",
-        ctaBtn2: "Torna a The Quest",
-        certificateTitle: "Guardian Unlock",
-        certificateText: "Quando tutte le missioni sono completate, il visitatore sblocca simbolicamente il titolo di Guardian of Knowledge e conclude il viaggio culturale con un senso di realizzazione.",
-        footerText: "ATHRIAN © 2026 | Enigmi e missioni come esperienza viva della conoscenza."
-      },
-
-      de: {
-        pageTitle: "ATHRIAN | Rätsel & Missionen",
-        brandTagline: "In Athen erkundest du Wissen",
-        logoAlt: "ATHRIAN-Logo",
-        navHome: "Startseite",
-        navAbout: "Die Idee",
-        navQuest: "The Quest",
-        navRiddles: "Rätsel & Missionen",
-        navTechnology: "Technologie",
-        navConservation: "Erhaltung",
-        navEducation: "Bildung",
-        navContact: "Kontakt",
-        heroEyebrow: "Rätsel, Missionen und Entdeckungen",
-        heroTitle: "Wissen wird durch Missionen freigeschaltet",
-        heroText1: "In ATHRIAN funktionieren Rätsel nicht bloß als Spiel. Sie sind Mechanismen des Lernens, der Entdeckung und der Verbindung mit dem archäologischen Ort.",
-        heroText2: "Jede Mission fordert den Besucher dazu auf, zu beobachten, nachzudenken, Ideen zu verknüpfen und sich der Hadriansbibliothek auf aktive und erfahrungsorientierte Weise zu nähern.",
-        heroPanelTitle: "Was die Missionen bieten",
-        heroPoint1: "Aktive Teilnahme statt passiver Beobachtung",
-        heroPoint2: "Lernen durch Entdeckung",
-        heroPoint3: "Verbindung zwischen Geschichte, Ort und persönlicher Erfahrung",
-        heroPoint4: "Schrittweiser Aufbau der Guardian-Rolle",
-        statLabel1: "Live-Missionen",
-        statLabel2: "Sprachen",
-        statLabel3: "Immersiver Flow",
-        progressTitle: "Missionsfortschritt",
-        progressSubtitle: "Vervollständige die Rätsel, um den Titel Guardian of Knowledge freizuschalten.",
-        progressMeta: "Missionen abgeschlossen",
-        rankTitle: "Guardian-Rang",
-        rankSubtitle: "Du beginnst als Seeker. Mit jeder richtigen Enthüllung näherst du dich der Rolle des Guardian.",
-        rankSeeker: "Seeker",
-        rankInterpreter: "Interpreter",
-        rankGuardian: "Guardian of Knowledge",
-        typesTitle: "Haupttypen von Rätseln",
-        typesText: "ATHRIANs Missionen können in verschiedene thematische Kategorien gegliedert werden, damit das Erlebnis reich, mehrschichtig und bildungsrelevant bleibt.",
-        type1Title: "Architektur-Rätsel",
-        type1Text: "Der Besucher beobachtet Strukturen, Wege und architektonische Elemente des Ortes, um zur Antwort zu gelangen.",
-        type2Title: "Manuskript-Rätsel",
-        type2Text: "Es konzentriert sich auf den symbolischen Wert von Wissen, Texten und Erinnerung, die mit der Bibliothek verbunden sind.",
-        type3Title: "Wissens-Rätsel",
-        type3Text: "Es erfordert die Synthese von Informationen und das Verständnis historischer, kultureller oder pädagogischer Elemente.",
-        type4Title: "Philosophie-Rätsel",
-        type4Text: "Es lädt den Besucher ein, Konzepte, Werte und Bedeutungen rund um Wissen und seine Suche zu interpretieren.",
-        boardTitle: "Interactive Mission Board",
-        boardText: "Hier liest der Besucher die Rätsel nicht nur — er löst sie, erhält Feedback und schreitet zur nächsten Stufe fort.",
-        missionTab1: "Mission I",
-        missionTab2: "Mission II",
-        missionTab3: "Mission III",
-
-        mission1Type: "Architektur-Mission",
-        mission1Difficulty: "Level: Explorer",
-        mission1Title: "Die stillen Säulen",
-        mission1Intro: "Beobachte den Ort, als wäre er eine Karte des Wissens. Das erste Rätsel betrifft Form und Funktion des Monuments.",
-        mission1StoryLabel: "Story-Hinweis",
-        mission1Story: "„Dort, wo die Linien des Raumes Erinnerung definieren, offenbart sich der Zugang zum Wissen durch die Ordnung der Architektur.“",
-        mission1QuestionLabel: "Rätsel",
-        mission1Question: "Welches grundlegende architektonische Element ist am stärksten mit Stütze und dem Eindruck eines imposanten Eingangs zu einem antiken Ort des Wissens verbunden?",
-        mission1Placeholder: "Schreibe deine Antwort",
-        mission1CheckBtn: "Antwort prüfen",
-        mission1HintBtn: "Hinweis",
-        mission1SolutionBtn: "Lösung zeigen",
-        mission1Hint: "Denke an ein vertikales architektonisches Element, das trägt und einen Eingang definiert.",
-        mission1Solution: "Mögliche Antwort: Säule / Pfeiler. Das Rätsel verbindet Architektur mit Stütze und imposantem Zugang zum Wissen.",
-
-        mission2Type: "Wissens-Mission",
-        mission2Difficulty: "Level: Interpreter",
-        mission2Title: "Das verlorene Manuskript",
-        mission2Intro: "Die zweite Mission bringt dich näher an die symbolische Rolle der Bibliothek als Ort bewahrten Wissens.",
-        mission2StoryLabel: "Story-Hinweis",
-        mission2Story: "„Es ging nicht nur ein Objekt verloren. Es ging etwas verloren, das Ideen von Mensch zu Mensch und von Zeitalter zu Zeitalter trug.“",
-        mission2QuestionLabel: "Rätsel",
-        mission2Question: "Wenn die Bibliothek ihr symbolträchtigstes Objekt verlieren würde, welches Wort beschreibt es am besten: etwas, das Text, Erinnerung und Wissen bewahrt?",
-        mission2Placeholder: "Schreibe deine Antwort",
-        mission2CheckBtn: "Antwort prüfen",
-        mission2HintBtn: "Hinweis",
-        mission2SolutionBtn: "Lösung zeigen",
-        mission2Hint: "Es ist nicht das Gebäude selbst. Es ist das Medium, das Wissen trägt und bewahrt.",
-        mission2Solution: "Mögliche Antwort: Manuskript / Schriftrolle / Text / Buch. Die Bibliothek symbolisiert die Bewahrung von Wissen durch die schriftliche Spur.",
-
-        mission3Type: "Philosophie-Mission",
-        mission3Difficulty: "Level: Guardian",
-        mission3Title: "Der Wert hinter dem Wissen",
-        mission3Intro: "Die letzte Mission prüft nicht nur, was du gesehen hast — sondern was du über den tieferen Wert des Wissens verstanden hast.",
-        mission3StoryLabel: "Story-Hinweis",
-        mission3Story: "„Wissen lebt nicht nur in Texten. Es lebt in dem, was Menschen erlaubt, sich zu erinnern, zu urteilen und voranzugehen.“",
-        mission3QuestionLabel: "Rätsel",
-        mission3Question: "Wenn du nur einen Wert wählen müsstest, den die Bibliothek im Laufe der Zeit schützt, welches Konzept liegt ihrem Kern am nächsten: Erinnerung, Macht oder Schweigen?",
-        mission3Placeholder: "Schreibe deine Antwort",
-        mission3CheckBtn: "Antwort prüfen",
-        mission3HintBtn: "Hinweis",
-        mission3SolutionBtn: "Lösung zeigen",
-        mission3Hint: "Es ist das, was die Vergangenheit mit der Kontinuität des Wissens verbindet.",
-        mission3Solution: "Mögliche Antwort: Erinnerung. Die Bibliothek wirkt als Trägerin von Erinnerung, Bewahrung und Weitergabe von Wissen durch die Zeit.",
-
-        correctMessage: "Richtig! Die Mission ist abgeschlossen und du hast eine neue Phase des Erlebnisses freigeschaltet.",
-        wrongMessage: "Guter Versuch. Probiere es erneut oder nutze den Hinweis, um näherzukommen.",
-        alreadySolved: "Diese Mission wurde bereits abgeschlossen.",
-        examplesTitle: "Beispielhafte angereicherte Missionsbeispiele",
-        examplesText: "Unten stehen Beispiele dafür, wie ein Rätsel Ort, Wissen, Erzählung und erfahrungsorientierte Entdeckung verbinden kann.",
-        example1Title: "Beispiel 1: Architektonische Spur",
-        example1Text: "„Welcher Punkt des Ortes offenbart die Funktion der Bibliothek als Ort öffentlichen Wissens?“ Der Besucher verbindet Form, Nutzung und kulturelle Funktion.",
-        example2Title: "Beispiel 2: Symbolik des Wissens",
-        example2Text: "„Wenn ein verlorenes Manuskript nur einen Wert darstellen würde, welcher wäre das?“ Das Rätsel aktiviert Interpretation, philosophisches Denken und persönliche Verbindung mit Wissen.",
-        flowTitle: "Der Weg des Besuchers durch die Rätsel",
-        flowText: "Die Missionen sind nicht fragmentiert. Sie schaffen einen sich entwickelnden Weg von einfacher Neugier zu tieferem Verständnis und schließlich zur symbolischen Identität des Guardian.",
-        flow1Title: "Neugier",
-        flow1Text: "Der Besucher wird vom Geheimnis angezogen und beginnt die Erkundung.",
-        flow2Title: "Beobachtung",
-        flow2Text: "Er beobachtet Elemente des Ortes und erkennt die ersten Spuren des Wissens.",
-        flow3Title: "Verstehen",
-        flow3Text: "Das Lösen der Rätsel enthüllt historische und kulturelle Bedeutung.",
-        flow4Title: "Transformation",
-        flow4Text: "Das Erlebnis gipfelt in dem Gefühl, dass der Besucher zum Träger von Wissen geworden ist.",
-        ctaBtn1: "Sieh die Technologie",
-        ctaBtn2: "Zurück zu The Quest",
-        certificateTitle: "Guardian Unlock",
-        certificateText: "Wenn alle Missionen abgeschlossen sind, schaltet der Besucher symbolisch den Titel Guardian of Knowledge frei und beendet die kulturelle Reise mit einem Gefühl des Erfolgs.",
-        footerText: "ATHRIAN © 2026 | Rätsel und Missionen als lebendige Erfahrung des Wissens."
-      },
-
-      es: {
-        pageTitle: "ATHRIAN | Acertijos y Misiones",
-        brandTagline: "En Atenas exploras y descubres conocimiento",
-        logoAlt: "Logotipo ATHRIAN",
-        navHome: "Inicio",
-        navAbout: "La Idea",
-        navQuest: "The Quest",
-        navRiddles: "Acertijos y Misiones",
-        navTechnology: "Tecnología",
-        navConservation: "Conservación",
-        navEducation: "Educación",
-        navContact: "Contacto",
-        heroEyebrow: "Acertijos, misiones y descubrimientos",
-        heroTitle: "El conocimiento se desbloquea a través de misiones",
-        heroText1: "En ATHRIAN, los acertijos no funcionan solo como juego. Son mecanismos de aprendizaje, descubrimiento y conexión con el sitio arqueológico.",
-        heroText2: "Cada misión anima al visitante a observar, pensar, conectar ideas y acercarse a la Biblioteca de Adriano de una forma activa y experiencial.",
-        heroPanelTitle: "Qué ofrecen las misiones",
-        heroPoint1: "Participación activa en lugar de observación pasiva",
-        heroPoint2: "Aprendizaje a través del descubrimiento",
-        heroPoint3: "Conexión entre historia, lugar y experiencia personal",
-        heroPoint4: "Construcción gradual del papel de Guardian",
-        statLabel1: "Misiones en Vivo",
-        statLabel2: "Idiomas",
-        statLabel3: "Flujo Inmersivo",
-        progressTitle: "Progreso de la misión",
-        progressSubtitle: "Completa los acertijos para desbloquear el título Guardian of Knowledge.",
-        progressMeta: "misiones completadas",
-        rankTitle: "Rango Guardian",
-        rankSubtitle: "Comienzas como Seeker. Con cada revelación correcta, te acercas al papel de Guardian.",
-        rankSeeker: "Seeker",
-        rankInterpreter: "Interpreter",
-        rankGuardian: "Guardian of Knowledge",
-        typesTitle: "Principales tipos de acertijos",
-        typesText: "Las misiones de ATHRIAN pueden organizarse en diferentes categorías temáticas para que la experiencia siga siendo rica, multicapa y educativa.",
-        type1Title: "Acertijo de Arquitectura",
-        type1Text: "El visitante observa estructuras, recorridos y elementos arquitectónicos del lugar para llegar a la respuesta.",
-        type2Title: "Acertijo de Manuscritos",
-        type2Text: "Se centra en el valor simbólico del conocimiento, los textos y la memoria asociados con la biblioteca.",
-        type3Title: "Acertijo de Conocimiento",
-        type3Text: "Requiere sintetizar información y comprender elementos históricos, culturales o educativos.",
-        type4Title: "Acertijo de Filosofía",
-        type4Text: "Invita al visitante a interpretar conceptos, valores y significados relacionados con el conocimiento y su búsqueda.",
-        boardTitle: "Interactive Mission Board",
-        boardText: "Aquí el visitante no solo lee los acertijos: los resuelve, recibe retroalimentación y avanza a la siguiente etapa.",
-        missionTab1: "Misión I",
-        missionTab2: "Misión II",
-        missionTab3: "Misión III",
-
-        mission1Type: "Misión de Arquitectura",
-        mission1Difficulty: "Nivel: Explorer",
-        mission1Title: "Las columnas silenciosas",
-        mission1Intro: "Observa el sitio como si fuera un mapa del conocimiento. El primer acertijo se relaciona con la forma y la función del monumento.",
-        mission1StoryLabel: "Pista narrativa",
-        mission1Story: "«Donde las líneas del espacio definen la memoria, la entrada al conocimiento se revela a través del orden de la arquitectura.»",
-        mission1QuestionLabel: "Acertijo",
-        mission1Question: "¿Qué elemento arquitectónico básico está más ligado a la idea de sostén y a la sensación de una entrada imponente a un antiguo lugar del conocimiento?",
-        mission1Placeholder: "Escribe tu respuesta",
-        mission1CheckBtn: "Comprobar respuesta",
-        mission1HintBtn: "Pista",
-        mission1SolutionBtn: "Mostrar solución",
-        mission1Hint: "Piensa en un elemento arquitectónico vertical que sostiene y define una entrada.",
-        mission1Solution: "Respuesta posible: columna / pilar. El acertijo conecta la arquitectura con el sostén y el acceso imponente al conocimiento.",
-
-        mission2Type: "Misión de Conocimiento",
-        mission2Difficulty: "Nivel: Interpreter",
-        mission2Title: "El manuscrito perdido",
-        mission2Intro: "La segunda misión te acerca al papel simbólico de la biblioteca como espacio de preservación del conocimiento.",
-        mission2StoryLabel: "Pista narrativa",
-        mission2Story: "«No solo se perdió un objeto. Se perdió algo que llevaba ideas de una persona a otra y de una época a otra.»",
-        mission2QuestionLabel: "Acertijo",
-        mission2Question: "Si la biblioteca perdiera su objeto más simbólico, ¿qué palabra lo describiría mejor: algo que conserva texto, memoria y conocimiento?",
-        mission2Placeholder: "Escribe tu respuesta",
-        mission2CheckBtn: "Comprobar respuesta",
-        mission2HintBtn: "Pista",
-        mission2SolutionBtn: "Mostrar solución",
-        mission2Hint: "No es el edificio. Es el medio que transporta y conserva el conocimiento.",
-        mission2Solution: "Respuesta posible: manuscrito / pergamino / texto / libro. La biblioteca simboliza la preservación del conocimiento a través de la huella escrita.",
-
-        mission3Type: "Misión de Filosofía",
-        mission3Difficulty: "Nivel: Guardian",
-        mission3Title: "El valor detrás del conocimiento",
-        mission3Intro: "La misión final no solo evalúa lo que viste, sino lo que comprendiste sobre el valor más profundo del conocimiento.",
-        mission3StoryLabel: "Pista narrativa",
-        mission3Story: "«El conocimiento no vive solo en los textos. Vive en lo que permite al ser humano recordar, juzgar y avanzar.»",
-        mission3QuestionLabel: "Acertijo",
-        mission3Question: "Si tuvieras que elegir un solo valor que la biblioteca protege a través del tiempo, ¿qué concepto está más cerca de su núcleo: memoria, poder o silencio?",
-        mission3Placeholder: "Escribe tu respuesta",
-        mission3CheckBtn: "Comprobar respuesta",
-        mission3HintBtn: "Pista",
-        mission3SolutionBtn: "Mostrar solución",
-        mission3Hint: "Es lo que conecta el pasado con la continuidad del conocimiento.",
-        mission3Solution: "Respuesta posible: memoria. La biblioteca actúa como portadora de memoria, preservación y transmisión del conocimiento a través del tiempo.",
-
-        correctMessage: "¡Correcto! La misión está completada y has desbloqueado una nueva etapa de la experiencia.",
-        wrongMessage: "Buen intento. Prueba de nuevo o usa la pista para acercarte más.",
-        alreadySolved: "Esta misión ya ha sido completada.",
-        examplesTitle: "Ejemplos indicativos de misiones enriquecidas",
-        examplesText: "A continuación se presentan ejemplos de cómo un acertijo puede conectar lugar, conocimiento, narrativa y descubrimiento experiencial.",
-        example1Title: "Ejemplo 1: Huella arquitectónica",
-        example1Text: "«¿Qué punto del lugar revela la función de la biblioteca como espacio de conocimiento público?» El visitante conecta forma, uso y función cultural.",
-        example2Title: "Ejemplo 2: Simbolismo del conocimiento",
-        example2Text: "«Si un manuscrito perdido representara un solo valor, ¿cuál sería?» El acertijo activa interpretación, pensamiento filosófico y conexión personal con el conocimiento.",
-        flowTitle: "El recorrido del visitante a través de los acertijos",
-        flowText: "Las misiones no están fragmentadas. Crean un camino evolutivo que conduce desde la curiosidad simple hacia una comprensión más profunda y finalmente a la identidad simbólica del Guardian.",
-        flow1Title: "Curiosidad",
-        flow1Text: "El visitante se siente atraído por el misterio y comienza la exploración.",
-        flow2Title: "Observación",
-        flow2Text: "Observa elementos del lugar y reconoce las primeras huellas del conocimiento.",
-        flow3Title: "Comprensión",
-        flow3Text: "Resolver acertijos revela significado histórico y cultural.",
-        flow4Title: "Transformación",
-        flow4Text: "La experiencia culmina con la sensación de que el visitante se ha convertido en portador de conocimiento.",
-        ctaBtn1: "Ver la Tecnología",
-        ctaBtn2: "Volver a The Quest",
-        certificateTitle: "Guardian Unlock",
-        certificateText: "Cuando se completan todas las misiones, el visitante desbloquea simbólicamente el título Guardian of Knowledge y completa su viaje cultural con una sensación de logro.",
-        footerText: "ATHRIAN © 2026 | Acertijos y misiones como experiencia viva del conocimiento."
-      },
-
-      fr: {
-        pageTitle: "ATHRIAN | Énigmes et Missions",
-        brandTagline: "À Athènes, vous explorez et découvrez le savoir",
-        logoAlt: "Logo ATHRIAN",
-        navHome: "Accueil",
-        navAbout: "L'idée",
-        navQuest: "The Quest",
-        navRiddles: "Énigmes et Missions",
-        navTechnology: "Technologie",
-        navConservation: "Conservation",
-        navEducation: "Éducation",
-        navContact: "Contact",
-        heroEyebrow: "Énigmes, missions et découvertes",
-        heroTitle: "Le savoir se déverrouille à travers les missions",
-        heroText1: "Dans ATHRIAN, les énigmes ne fonctionnent pas simplement comme un jeu. Elles constituent des mécanismes d’apprentissage, de découverte et de connexion avec le site archéologique.",
-        heroText2: "Chaque mission pousse le visiteur à observer, réfléchir, relier des idées et approcher la Bibliothèque d’Hadrien d’une manière active et expérientielle.",
-        heroPanelTitle: "Ce que les missions offrent",
-        heroPoint1: "Participation active plutôt qu’observation passive",
-        heroPoint2: "Apprentissage par la découverte",
-        heroPoint3: "Lien entre histoire, lieu et expérience personnelle",
-        heroPoint4: "Construction progressive du rôle de Guardian",
-        statLabel1: "Missions Live",
-        statLabel2: "Langues",
-        statLabel3: "Flux immersif",
-        progressTitle: "Progression des missions",
-        progressSubtitle: "Terminez les énigmes pour débloquer le titre Guardian of Knowledge.",
-        progressMeta: "missions terminées",
-        rankTitle: "Rang Guardian",
-        rankSubtitle: "Vous commencez comme Seeker. À chaque révélation correcte, vous vous rapprochez du rôle de Guardian.",
-        rankSeeker: "Seeker",
-        rankInterpreter: "Interpreter",
-        rankGuardian: "Guardian of Knowledge",
-        typesTitle: "Principaux types d’énigmes",
-        typesText: "Les missions d’ATHRIAN peuvent être organisées en différentes catégories thématiques afin que l’expérience reste riche, multicouche et éducativement significative.",
-        type1Title: "Énigme d’architecture",
-        type1Text: "Le visiteur observe les structures, les parcours et les éléments architecturaux du site pour parvenir à la réponse.",
-        type2Title: "Énigme de manuscrits",
-        type2Text: "Elle se concentre sur la valeur symbolique du savoir, des textes et de la mémoire associés à la bibliothèque.",
-        type3Title: "Énigme de connaissance",
-        type3Text: "Elle exige la synthèse d’informations et la compréhension d’éléments historiques, culturels ou éducatifs.",
-        type4Title: "Énigme de philosophie",
-        type4Text: "Elle invite le visiteur à interpréter des concepts, des valeurs et des significations liés au savoir et à sa quête.",
-        boardTitle: "Interactive Mission Board",
-        boardText: "Ici, le visiteur ne lit pas simplement les énigmes — il les résout, reçoit un retour et avance vers l’étape suivante.",
-        missionTab1: "Mission I",
-        missionTab2: "Mission II",
-        missionTab3: "Mission III",
-
-        mission1Type: "Mission d’architecture",
-        mission1Difficulty: "Niveau: Explorer",
-        mission1Title: "Les colonnes silencieuses",
-        mission1Intro: "Observez le site comme s’il s’agissait d’une carte du savoir. La première énigme concerne la forme et la fonction du monument.",
-        mission1StoryLabel: "Indice narratif",
-        mission1Story: "« Là où les lignes de l’espace définissent la mémoire, l’entrée vers le savoir se révèle à travers l’ordre de l’architecture. »",
-        mission1QuestionLabel: "Énigme",
-        mission1Question: "Quel élément architectural fondamental est le plus lié à l’idée de soutien et à la sensation d’une entrée imposante vers un ancien lieu de savoir ?",
-        mission1Placeholder: "Écrivez votre réponse",
-        mission1CheckBtn: "Vérifier la réponse",
-        mission1HintBtn: "Indice",
-        mission1SolutionBtn: "Afficher la solution",
-        mission1Hint: "Pensez à un élément architectural vertical qui soutient et définit une entrée.",
-        mission1Solution: "Réponse possible : colonne / pilier. L’énigme relie l’architecture au soutien et à l’accès imposant au savoir.",
-
-        mission2Type: "Mission de connaissance",
-        mission2Difficulty: "Niveau: Interpreter",
-        mission2Title: "Le manuscrit perdu",
-        mission2Intro: "La deuxième mission vous rapproche du rôle symbolique de la bibliothèque comme espace de préservation du savoir.",
-        mission2StoryLabel: "Indice narratif",
-        mission2Story: "« Ce n’est pas seulement un objet qui a été perdu. Quelque chose a été perdu qui transportait les idées de personne à personne et d’époque en époque. »",
-        mission2QuestionLabel: "Énigme",
-        mission2Question: "Si la bibliothèque perdait son objet le plus symbolique, quel mot le décrirait le mieux : quelque chose qui conserve texte, mémoire et savoir ?",
-        mission2Placeholder: "Écrivez votre réponse",
-        mission2CheckBtn: "Vérifier la réponse",
-        mission2HintBtn: "Indice",
-        mission2SolutionBtn: "Afficher la solution",
-        mission2Hint: "Ce n’est pas le bâtiment. C’est le support qui transporte et conserve le savoir.",
-        mission2Solution: "Réponse possible : manuscrit / rouleau / texte / livre. La bibliothèque symbolise la préservation du savoir à travers la trace écrite.",
-
-        mission3Type: "Mission de philosophie",
-        mission3Difficulty: "Niveau: Guardian",
-        mission3Title: "La valeur derrière le savoir",
-        mission3Intro: "La mission finale ne teste pas seulement ce que vous avez vu, mais ce que vous avez compris de la valeur la plus profonde du savoir.",
-        mission3StoryLabel: "Indice narratif",
-        mission3Story: "« Le savoir ne vit pas seulement dans les textes. Il vit dans ce qui permet à l’être humain de se souvenir, de juger et d’avancer. »",
-        mission3QuestionLabel: "Énigme",
-        mission3Question: "Si vous deviez choisir une seule valeur que la bibliothèque protège à travers le temps, quel concept est le plus proche de son cœur : mémoire, pouvoir ou silence ?",
-        mission3Placeholder: "Écrivez votre réponse",
-        mission3CheckBtn: "Vérifier la réponse",
-        mission3HintBtn: "Indice",
-        mission3SolutionBtn: "Afficher la solution",
-        mission3Hint: "C’est ce qui relie le passé à la continuité du savoir.",
-        mission3Solution: "Réponse possible : mémoire. La bibliothèque agit comme porteuse de mémoire, de préservation et de transmission du savoir à travers le temps.",
-
-        correctMessage: "Correct ! La mission est accomplie et vous avez débloqué une nouvelle étape de l’expérience.",
-        wrongMessage: "Bonne tentative. Réessayez ou utilisez l’indice pour vous rapprocher.",
-        alreadySolved: "Cette mission a déjà été accomplie.",
-        examplesTitle: "Exemples indicatifs de missions enrichies",
-        examplesText: "Voici des exemples de la façon dont une énigme peut relier lieu, savoir, narration et découverte expérientielle.",
-        example1Title: "Exemple 1 : Trace architecturale",
-        example1Text: "« Quel point du site révèle la fonction de la bibliothèque comme lieu de savoir public ? » Le visiteur relie forme, usage et fonction culturelle.",
-        example2Title: "Exemple 2 : Symbolisme du savoir",
-        example2Text: "« Si un manuscrit perdu représentait une seule valeur, laquelle serait-ce ? » L’énigme active interprétation, pensée philosophique et connexion personnelle avec le savoir.",
-        flowTitle: "Le parcours du visiteur à travers les énigmes",
-        flowText: "Les missions ne sont pas fragmentées. Elles créent un parcours évolutif qui mène de la simple curiosité à une compréhension plus profonde puis à l’identité symbolique du Guardian.",
-        flow1Title: "Curiosité",
-        flow1Text: "Le visiteur est attiré par le mystère et commence l’exploration.",
-        flow2Title: "Observation",
-        flow2Text: "Il observe les éléments du site et reconnaît les premières traces du savoir.",
-        flow3Title: "Compréhension",
-        flow3Text: "Résoudre les énigmes révèle le sens historique et culturel.",
-        flow4Title: "Transformation",
-        flow4Text: "L’expérience culmine dans le sentiment que le visiteur est devenu porteur de savoir.",
-        ctaBtn1: "Voir la Technologie",
-        ctaBtn2: "Retour à The Quest",
-        certificateTitle: "Guardian Unlock",
-        certificateText: "Lorsque toutes les missions sont terminées, le visiteur débloque symboliquement le titre Guardian of Knowledge et achève son voyage culturel avec un sentiment d’accomplissement.",
-        footerText: "ATHRIAN © 2026 | Énigmes et missions comme expérience vivante du savoir."
-      }
-    };
-
-    const speechLangMap = {
-      el: "el-GR",
-      en: "en-US",
-      it: "it-IT",
-      de: "de-DE",
-      es: "es-ES",
-      fr: "fr-FR"
-    };
-
-    const missionAnswers = {
-      1: {
-        el: ["κίονας", "κιoνας", "κολόνα", "κολωνα", "στήλη", "στυλη"],
-        en: ["column", "pillar"],
-        it: ["colonna", "pilastro"],
-        de: ["säule", "saule", "pfeiler"],
-        es: ["columna", "pilar"],
-        fr: ["colonne", "pilier"]
-      },
-      2: {
-        el: ["χειρόγραφο", "χειρογραφο", "πάπυρος", "παπυρος", "βιβλίο", "βιβλιο", "κείμενο", "κειμενο"],
-        en: ["manuscript", "scroll", "book", "text"],
-        it: ["manoscritto", "pergamena", "libro", "testo"],
-        de: ["manuskript", "schriftrolle", "buch", "text"],
-        es: ["manuscrito", "pergamino", "libro", "texto"],
-        fr: ["manuscrit", "rouleau", "livre", "texte"]
-      },
-      3: {
-        el: ["μνήμη", "μνημη"],
-        en: ["memory"],
-        it: ["memoria"],
-        de: ["erinnerung", "gedächtnis", "gedachtnis"],
-        es: ["memoria"],
-        fr: ["mémoire", "memoire"]
-      }
-    };
-
-    const ids = Object.keys(translations.el);
-    const solvedMissions = new Set(JSON.parse(localStorage.getItem("athrian-solved-missions") || "[]"));
-
-    function normalizeAnswer(value) {
-      return value
-        .toLowerCase()
-        .trim()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[’'".,!?;:()\-_/]/g, "")
-        .replace(/\s+/g, " ");
-    }
-
-    function currentT() {
-      const lang = document.getElementById("languageSelect").value || "el";
-      return translations[lang] || translations.el;
-    }
-
-    function applyLanguage(lang) {
-      const selected = translations[lang] || translations.el;
-      document.documentElement.lang = lang;
-      document.title = selected.pageTitle;
-
-      ids.forEach((id) => {
-        const element = document.getElementById(id);
-        if (!element) return;
-        if (id === "logoAlt") {
-          element.setAttribute("alt", selected[id]);
-        } else {
-          element.textContent = selected[id];
-        }
-      });
-
-      document.getElementById("answer1").placeholder = selected.mission1Placeholder;
-      document.getElementById("answer2").placeholder = selected.mission2Placeholder;
-      document.getElementById("answer3").placeholder = selected.mission3Placeholder;
-
-      updateProgressUI();
-      localStorage.setItem("athrian-language", lang);
-    }
-
-    function saveSolved() {
-      localStorage.setItem("athrian-solved-missions", JSON.stringify([...solvedMissions]));
-    }
-
-    function updateProgressUI() {
-      const t = currentT();
-      const total = 3;
-      const completed = solvedMissions.size;
-      const percent = (completed / total) * 100;
-
-      document.getElementById("progressBar").style.width = `${percent}%`;
-      document.getElementById("progressCount").textContent = completed;
-      document.getElementById("progressMeta").textContent = t.progressMeta;
-
-      let rank = t.rankSeeker;
-      if (completed === 2) rank = t.rankInterpreter;
-      if (completed === 3) rank = t.rankGuardian;
-      document.getElementById("rankValue").textContent = rank;
-    }
-
-    function showMissionTab(id) {
-      document.querySelectorAll(".mission-card").forEach(card => card.classList.remove("active"));
-      document.querySelectorAll(".mission-tab").forEach(tab => tab.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      document.querySelector(`.mission-tab[data-mission="${id}"]`).classList.add("active");
-    }
-
-    function setFeedback(missionNumber, type, message) {
-      const box = document.getElementById(`feedback${missionNumber}`);
-      box.className = `feedback-box show ${type}`;
-      box.textContent = message;
-    }
-
-    function toggleHint(missionNumber) {
-      const box = document.getElementById(`hint${missionNumber}`);
-      box.textContent = currentT()[`mission${missionNumber}Hint`];
-      box.classList.toggle("show");
-    }
-
-    function toggleSolution(missionNumber) {
-      const box = document.getElementById(`solution${missionNumber}`);
-      box.textContent = currentT()[`mission${missionNumber}Solution`];
-      box.classList.toggle("show");
-    }
-
-    function checkMission(missionNumber) {
-      const lang = document.getElementById("languageSelect").value || "el";
-      const t = currentT();
-
-      if (solvedMissions.has(missionNumber)) {
-        setFeedback(missionNumber, "info", t.alreadySolved);
-        return;
-      }
-
-      const input = document.getElementById(`answer${missionNumber}`);
-      const value = normalizeAnswer(input.value);
-      const accepted = missionAnswers[missionNumber][lang] || missionAnswers[missionNumber].en;
-      const normalizedAccepted = accepted.map(normalizeAnswer);
-
-      if (normalizedAccepted.includes(value)) {
-        solvedMissions.add(missionNumber);
-        saveSolved();
-        updateProgressUI();
-        setFeedback(missionNumber, "success", t.correctMessage);
-      } else {
-        setFeedback(missionNumber, "warning", t.wrongMessage);
-      }
-    }
-
-    function getReadableText() {
-      const t = currentT();
-      return `
-        ${t.heroTitle}.
-        ${t.heroText1}
-        ${t.heroText2}
-        ${t.boardTitle}. ${t.boardText}
-        ${t.typesTitle}. ${t.typesText}
-        ${t.flowTitle}. ${t.flowText}
-        ${t.certificateTitle}. ${t.certificateText}
-      `;
-    }
-
-    document.querySelectorAll(".mission-tab").forEach(tab => {
-      tab.addEventListener("click", () => showMissionTab(tab.dataset.mission));
-    });
-
-    const languageSelect = document.getElementById("languageSelect");
-    languageSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
-
-    const savedLanguage = localStorage.getItem("athrian-language") || "el";
-    languageSelect.value = savedLanguage;
-    applyLanguage(savedLanguage);
-
-    const root = document.documentElement;
-    let fontScale = Number(localStorage.getItem("athrian-font-scale")) || 1;
-
-    function updateFontScale() {
-      fontScale = Math.min(1.35, Math.max(0.9, fontScale));
-      root.style.setProperty("--font-scale", fontScale);
-      localStorage.setItem("athrian-font-scale", fontScale);
-    }
-
-    document.getElementById("increaseFont").addEventListener("click", () => {
-      fontScale += 0.05;
-      updateFontScale();
-    });
-
-    document.getElementById("decreaseFont").addEventListener("click", () => {
-      fontScale -= 0.05;
-      updateFontScale();
-    });
-
-    updateFontScale();
-
-    const body = document.body;
-    const savedTheme = localStorage.getItem("athrian-theme");
-    if (savedTheme === "dark") {
-      body.classList.add("dark-mode");
-      document.getElementById("toggleTheme").textContent = "☀️";
-    }
-
-    document.getElementById("toggleTheme").addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
-      const isDark = body.classList.contains("dark-mode");
-      localStorage.setItem("athrian-theme", isDark ? "dark" : "light");
-      document.getElementById("toggleTheme").textContent = isDark ? "☀️" : "🌙";
-    });
-
-    const savedContrast = localStorage.getItem("athrian-contrast");
-    if (savedContrast === "high") {
-      body.classList.add("high-contrast");
-    }
-
-    document.getElementById("toggleContrast").addEventListener("click", () => {
-      body.classList.toggle("high-contrast");
-      localStorage.setItem(
-        "athrian-contrast",
-        body.classList.contains("high-contrast") ? "high" : "normal"
-      );
-    });
-
-    document.getElementById("readPage").addEventListener("click", () => {
-      speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(getReadableText());
-      utterance.lang = speechLangMap[languageSelect.value] || "en-US";
-      utterance.rate = 0.95;
-      utterance.pitch = 1;
-      speechSynthesis.speak(utterance);
-    });
-
-    document.getElementById("stopReading").addEventListener("click", () => {
-      speechSynthesis.cancel();
-    });
-  </script>
-</body>
-</html>
