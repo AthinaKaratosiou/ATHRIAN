@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHRIAN | About</title>
+  <meta
+    name="description"
+    content="Γνώρισε την ιδέα πίσω από το ATHRIAN, την αποστολή, το όραμα και τη σημασία του ως διαδραστική πολιτιστική εμπειρία."
+  />
+  <style>
+    :root {
+      --bg: #ead3a0;
+      --bg-soft: #f5ead0;
+      --surface: rgba(255, 248, 236, 0.8);
+      --surface-strong: rgba(255, 248, 236, 0.96);
+      --text: #4e2f07;
+      --text-soft: #6e4a17;
+      --accent: #6b3f0b;
+      --accent-2: #8a5a18;
+      --border: rgba(107, 63, 11, 0.18);
+      --shadow: 0 10px 30px rgba(78, 47, 7, 0.14);
+      --button-text: #fffdf8;
+      --card-radius: 22px;
+      --font-scale: 1;
+    }
+
+    body.dark-mode {
+      --bg: #121212;
+      --bg-soft: #1b1b1b;
+      --surface: rgba(35, 35, 35, 0.9);
+      --surface-strong: rgba(42, 42, 42, 0.96);
+      --text: #f1dfb7;
+      --text-soft: #d7be8d;
+      --accent: #c99a4a;
+      --accent-2: #e0b86d;
+      --border: rgba(201, 154, 74, 0.18);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --button-text: #1b1207;
+    }
+
+    body.high-contrast {
+      --bg: #000000;
+      --bg-soft: #000000;
+      --surface: #000000;
+      --surface-strong: #000000;
+      --text: #ffffff;
+      --text-soft: #ffffff;
+      --accent: #ffff00;
+      --accent-2: #00ffff;
+      --border: #ffffff;
+      --shadow: none;
+      --button-text: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: calc(16px * var(--font-scale));
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 10px;
+      background: #000;
+      color: #fff;
+      padding: 10px 14px;
+      z-index: 9999;
+      border-radius: 10px;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(234, 211, 160, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.dark-mode .topbar,
+    body.high-contrast .topbar {
+      background: rgba(0, 0, 0, 0.92);
+    }
+
+    .topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .control-btn,
+    .lang-select {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .lang-select {
+      outline: none;
+    }
+
+    .control-btn:hover,
+    .lang-select:hover {
+      transform: translateY(-1px);
+    }
+
+    .subnav {
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .subnav-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .subnav a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .subnav a.active {
+      background: var(--accent);
+      color: var(--button-text);
+    }
+
+    .hero {
+      padding: 72px 0 40px;
+    }
+
+    .hero-box {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(107, 63, 11, 0.12);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      line-height: 1.08;
+      margin: 0 0 16px;
+    }
+
+    .hero-text p {
+      color: var(--text-soft);
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .hero-panel {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .hero-panel h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.3rem;
+    }
+
+    .hero-panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-soft);
+    }
+
+    .hero-panel li + li {
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 36px 0 76px;
+    }
+
+    .section-title {
+      max-width: 780px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.22rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .pillar strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .pillar span {
+      color: var(--text-soft);
+    }
+
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      margin-top: 20px;
+    }
+
+    .footer p {
+      margin: 0;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 1000px) {
+      .hero-box,
+      .grid-2,
+      .grid-3,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-box,
+      .grid-2,
+      .grid-3,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner,
+      .brand,
+      .controls {
+        justify-content: center;
+      }
+
+      .hero-box {
+        padding: 24px;
+      }
+
+      .hero-text h2 {
+        font-size: 2.15rem;
+      }
+
+      .subnav-inner {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Μετάβαση στο περιεχόμενο</a>
+
+  <header class="topbar" aria-label="Κύρια μπάρα πλοήγησης">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Λογότυπο ATHRIAN" id="logoAlt" />
+        <div class="brand-text">
+          <h1>ATHRIAN</h1>
+          <p id="brandTagline">Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση</p>
+        </div>
+      </div>
+
+      <div class="controls" aria-label="Εργαλεία γλώσσας και προσβασιμότητας">
+        <select id="languageSelect" class="lang-select" aria-label="Επιλογή γλώσσας">
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="it">Italiano</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <button class="control-btn" id="decreaseFont" aria-label="Μείωση μεγέθους γραμμάτων">A-</button>
+        <button class="control-btn" id="increaseFont" aria-label="Αύξηση μεγέθους γραμμάτων">A+</button>
+        <button class="control-btn" id="toggleContrast" aria-label="Εναλλαγή υψηλής αντίθεσης">Contrast</button>
+        <button class="control-btn" id="toggleTheme" aria-label="Εναλλαγή φωτεινής ή σκοτεινής λειτουργίας">🌙</button>
+        <button class="control-btn" id="readPage" aria-label="Ανάγνωση σελίδας">🔊</button>
+        <button class="control-btn" id="stopReading" aria-label="Διακοπή ανάγνωσης">⏹</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="Δευτερεύουσα πλοήγηση">
+    <div class="container subnav-inner">
+      <a href="index.html" id="navHome">Αρχική</a>
+      <a href="about.html" class="active" id="navAbout">Η Ιδέα</a>
+      <a href="quest.html" id="navQuest">The Quest</a>
+      <a href="contact.html" id="navContact">Επικοινωνία</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <div class="hero-text">
+            <span class="eyebrow" id="heroEyebrow">Η φιλοσοφία της εμπειρίας</span>
+            <h2 id="heroTitle">Τι είναι το ATHRIAN;</h2>
+            <p id="heroText1">
+              Το ATHRIAN είναι μια σύγχρονη πολιτιστική και εκπαιδευτική πρόταση που μετασχηματίζει την επίσκεψη
+              στη Βιβλιοθήκη του Αδριανού σε μια βιωματική, διαδραστική και πολυεπίπεδη εμπειρία ανακάλυψης.
+            </p>
+            <p id="heroText2">
+              Δεν πρόκειται για μια απλή ξενάγηση, αλλά για ένα concept που συνδυάζει ιστορικό storytelling,
+              γρίφους, αποστολές, τεχνολογία, προσβασιμότητα και βαθύτερη σύνδεση με την πολιτιστική κληρονομιά.
+            </p>
+          </div>
+
+          <aside class="hero-panel">
+            <h3 id="heroPanelTitle">Κεντρική ιδέα</h3>
+            <ul>
+              <li id="heroPoint1">Μετατροπή της παθητικής επίσκεψης σε ενεργή συμμετοχή</li>
+              <li id="heroPoint2">Σύνδεση ιστορίας, μάθησης και καινοτομίας</li>
+              <li id="heroPoint3">Ενίσχυση του πολιτιστικού ενδιαφέροντος των επισκεπτών</li>
+              <li id="heroPoint4">Δημιουργία διεθνούς και προσβάσιμης εμπειρίας</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="problemTitle">Γιατί δημιουργήθηκε</h2>
+          <p id="problemText">
+            Η ATHRIAN γεννήθηκε από την ανάγκη να αποκτήσει η επίσκεψη σε έναν αρχαιολογικό χώρο περισσότερο
+            νόημα, αλληλεπίδραση και συναισθηματική σύνδεση, ιδιαίτερα για τις νεότερες και διεθνείς γενιές επισκεπτών.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3 id="problemCard1Title">Παθητική εμπειρία</h3>
+            <p id="problemCard1Text">
+              Πολλές επισκέψεις σε μνημεία παραμένουν σύντομες, παρατηρητικές και χωρίς ουσιαστική εμπλοκή.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 id="problemCard2Title">Ανάγκη για ανανέωση</h3>
+            <p id="problemCard2Text">
+              Το κοινό αναζητά πιο ζωντανές, διαδραστικές και προσωποποιημένες εμπειρίες πολιτισμού.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 id="problemCard3Title">Έλλειψη προσβασιμότητας</h3>
+            <p id="problemCard3Text">
+              Η καθολική προσβασιμότητα, η πολυγλωσσική υποστήριξη και η ενσωμάτωση τεχνολογίας είναι πλέον αναγκαίες.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="missionVisionTitle">Αποστολή και Όραμα</h2>
+          <p id="missionVisionText">
+            Το ATHRIAN δεν φιλοδοξεί απλώς να ενημερώνει, αλλά να δημιουργεί μια νέα σχέση ανάμεσα στον επισκέπτη,
+            τη γνώση και τον ιστορικό χώρο.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3 id="missionTitle">Αποστολή</h3>
+            <p id="missionText">
+              Να προσφέρει μια καινοτόμα, εκπαιδευτική και προσβάσιμη πολιτιστική εμπειρία που φέρνει τον επισκέπτη
+              πιο κοντά στη Βιβλιοθήκη του Αδριανού μέσα από ενεργή εξερεύνηση και συμμετοχή.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 id="visionTitle">Όραμα</h3>
+            <p id="visionText">
+              Να αποτελέσει πρότυπο για το πώς οι αρχαιολογικοί χώροι μπορούν να επανασχεδιαστούν ως σύγχρονα,
+              βιωματικά και διεθνώς προσβάσιμα περιβάλλοντα πολιτισμού και γνώσης.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="highlight-box">
+          <div class="section-title" style="margin-bottom: 24px;">
+            <h2 id="identityTitle">Η ταυτότητα της ATHRIAN</h2>
+            <p id="identityText">
+              Η ιδέα στηρίζεται σε μια ισχυρή ταυτότητα που ενώνει τον πολιτισμό με τον σχεδιασμό εμπειρίας,
+              την τεχνολογία με την εκπαίδευση και την καινοτομία με τον σεβασμό προς το μνημείο.
+            </p>
+          </div>
+
+          <div class="pillars">
+            <div class="pillar">
+              <strong id="pillar1Title">Πολιτισμός</strong>
+              <span id="pillar1Text">Αναδεικνύει τη σημασία της Βιβλιοθήκης του Αδριανού με σύγχρονο τρόπο.</span>
+            </div>
+            <div class="pillar">
+              <strong id="pillar2Title">Εκπαίδευση</strong>
+              <span id="pillar2Text">Μετατρέπει τη μάθηση σε ενεργή και βιωματική διαδικασία.</span>
+            </div>
+            <div class="pillar">
+              <strong id="pillar3Title">Καινοτομία</strong>
+              <span id="pillar3Text">Ενσωματώνει gamification, διαδραστικότητα και ψηφιακά εργαλεία.</span>
+            </div>
+            <div class="pillar">
+              <strong id="pillar4Title">Προσβασιμότητα</strong>
+              <span id="pillar4Text">Απευθύνεται σε ένα πολυγλωσσικό και συμπεριληπτικό κοινό.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="valueTitle">Τι κάνει την ιδέα ξεχωριστή</h2>
+          <p id="valueText">
+            Η ATHRIAN διαφοροποιείται επειδή δεν προσεγγίζει τον πολιτισμό ως στατικό περιεχόμενο,
+            αλλά ως μια ενεργή εμπειρία που προκαλεί συμμετοχή, σκέψη και προσωπική ανακάλυψη.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3 id="valueCard1Title">Story-driven experience</h3>
+            <p id="valueCard1Text">
+              Η εμπειρία βασίζεται σε αφήγηση που δημιουργεί ατμόσφαιρα, μυστήριο και συναισθηματικό δέσιμο.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 id="valueCard2Title">Educational gamification</h3>
+            <p id="valueCard2Text">
+              Οι επισκέπτες μαθαίνουν μέσα από αποστολές, γρίφους και αλληλεπίδραση με τον χώρο.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 id="valueCard3Title">Inclusive heritage design</h3>
+            <p id="valueCard3Text">
+              Ο σχεδιασμός της εμπειρίας σέβεται την προσβασιμότητα, τη διεθνή απεύθυνση και την αξία του μνημείου.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p id="footerText">ATHRIAN © 2026 | Η ιδέα πίσω από μια νέα πολιτιστική εμπειρία.</p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      el: {
+        pageTitle: "ATHRIAN | About",
+        brandTagline: "Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση",
+        logoAlt: "Λογότυπο ATHRIAN",
+        navHome: "Αρχική",
+        navAbout: "Η Ιδέα",
+        navQuest: "The Quest",
+        navContact: "Επικοινωνία",
+        heroEyebrow: "Η φιλοσοφία της εμπειρίας",
+        heroTitle: "Τι είναι το ATHRIAN;",
+        heroText1: "Το ATHRIAN είναι μια σύγχρονη πολιτιστική και εκπαιδευτική πρόταση που μετασχηματίζει την επίσκεψη στη Βιβλιοθήκη του Αδριανού σε μια βιωματική, διαδραστική και πολυεπίπεδη εμπειρία ανακάλυψης.",
+        heroText2: "Δεν πρόκειται για μια απλή ξενάγηση, αλλά για ένα concept που συνδυάζει ιστορικό storytelling, γρίφους, αποστολές, τεχνολογία, προσβασιμότητα και βαθύτερη σύνδεση με την πολιτιστική κληρονομιά.",
+        heroPanelTitle: "Κεντρική ιδέα",
+        heroPoint1: "Μετατροπή της παθητικής επίσκεψης σε ενεργή συμμετοχή",
+        heroPoint2: "Σύνδεση ιστορίας, μάθησης και καινοτομίας",
+        heroPoint3: "Ενίσχυση του πολιτιστικού ενδιαφέροντος των επισκεπτών",
+        heroPoint4: "Δημιουργία διεθνούς και προσβάσιμης εμπειρίας",
+        problemTitle: "Γιατί δημιουργήθηκε",
+        problemText: "Η ATHRIAN γεννήθηκε από την ανάγκη να αποκτήσει η επίσκεψη σε έναν αρχαιολογικό χώρο περισσότερο νόημα, αλληλεπίδραση και συναισθηματική σύνδεση, ιδιαίτερα για τις νεότερες και διεθνείς γενιές επισκεπτών.",
+        problemCard1Title: "Παθητική εμπειρία",
+        problemCard1Text: "Πολλές επισκέψεις σε μνημεία παραμένουν σύντομες, παρατηρητικές και χωρίς ουσιαστική εμπλοκή.",
+        problemCard2Title: "Ανάγκη για ανανέωση",
+        problemCard2Text: "Το κοινό αναζητά πιο ζωντανές, διαδραστικές και προσωποποιημένες εμπειρίες πολιτισμού.",
+        problemCard3Title: "Έλλειψη προσβασιμότητας",
+        problemCard3Text: "Η καθολική προσβασιμότητα, η πολυγλωσσική υποστήριξη και η ενσωμάτωση τεχνολογίας είναι πλέον αναγκαίες.",
+        missionVisionTitle: "Αποστολή και Όραμα",
+        missionVisionText: "Το ATHRIAN δεν φιλοδοξεί απλώς να ενημερώνει, αλλά να δημιουργεί μια νέα σχέση ανάμεσα στον επισκέπτη, τη γνώση και τον ιστορικό χώρο.",
+        missionTitle: "Αποστολή",
+        missionText: "Να προσφέρει μια καινοτόμα, εκπαιδευτική και προσβάσιμη πολιτιστική εμπειρία που φέρνει τον επισκέπτη πιο κοντά στη Βιβλιοθήκη του Αδριανού μέσα από ενεργή εξερεύνηση και συμμετοχή.",
+        visionTitle: "Όραμα",
+        visionText: "Να αποτελέσει πρότυπο για το πώς οι αρχαιολογικοί χώροι μπορούν να επανασχεδιαστούν ως σύγχρονα, βιωματικά και διεθνώς προσβάσιμα περιβάλλοντα πολιτισμού και γνώσης.",
+        identityTitle: "Η ταυτότητα της ATHRIAN",
+        identityText: "Η ιδέα στηρίζεται σε μια ισχυρή ταυτότητα που ενώνει τον πολιτισμό με τον σχεδιασμό εμπειρίας, την τεχνολογία με την εκπαίδευση και την καινοτομία με τον σεβασμό προς το μνημείο.",
+        pillar1Title: "Πολιτισμός",
+        pillar1Text: "Αναδεικνύει τη σημασία της Βιβλιοθήκης του Αδριανού με σύγχρονο τρόπο.",
+        pillar2Title: "Εκπαίδευση",
+        pillar2Text: "Μετατρέπει τη μάθηση σε ενεργή και βιωματική διαδικασία.",
+        pillar3Title: "Καινοτομία",
+        pillar3Text: "Ενσωματώνει gamification, διαδραστικότητα και ψηφιακά εργαλεία.",
+        pillar4Title: "Προσβασιμότητα",
+        pillar4Text: "Απευθύνεται σε ένα πολυγλωσσικό και συμπεριληπτικό κοινό.",
+        valueTitle: "Τι κάνει την ιδέα ξεχωριστή",
+        valueText: "Η ATHRIAN διαφοροποιείται επειδή δεν προσεγγίζει τον πολιτισμό ως στατικό περιεχόμενο, αλλά ως μια ενεργή εμπειρία που προκαλεί συμμετοχή, σκέψη και προσωπική ανακάλυψη.",
+        valueCard1Title: "Story-driven experience",
+        valueCard1Text: "Η εμπειρία βασίζεται σε αφήγηση που δημιουργεί ατμόσφαιρα, μυστήριο και συναισθηματικό δέσιμο.",
+        valueCard2Title: "Educational gamification",
+        valueCard2Text: "Οι επισκέπτες μαθαίνουν μέσα από αποστολές, γρίφους και αλληλεπίδραση με τον χώρο.",
+        valueCard3Title: "Inclusive heritage design",
+        valueCard3Text: "Ο σχεδιασμός της εμπειρίας σέβεται την προσβασιμότητα, τη διεθνή απεύθυνση και την αξία του μνημείου.",
+        footerText: "ATHRIAN © 2026 | Η ιδέα πίσω από μια νέα πολιτιστική εμπειρία."
+      },
+      en: {
+        pageTitle: "ATHRIAN | About",
+        brandTagline: "In ATHens you WANDER and UNcover knowledge",
+        logoAlt: "ATHRIAN logo",
+        navHome: "Home",
+        navAbout: "The Idea",
+        navQuest: "The Quest",
+        navContact: "Contact",
+        heroEyebrow: "The philosophy of the experience",
+        heroTitle: "What is ATHRIAN?",
+        heroText1: "ATHRIAN is a contemporary cultural and educational concept that transforms the visit to Hadrian's Library into an immersive, interactive and multilayered experience of discovery.",
+        heroText2: "It is not a simple tour, but a concept that combines historical storytelling, riddles, missions, technology, accessibility and a deeper connection with cultural heritage.",
+        heroPanelTitle: "Core concept",
+        heroPoint1: "Transforming passive visits into active participation",
+        heroPoint2: "Connecting history, learning and innovation",
+        heroPoint3: "Strengthening visitors' cultural interest",
+        heroPoint4: "Creating an international and accessible experience",
+        problemTitle: "Why it was created",
+        problemText: "ATHRIAN emerged from the need to make visits to archaeological sites more meaningful, interactive and emotionally engaging, especially for younger and international generations of visitors.",
+        problemCard1Title: "Passive experience",
+        problemCard1Text: "Many visits to monuments remain short, observational and without substantial engagement.",
+        problemCard2Title: "Need for renewal",
+        problemCard2Text: "Audiences seek more vivid, interactive and personalized cultural experiences.",
+        problemCard3Title: "Lack of accessibility",
+        problemCard3Text: "Universal accessibility, multilingual support and technology integration are now essential.",
+        missionVisionTitle: "Mission and Vision",
+        missionVisionText: "ATHRIAN does not merely aim to inform, but to create a new relationship between the visitor, knowledge and the historical site.",
+        missionTitle: "Mission",
+        missionText: "To offer an innovative, educational and accessible cultural experience that brings visitors closer to Hadrian's Library through active exploration and participation.",
+        visionTitle: "Vision",
+        visionText: "To become a model for how archaeological sites can be redesigned as contemporary, experiential and internationally accessible environments of culture and knowledge.",
+        identityTitle: "The identity of ATHRIAN",
+        identityText: "The idea is built on a strong identity that connects culture with experience design, technology with education, and innovation with respect for the monument.",
+        pillar1Title: "Culture",
+        pillar1Text: "Highlights the significance of Hadrian's Library in a contemporary way.",
+        pillar2Title: "Education",
+        pillar2Text: "Transforms learning into an active and experiential process.",
+        pillar3Title: "Innovation",
+        pillar3Text: "Incorporates gamification, interactivity and digital tools.",
+        pillar4Title: "Accessibility",
+        pillar4Text: "Addresses a multilingual and inclusive audience.",
+        valueTitle: "What makes the idea unique",
+        valueText: "ATHRIAN stands out because it does not approach culture as static content, but as an active experience that inspires participation, thought and personal discovery.",
+        valueCard1Title: "Story-driven experience",
+        valueCard1Text: "The experience is built on storytelling that creates atmosphere, mystery and emotional connection.",
+        valueCard2Title: "Educational gamification",
+        valueCard2Text: "Visitors learn through missions, riddles and interaction with the site.",
+        valueCard3Title: "Inclusive heritage design",
+        valueCard3Text: "The experience design respects accessibility, international outreach and the value of the monument.",
+        footerText: "ATHRIAN © 2026 | The idea behind a new cultural experience."
+      },
+      it: {
+        pageTitle: "ATHRIAN | About",
+        brandTagline: "Ad Atene vaghi e scopri la conoscenza",
+        logoAlt: "Logo ATHRIAN",
+        navHome: "Home",
+        navAbout: "L'idea",
+        navQuest: "La Quest",
+        navContact: "Contatto",
+        heroEyebrow: "La filosofia dell'esperienza",
+        heroTitle: "Che cos'è ATHRIAN?",
+        heroText1: "ATHRIAN è un concetto culturale ed educativo contemporaneo che trasforma la visita alla Biblioteca di Adriano in un'esperienza immersiva, interattiva e multilivello di scoperta.",
+        heroText2: "Non è una semplice visita guidata, ma un concept che combina storytelling storico, enigmi, missioni, tecnologia, accessibilità e un legame più profondo con il patrimonio culturale.",
+        heroPanelTitle: "Concetto centrale",
+        heroPoint1: "Trasformare la visita passiva in partecipazione attiva",
+        heroPoint2: "Collegare storia, apprendimento e innovazione",
+        heroPoint3: "Rafforzare l'interesse culturale dei visitatori",
+        heroPoint4: "Creare un'esperienza internazionale e accessibile",
+        problemTitle: "Perché è stata creata",
+        problemText: "ATHRIAN nasce dal bisogno di rendere la visita ai siti archeologici più significativa, interattiva ed emotivamente coinvolgente, soprattutto per le generazioni più giovani e internazionali.",
+        problemCard1Title: "Esperienza passiva",
+        problemCard1Text: "Molte visite ai monumenti restano brevi, osservative e senza un reale coinvolgimento.",
+        problemCard2Title: "Bisogno di rinnovamento",
+        problemCard2Text: "Il pubblico cerca esperienze culturali più vive, interattive e personalizzate.",
+        problemCard3Title: "Mancanza di accessibilità",
+        problemCard3Text: "Accessibilità universale, supporto multilingue e integrazione tecnologica sono ormai essenziali.",
+        missionVisionTitle: "Missione e Visione",
+        missionVisionText: "ATHRIAN non mira solo a informare, ma a creare un nuovo rapporto tra visitatore, conoscenza e sito storico.",
+        missionTitle: "Missione",
+        missionText: "Offrire un'esperienza culturale innovativa, educativa e accessibile che avvicini i visitatori alla Biblioteca di Adriano attraverso esplorazione attiva e partecipazione.",
+        visionTitle: "Visione",
+        visionText: "Diventare un modello di come i siti archeologici possano essere ripensati come ambienti contemporanei, esperienziali e internazionalmente accessibili di cultura e conoscenza.",
+        identityTitle: "L'identità di ATHRIAN",
+        identityText: "L'idea si fonda su una forte identità che unisce cultura e design dell'esperienza, tecnologia ed educazione, innovazione e rispetto per il monumento.",
+        pillar1Title: "Cultura",
+        pillar1Text: "Valorizza il significato della Biblioteca di Adriano in modo contemporaneo.",
+        pillar2Title: "Educazione",
+        pillar2Text: "Trasforma l'apprendimento in un processo attivo ed esperienziale.",
+        pillar3Title: "Innovazione",
+        pillar3Text: "Integra gamification, interattività e strumenti digitali.",
+        pillar4Title: "Accessibilità",
+        pillar4Text: "Si rivolge a un pubblico multilingue e inclusivo.",
+        valueTitle: "Cosa rende unica l'idea",
+        valueText: "ATHRIAN si distingue perché non considera la cultura come contenuto statico, ma come esperienza attiva che stimola partecipazione, riflessione e scoperta personale.",
+        valueCard1Title: "Esperienza guidata dalla narrazione",
+        valueCard1Text: "L'esperienza si basa su uno storytelling che crea atmosfera, mistero e legame emotivo.",
+        valueCard2Title: "Gamification educativa",
+        valueCard2Text: "I visitatori imparano attraverso missioni, enigmi e interazione con il sito.",
+        valueCard3Title: "Design inclusivo del patrimonio",
+        valueCard3Text: "Il design dell'esperienza rispetta accessibilità, apertura internazionale e valore del monumento.",
+        footerText: "ATHRIAN © 2026 | L'idea dietro una nuova esperienza culturale."
+      },
+      de: {
+        pageTitle: "ATHRIAN | About",
+        brandTagline: "In Athen wanderst du und entdeckst Wissen",
+        logoAlt: "ATHRIAN-Logo",
+        navHome: "Startseite",
+        navAbout: "Die Idee",
+        navQuest: "Die Quest",
+        navContact: "Kontakt",
+        heroEyebrow: "Die Philosophie des Erlebnisses",
+        heroTitle: "Was ist ATHRIAN?",
+        heroText1: "ATHRIAN ist ein zeitgenössisches kulturelles und pädagogisches Konzept, das den Besuch der Hadriansbibliothek in ein immersives, interaktives und mehrschichtiges Entdeckungserlebnis verwandelt.",
+        heroText2: "Es ist keine einfache Führung, sondern ein Konzept, das historisches Storytelling, Rätsel, Missionen, Technologie, Barrierefreiheit und eine tiefere Verbindung zum kulturellen Erbe vereint.",
+        heroPanelTitle: "Zentrales Konzept",
+        heroPoint1: "Passive Besuche in aktive Teilnahme verwandeln",
+        heroPoint2: "Geschichte, Lernen und Innovation verbinden",
+        heroPoint3: "Das kulturelle Interesse der Besucher stärken",
+        heroPoint4: "Ein internationales und zugängliches Erlebnis schaffen",
+        problemTitle: "Warum es geschaffen wurde",
+        problemText: "ATHRIAN entstand aus dem Bedürfnis, Besuche archäologischer Stätten bedeutungsvoller, interaktiver und emotional ansprechender zu gestalten, besonders für jüngere und internationale Besuchergenerationen.",
+        problemCard1Title: "Passive Erfahrung",
+        problemCard1Text: "Viele Besuche an Monumenten bleiben kurz, beobachtend und ohne echte Beteiligung.",
+        problemCard2Title: "Bedarf an Erneuerung",
+        problemCard2Text: "Das Publikum sucht lebendigere, interaktive und personalisierte Kulturerlebnisse.",
+        problemCard3Title: "Mangel an Barrierefreiheit",
+        problemCard3Text: "Universelle Zugänglichkeit, Mehrsprachigkeit und Technologieintegration sind heute unverzichtbar.",
+        missionVisionTitle: "Mission und Vision",
+        missionVisionText: "ATHRIAN will nicht nur informieren, sondern eine neue Beziehung zwischen Besucher, Wissen und historischem Ort schaffen.",
+        missionTitle: "Mission",
+        missionText: "Ein innovatives, pädagogisches und zugängliches Kulturerlebnis zu bieten, das Besucher durch aktive Erkundung und Teilnahme näher an die Hadriansbibliothek bringt.",
+        visionTitle: "Vision",
+        visionText: "Ein Vorbild dafür zu werden, wie archäologische Stätten als zeitgenössische, erlebnisorientierte und international zugängliche Räume von Kultur und Wissen neu gedacht werden können.",
+        identityTitle: "Die Identität von ATHRIAN",
+        identityText: "Die Idee basiert auf einer starken Identität, die Kultur mit Experience Design, Technologie mit Bildung und Innovation mit Respekt für das Monument verbindet.",
+        pillar1Title: "Kultur",
+        pillar1Text: "Hebt die Bedeutung der Hadriansbibliothek auf zeitgemäße Weise hervor.",
+        pillar2Title: "Bildung",
+        pillar2Text: "Verwandelt Lernen in einen aktiven und erfahrungsbasierten Prozess.",
+        pillar3Title: "Innovation",
+        pillar3Text: "Integriert Gamification, Interaktivität und digitale Werkzeuge.",
+        pillar4Title: "Barrierefreiheit",
+        pillar4Text: "Richtet sich an ein mehrsprachiges und inklusives Publikum.",
+        valueTitle: "Was die Idee einzigartig macht",
+        valueText: "ATHRIAN hebt sich ab, weil Kultur nicht als statischer Inhalt, sondern als aktive Erfahrung verstanden wird, die Teilnahme, Denken und persönliche Entdeckung anregt.",
+        valueCard1Title: "Storygetriebenes Erlebnis",
+        valueCard1Text: "Das Erlebnis basiert auf Storytelling, das Atmosphäre, Geheimnis und emotionale Bindung schafft.",
+        valueCard2Title: "Bildungs-Gamification",
+        valueCard2Text: "Besucher lernen durch Missionen, Rätsel und Interaktion mit dem Ort.",
+        valueCard3Title: "Inklusives Kulturerbe-Design",
+        valueCard3Text: "Das Erlebnisdesign respektiert Barrierefreiheit, internationale Reichweite und den Wert des Monuments.",
+        footerText: "ATHRIAN © 2026 | Die Idee hinter einem neuen Kulturerlebnis."
+      },
+      es: {
+        pageTitle: "ATHRIAN | About",
+        brandTagline: "En Atenas recorres y descubres conocimiento",
+        logoAlt: "Logotipo ATHRIAN",
+        navHome: "Inicio",
+        navAbout: "La Idea",
+        navQuest: "La Quest",
+        navContact: "Contacto",
+        heroEyebrow: "La filosofía de la experiencia",
+        heroTitle: "¿Qué es ATHRIAN?",
+        heroText1: "ATHRIAN es un concepto cultural y educativo contemporáneo que transforma la visita a la Biblioteca de Adriano en una experiencia inmersiva, interactiva y multinivel de descubrimiento.",
+        heroText2: "No es una simple visita guiada, sino un concepto que combina storytelling histórico, enigmas, misiones, tecnología, accesibilidad y una conexión más profunda con el patrimonio cultural.",
+        heroPanelTitle: "Concepto central",
+        heroPoint1: "Transformar la visita pasiva en participación activa",
+        heroPoint2: "Conectar historia, aprendizaje e innovación",
+        heroPoint3: "Fortalecer el interés cultural de los visitantes",
+        heroPoint4: "Crear una experiencia internacional y accesible",
+        problemTitle: "Por qué fue creada",
+        problemText: "ATHRIAN surgió de la necesidad de hacer que las visitas a sitios arqueológicos sean más significativas, interactivas y emocionalmente atractivas, especialmente para generaciones jóvenes e internacionales de visitantes.",
+        problemCard1Title: "Experiencia pasiva",
+        problemCard1Text: "Muchas visitas a monumentos siguen siendo breves, observacionales y sin participación sustancial.",
+        problemCard2Title: "Necesidad de renovación",
+        problemCard2Text: "El público busca experiencias culturales más vivas, interactivas y personalizadas.",
+        problemCard3Title: "Falta de accesibilidad",
+        problemCard3Text: "La accesibilidad universal, el soporte multilingüe y la integración tecnológica son ahora esenciales.",
+        missionVisionTitle: "Misión y Visión",
+        missionVisionText: "ATHRIAN no aspira solo a informar, sino a crear una nueva relación entre el visitante, el conocimiento y el espacio histórico.",
+        missionTitle: "Misión",
+        missionText: "Ofrecer una experiencia cultural innovadora, educativa y accesible que acerque a los visitantes a la Biblioteca de Adriano mediante exploración activa y participación.",
+        visionTitle: "Visión",
+        visionText: "Convertirse en un modelo de cómo los sitios arqueológicos pueden rediseñarse como entornos contemporáneos, experienciales e internacionalmente accesibles de cultura y conocimiento.",
+        identityTitle: "La identidad de ATHRIAN",
+        identityText: "La idea se basa en una identidad sólida que une cultura y diseño de experiencia, tecnología y educación, innovación y respeto por el monumento.",
+        pillar1Title: "Cultura",
+        pillar1Text: "Destaca la importancia de la Biblioteca de Adriano de una manera contemporánea.",
+        pillar2Title: "Educación",
+        pillar2Text: "Transforma el aprendizaje en un proceso activo y experiencial.",
+        pillar3Title: "Innovación",
+        pillar3Text: "Incorpora gamificación, interactividad y herramientas digitales.",
+        pillar4Title: "Accesibilidad",
+        pillar4Text: "Se dirige a un público multilingüe e inclusivo.",
+        valueTitle: "Qué hace única la idea",
+        valueText: "ATHRIAN se diferencia porque no aborda la cultura como contenido estático, sino como una experiencia activa que inspira participación, reflexión y descubrimiento personal.",
+        valueCard1Title: "Experiencia basada en narrativa",
+        valueCard1Text: "La experiencia se basa en una narrativa que crea atmósfera, misterio y conexión emocional.",
+        valueCard2Title: "Gamificación educativa",
+        valueCard2Text: "Los visitantes aprenden mediante misiones, enigmas e interacción con el sitio.",
+        valueCard3Title: "Diseño patrimonial inclusivo",
+        valueCard3Text: "El diseño de la experiencia respeta la accesibilidad, la proyección internacional y el valor del monumento.",
+        footerText: "ATHRIAN © 2026 | La idea detrás de una nueva experiencia cultural."
+      },
+      fr: {
+        pageTitle: "ATHRIAN | About",
+        brandTagline: "À Athènes, vous explorez et découvrez le savoir",
+        logoAlt: "Logo ATHRIAN",
+        navHome: "Accueil",
+        navAbout: "L'idée",
+        navQuest: "La Quête",
+        navContact: "Contact",
+        heroEyebrow: "La philosophie de l'expérience",
+        heroTitle: "Qu'est-ce que ATHRIAN ?",
+        heroText1: "ATHRIAN est un concept culturel et éducatif contemporain qui transforme la visite de la Bibliothèque d'Hadrien en une expérience immersive, interactive et multicouche de découverte.",
+        heroText2: "Ce n'est pas une simple visite guidée, mais un concept qui combine narration historique, énigmes, missions, technologie, accessibilité et lien plus profond avec le patrimoine culturel.",
+        heroPanelTitle: "Concept central",
+        heroPoint1: "Transformer la visite passive en participation active",
+        heroPoint2: "Relier histoire, apprentissage et innovation",
+        heroPoint3: "Renforcer l'intérêt culturel des visiteurs",
+        heroPoint4: "Créer une expérience internationale et accessible",
+        problemTitle: "Pourquoi elle a été créée",
+        problemText: "ATHRIAN est née du besoin de rendre les visites des sites archéologiques plus significatives, interactives et émotionnellement engageantes, notamment pour les jeunes générations et les visiteurs internationaux.",
+        problemCard1Title: "Expérience passive",
+        problemCard1Text: "De nombreuses visites de monuments restent brèves, observatrices et sans véritable engagement.",
+        problemCard2Title: "Besoin de renouveau",
+        problemCard2Text: "Le public recherche des expériences culturelles plus vivantes, interactives et personnalisées.",
+        problemCard3Title: "Manque d'accessibilité",
+        problemCard3Text: "L'accessibilité universelle, le support multilingue et l'intégration technologique sont désormais essentiels.",
+        missionVisionTitle: "Mission et Vision",
+        missionVisionText: "ATHRIAN n'a pas seulement pour ambition d'informer, mais de créer une nouvelle relation entre le visiteur, le savoir et le lieu historique.",
+        missionTitle: "Mission",
+        missionText: "Offrir une expérience culturelle innovante, éducative et accessible qui rapproche les visiteurs de la Bibliothèque d'Hadrien par l'exploration active et la participation.",
+        visionTitle: "Vision",
+        visionText: "Devenir un modèle de la manière dont les sites archéologiques peuvent être repensés comme des environnements contemporains, expérientiels et accessibles à l'international de culture et de savoir.",
+        identityTitle: "L'identité de ATHRIAN",
+        identityText: "L'idée repose sur une identité forte qui relie culture et design d'expérience, technologie et éducation, innovation et respect du monument.",
+        pillar1Title: "Culture",
+        pillar1Text: "Met en valeur l'importance de la Bibliothèque d'Hadrien de manière contemporaine.",
+        pillar2Title: "Éducation",
+        pillar2Text: "Transforme l'apprentissage en un processus actif et expérientiel.",
+        pillar3Title: "Innovation",
+        pillar3Text: "Intègre gamification, interactivité et outils numériques.",
+        pillar4Title: "Accessibilité",
+        pillar4Text: "S'adresse à un public multilingue et inclusif.",
+        valueTitle: "Ce qui rend l'idée unique",
+        valueText: "ATHRIAN se distingue parce qu'elle n'aborde pas la culture comme un contenu statique, mais comme une expérience active qui inspire participation, réflexion et découverte personnelle.",
+        valueCard1Title: "Expérience guidée par le récit",
+        valueCard1Text: "L'expérience repose sur une narration qui crée atmosphère, mystère et lien émotionnel.",
+        valueCard2Title: "Gamification éducative",
+        valueCard2Text: "Les visiteurs apprennent à travers missions, énigmes et interaction avec le lieu.",
+        valueCard3Title: "Design patrimonial inclusif",
+        valueCard3Text: "Le design de l'expérience respecte l'accessibilité, l'ouverture internationale et la valeur du monument.",
+        footerText: "ATHRIAN © 2026 | L'idée derrière une nouvelle expérience culturelle."
+      }
+    };
+
+    const ids = Object.keys(translations.el);
+
+    function applyLanguage(lang) {
+      const selected = translations[lang] || translations.el;
+      document.documentElement.lang = lang;
+      document.title = selected.pageTitle;
+
+      ids.forEach((id) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+
+        if (id === "logoAlt") {
+          element.setAttribute("alt", selected[id]);
+        } else {
+          element.textContent = selected[id];
+        }
+      });
+
+      localStorage.setItem("athrian-language", lang);
+    }
+
+    const languageSelect = document.getElementById("languageSelect");
+    languageSelect.addEventListener("change", (e) => {
+      applyLanguage(e.target.value);
+    });
+
+    const savedLanguage = localStorage.getItem("athrian-language") || "el";
+    languageSelect.value = savedLanguage;
+    applyLanguage(savedLanguage);
+
+    const root = document.documentElement;
+    let fontScale = Number(localStorage.getItem("athrian-font-scale")) || 1;
+
+    function updateFontScale() {
+      fontScale = Math.min(1.35, Math.max(0.9, fontScale));
+      root.style.setProperty("--font-scale", fontScale);
+      localStorage.setItem("athrian-font-scale", fontScale);
+    }
+
+    document.getElementById("increaseFont").addEventListener("click", () => {
+      fontScale += 0.05;
+      updateFontScale();
+    });
+
+    document.getElementById("decreaseFont").addEventListener("click", () => {
+      fontScale -= 0.05;
+      updateFontScale();
+    });
+
+    updateFontScale();
+
+    const body = document.body;
+    const savedTheme = localStorage.getItem("athrian-theme");
+    if (savedTheme === "dark") {
+      body.classList.add("dark-mode");
+      document.getElementById("toggleTheme").textContent = "☀️";
+    }
+
+    document.getElementById("toggleTheme").addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      const isDark = body.classList.contains("dark-mode");
+      localStorage.setItem("athrian-theme", isDark ? "dark" : "light");
+      document.getElementById("toggleTheme").textContent = isDark ? "☀️" : "🌙";
+    });
+
+    const savedContrast = localStorage.getItem("athrian-contrast");
+    if (savedContrast === "high") {
+      body.classList.add("high-contrast");
+    }
+
+    document.getElementById("toggleContrast").addEventListener("click", () => {
+      body.classList.toggle("high-contrast");
+      localStorage.setItem(
+        "athrian-contrast",
+        body.classList.contains("high-contrast") ? "high" : "normal"
+      );
+    });
+
+    function getReadableText() {
+      const currentLang = languageSelect.value;
+      const t = translations[currentLang] || translations.el;
+      return `
+        ${t.heroTitle}.
+        ${t.heroText1}
+        ${t.heroText2}
+        ${t.problemTitle}. ${t.problemText}
+        ${t.missionVisionTitle}. ${t.missionVisionText}
+        ${t.identityTitle}. ${t.identityText}
+        ${t.valueTitle}. ${t.valueText}
+      `;
+    }
+
+    document.getElementById("readPage").addEventListener("click", () => {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(getReadableText());
+      utterance.lang = languageSelect.value === "el" ? "el-GR" : languageSelect.value;
+      utterance.rate = 0.95;
+      utterance.pitch = 1;
+      speechSynthesis.speak(utterance);
+    });
+
+    document.getElementById("stopReading").addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+  </script>
+</body>
+</html>
