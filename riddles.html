@@ -404,6 +404,35 @@
       color: var(--text-soft);
     }
 
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: var(--accent);
+      color: var(--button-text);
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); }
+
     .footer {
       background: var(--surface);
       border-top: 1px solid var(--border);
@@ -497,6 +526,9 @@
       <a href="about.html" id="navAbout">Η Ιδέα</a>
       <a href="quest.html" id="navQuest">The Quest</a>
       <a href="riddles.html" class="active" id="navRiddles">Riddles & Missions</a>
+      <a href="technology.html" id="navTechnology">Technology</a>
+      <a href="conservation.html" id="navConservation">Conservation</a>
+      <a href="education.html" id="navEducation">Education</a>
       <a href="contact.html" id="navContact">Επικοινωνία</a>
     </div>
   </nav>
@@ -657,6 +689,11 @@
               <span id="flow3Text">Η εμπειρία κορυφώνεται στην αίσθηση ότι ο επισκέπτης έγινε φορέας γνώσης.</span>
             </div>
           </div>
+
+          <div class="cta-row">
+            <a href="technology.html" class="cta-btn" id="ctaBtn1">See the Technology</a>
+            <a href="quest.html" class="cta-btn secondary" id="ctaBtn2">Back to The Quest</a>
+          </div>
         </div>
       </div>
     </section>
@@ -678,6 +715,9 @@
         navAbout: "Η Ιδέα",
         navQuest: "The Quest",
         navRiddles: "Riddles & Missions",
+        navTechnology: "Technology",
+        navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Επικοινωνία",
         heroEyebrow: "Γρίφοι, αποστολές και ανακαλύψεις",
         heroTitle: "Η γνώση ξεκλειδώνεται μέσα από αποστολές",
@@ -720,6 +760,8 @@
         flow2Text: "Η επίλυση γρίφων αποκαλύπτει ιστορικό και πολιτιστικό νόημα.",
         flow3Title: "Transformation",
         flow3Text: "Η εμπειρία κορυφώνεται στην αίσθηση ότι ο επισκέπτης έγινε φορέας γνώσης.",
+        ctaBtn1: "See the Technology",
+        ctaBtn2: "Back to The Quest",
         footerText: "ATHRIAN © 2026 | Γρίφοι και αποστολές ως ζωντανή εμπειρία γνώσης."
       },
       en: {
@@ -730,6 +772,9 @@
         navAbout: "The Idea",
         navQuest: "The Quest",
         navRiddles: "Riddles & Missions",
+        navTechnology: "Technology",
+        navConservation: "Conservation",
+        navEducation: "Education",
         navContact: "Contact",
         heroEyebrow: "Riddles, missions and discoveries",
         heroTitle: "Knowledge is unlocked through missions",
@@ -772,6 +817,8 @@
         flow2Text: "Solving riddles reveals historical and cultural meaning.",
         flow3Title: "Transformation",
         flow3Text: "The experience culminates in the feeling that the visitor has become a bearer of knowledge.",
+        ctaBtn1: "See the Technology",
+        ctaBtn2: "Back to The Quest",
         footerText: "ATHRIAN © 2026 | Riddles and missions as a living experience of knowledge."
       }
     };
