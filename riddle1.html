@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATHRIAN | Mission I</title>
+  <meta
+    name="description"
+    content="Η πρώτη αποστολή της ATHRIAN: ένας διαδραστικός γρίφος πολλαπλής επιλογής με αφήγηση, χρονόμετρο και επιβράβευση."
+  />
+  <style>
+    :root {
+      --bg: #ead3a0;
+      --bg-soft: #f5ead0;
+      --surface: rgba(255, 248, 236, 0.84);
+      --surface-strong: rgba(255, 248, 236, 0.96);
+      --text: #4e2f07;
+      --text-soft: #6e4a17;
+      --accent: #6b3f0b;
+      --accent-2: #8a5a18;
+      --accent-3: #b8843c;
+      --success: #2f6b2f;
+      --danger: #8c2f1f;
+      --warning: #8a5a18;
+      --border: rgba(107, 63, 11, 0.18);
+      --shadow: 0 10px 30px rgba(78, 47, 7, 0.14);
+      --button-text: #fffdf8;
+      --font-scale: 1;
+      --hero-overlay: rgba(44, 25, 4, 0.18);
+    }
+
+    body.dark-mode {
+      --bg: #121212;
+      --bg-soft: #1b1b1b;
+      --surface: rgba(35, 35, 35, 0.92);
+      --surface-strong: rgba(42, 42, 42, 0.98);
+      --text: #f1dfb7;
+      --text-soft: #d7be8d;
+      --accent: #c99a4a;
+      --accent-2: #e0b86d;
+      --accent-3: #f0c982;
+      --success: #78c878;
+      --danger: #ff8a7a;
+      --warning: #e0b86d;
+      --border: rgba(201, 154, 74, 0.18);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --button-text: #1b1207;
+      --hero-overlay: rgba(0, 0, 0, 0.35);
+    }
+
+    body.high-contrast {
+      --bg: #000000;
+      --bg-soft: #000000;
+      --surface: #000000;
+      --surface-strong: #000000;
+      --text: #ffffff;
+      --text-soft: #ffffff;
+      --accent: #ffff00;
+      --accent-2: #00ffff;
+      --accent-3: #ff00ff;
+      --success: #00ff00;
+      --danger: #ff4d4d;
+      --warning: #ffff00;
+      --border: #ffffff;
+      --shadow: none;
+      --button-text: #000000;
+      --hero-overlay: rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: calc(16px * var(--font-scale));
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.high-contrast {
+      background: #000;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 10px;
+      background: #000;
+      color: #fff;
+      padding: 10px 14px;
+      z-index: 9999;
+      border-radius: 10px;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    .container {
+      width: min(1240px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(234, 211, 160, 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.dark-mode .topbar,
+    body.high-contrast .topbar {
+      background: rgba(0, 0, 0, 0.92);
+    }
+
+    .topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 220px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .control-btn,
+    .lang-select {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .control-btn:hover,
+    .lang-select:hover,
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .option-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .control-btn:focus-visible,
+    .lang-select:focus-visible,
+    .primary-btn:focus-visible,
+    .secondary-btn:focus-visible,
+    .option-btn:focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 42px 0 34px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, var(--hero-overlay), rgba(0,0,0,0.06)),
+        radial-gradient(circle at center, rgba(255,255,255,0.13), transparent 52%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .mission-card,
+    .status-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(107, 63, 11, 0.08);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    body.high-contrast .eyebrow {
+      background: #000;
+      color: #ffff00;
+    }
+
+    .mission-card h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .mission-card p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+    }
+
+    .mission-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      font-weight: 700;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: var(--button-text);
+      box-shadow: var(--shadow);
+    }
+
+    .secondary-btn {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    body.high-contrast .primary-btn {
+      background: #ffff00;
+      color: #000;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .mini-stat {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    body.high-contrast .mini-stat {
+      background: #000;
+      border-color: #fff;
+    }
+
+    .audio-note {
+      margin-top: 14px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .question-section {
+      padding: 12px 0 56px;
+    }
+
+    .question-shell {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+
+    .question-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .timer-box,
+    .score-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px 14px;
+      font-weight: 700;
+    }
+
+    body.high-contrast .timer-box,
+    body.high-contrast .score-box {
+      background: #000;
+      border-color: #fff;
+    }
+
+    .question-card {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    body.high-contrast .question-card {
+      background: #000;
+      border-color: #fff;
+    }
+
+    .story-title {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .question-text {
+      font-size: 1.06rem;
+      color: var(--text);
+      margin: 14px 0 0;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+      min-height: 86px;
+    }
+
+    .option-btn strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+
+    .option-btn.selected {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 2px rgba(184,132,60,0.25);
+    }
+
+    .option-btn.correct {
+      border-color: var(--success);
+      background: rgba(47,107,47,0.08);
+    }
+
+    .option-btn.wrong {
+      border-color: var(--danger);
+      background: rgba(140,47,31,0.08);
+    }
+
+    body.high-contrast .option-btn {
+      background: #000;
+      border-color: #fff;
+      color: #fff;
+      box-shadow: none;
+    }
+
+    body.high-contrast .option-btn strong {
+      color: #ffff00;
+    }
+
+    .feedback-panel {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.18);
+      display: none;
+    }
+
+    .feedback-panel.show {
+      display: block;
+    }
+
+    .feedback-panel.correct {
+      border-color: var(--success);
+    }
+
+    .feedback-panel.wrong {
+      border-color: var(--danger);
+    }
+
+    body.high-contrast .feedback-panel {
+      background: #000;
+      border-color: #fff;
+    }
+
+    .feedback-title {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .feedback-text {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .bottom-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .bottom-note {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .nav-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect(1px,1px,1px,1px);
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 10px 0 36px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .options-grid,
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+      }
+
+      .brand {
+        width: 100%;
+      }
+
+      .controls {
+        justify-content: flex-start;
+      }
+
+      .mission-card,
+      .status-card,
+      .question-shell {
+        padding: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">Παράλειψη στο περιεχόμενο</a>
+
+  <header class="topbar" aria-label="Κύρια γραμμή εργαλείων">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Λογότυπο ATHRIAN" id="logoAlt" />
+        <div class="brand-text">
+          <h1>ATHRIAN</h1>
+          <p id="brandTagline">Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="visually-hidden" for="languageSelect">Επιλογή γλώσσας</label>
+        <select id="languageSelect" class="lang-select" aria-label="Επιλογή γλώσσας">
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="es">Español</option>
+        </select>
+
+        <button type="button" class="control-btn" id="decreaseFontBtn" aria-label="Μείωση μεγέθους γραμματοσειράς">A−</button>
+        <button type="button" class="control-btn" id="increaseFontBtn" aria-label="Αύξηση μεγέθους γραμματοσειράς">A+</button>
+        <button type="button" class="control-btn" id="darkModeBtn">Dark mode</button>
+        <button type="button" class="control-btn" id="contrastBtn">High contrast</button>
+        <button type="button" class="control-btn" id="muteBtn">Ήχος: On</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <section class="hero" aria-labelledby="missionTitle">
+      <div class="container hero-inner">
+        <div class="mission-card">
+          <div class="eyebrow" id="missionEyebrow">Mission I</div>
+          <h2 id="missionTitle">Οι Σιωπηλές Κολόνες</h2>
+          <p id="missionIntro1">
+            Η πρώτη αποστολή σε καλεί να διαβάσεις τον χώρο σαν να ήταν κείμενο.
+          </p>
+          <p id="missionIntro2">
+            Άκουσε την αφήγηση ή διάβασε τον γρίφο και επίλεξε τη σωστή απάντηση πριν τελειώσει ο χρόνος.
+          </p>
+
+          <div class="mission-actions">
+            <button type="button" class="primary-btn" id="playNarrationBtn">Άκου τον γρίφο</button>
+            <button type="button" class="secondary-btn" id="restartTimerBtn">Επανεκκίνηση χρόνου</button>
+          </div>
+
+          <p class="audio-note" id="audioStatus">
+            Η αφήγηση διαβάζει το κείμενο του γρίφου στην επιλεγμένη γλώσσα.
+          </p>
+        </div>
+
+        <aside class="status-card" aria-labelledby="statusTitle">
+          <h3 id="statusTitle">Κατάσταση αποστολής</h3>
+          <div class="status-grid">
+            <div class="mini-stat">
+              <strong id="timerLabel">45s</strong>
+              <span id="timerCaption">Χρόνος που απομένει</span>
+            </div>
+            <div class="mini-stat">
+              <strong id="scoreLabel">0</strong>
+              <span id="scoreCaption">Πόντοι</span>
+            </div>
+            <div class="mini-stat">
+              <strong id="rankLabel">Seeker</strong>
+              <span id="rankCaption">Τρέχων ρόλος</span>
+            </div>
+            <div class="mini-stat">
+              <strong id="progressLabel">1/6</strong>
+              <span id="progressCaption">Αποστολές</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="question-section">
+      <div class="container">
+        <div class="question-shell">
+          <div class="question-header">
+            <div>
+              <div class="eyebrow" id="riddleBadge">Αρχιτεκτονικός Γρίφος</div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <div class="timer-box">
+                <span aria-hidden="true">⏳</span>
+                <span id="timerBoxText">45s</span>
+              </div>
+              <div class="score-box">
+                <span aria-hidden="true">🏆</span>
+                <span id="scoreBoxText">0 pts</span>
+              </div>
+            </div>
+          </div>
+
+          <article class="question-card">
+            <h3 class="story-title" id="storyTitle">Αφήγηση</h3>
+            <p id="storyText">
+              Εκεί όπου η μνήμη συναντά τη μορφή, ένα στοιχείο κρατά όρθια την είσοδο της γνώσης.
+            </p>
+
+            <p class="question-text" id="questionText">
+              Ποιο βασικό στοιχείο της αρχιτεκτονικής συνδέεται περισσότερο με την έννοια της στήριξης και της επιβλητικής εισόδου σε έναν αρχαίο χώρο γνώσης;
+            </p>
+          </article>
+
+          <div class="options-grid" id="optionsGrid" aria-label="Επιλογές απαντήσεων">
+            <button type="button" class="option-btn" data-option="A">
+              <strong id="optionALabel">A</strong>
+              <span id="optionAText">Η στέγη</span>
+            </button>
+
+            <button type="button" class="option-btn" data-option="B">
+              <strong id="optionBLabel">B</strong>
+              <span id="optionBText">Οι κίονες</span>
+            </button>
+
+            <button type="button" class="option-btn" data-option="C">
+              <strong id="optionCLabel">C</strong>
+              <span id="optionCText">Η διακόσμηση</span>
+            </button>
+
+            <button type="button" class="option-btn" data-option="D">
+              <strong id="optionDLabel">D</strong>
+              <span id="optionDText">Το άγαλμα</span>
+            </button>
+          </div>
+
+          <div class="feedback-panel" id="feedbackPanel" aria-live="polite">
+            <h4 class="feedback-title" id="feedbackTitle">Αποτέλεσμα</h4>
+            <p class="feedback-text" id="feedbackText"></p>
+          </div>
+
+          <div class="bottom-actions">
+            <button type="button" class="primary-btn" id="checkAnswerBtn">Έλεγχος απάντησης</button>
+            <button type="button" class="secondary-btn" id="hintBtn">Υπόδειξη</button>
+            <span class="bottom-note" id="bottomNote">Επίλεξε μία απάντηση για να συνεχίσεις.</span>
+          </div>
+
+          <div class="nav-row">
+            <a href="riddles.html" class="secondary-btn" id="backBtn">Πίσω</a>
+            <a href="riddle2.html" class="primary-btn hidden" id="nextBtn">Επόμενο Mission</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-note" id="footerNote">
+        Διαδραστικός γρίφος με πολυγλωσσική και προσβάσιμη εμπειρία.
+      </p>
+    </div>
+  </footer>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/audio/ancient-ambient.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const translations = {
+      el: {
+        pageTitle: "ATHRIAN | Mission I",
+        logoAlt: "Λογότυπο ATHRIAN",
+        brandTagline: "Στην ΑΘήνα TRIγυρνάς και ANακαλύπτεις γνώση",
+        darkModeBtn: "Dark mode",
+        contrastBtn: "High contrast",
+        muteOn: "Ήχος: On",
+        muteOff: "Ήχος: Off",
+        missionEyebrow: "Mission I",
+        missionTitle: "Οι Σιωπηλές Κολόνες",
+        missionIntro1: "Η πρώτη αποστολή σε καλεί να διαβάσεις τον χώρο σαν να ήταν κείμενο.",
+        missionIntro2: "Άκουσε την αφήγηση ή διάβασε τον γρίφο και επίλεξε τη σωστή απάντηση πριν τελειώσει ο χρόνος.",
+        playNarrationBtn: "Άκου τον γρίφο",
+        restartTimerBtn: "Επανεκκίνηση χρόνου",
+        audioStatus: "Η αφήγηση διαβάζει το κείμενο του γρίφου στην επιλεγμένη γλώσσα.",
+        statusTitle: "Κατάσταση αποστολής",
+        timerCaption: "Χρόνος που απομένει",
+        scoreCaption: "Πόντοι",
+        rankCaption: "Τρέχων ρόλος",
+        progressCaption: "Αποστολές",
+        rankLabel: "Seeker",
+        progressLabel: "1/6",
+        riddleBadge: "Αρχιτεκτονικός Γρίφος",
+        storyTitle: "Αφήγηση",
+        storyText: "Εκεί όπου η μνήμη συναντά τη μορφή, ένα στοιχείο κρατά όρθια την είσοδο της γνώσης.",
+        questionText: "Ποιο βασικό στοιχείο της αρχιτεκτονικής συνδέεται περισσότερο με την έννοια της στήριξης και της επιβλητικής εισόδου σε έναν αρχαίο χώρο γνώσης;",
+        optionAText: "Η στέγη",
+        optionBText: "Οι κίονες",
+        optionCText: "Η διακόσμηση",
+        optionDText: "Το άγαλμα",
+        checkAnswerBtn: "Έλεγχος απάντησης",
+        hintBtn: "Υπόδειξη",
+        bottomNote: "Επίλεξε μία απάντηση για να συνεχίσεις.",
+        backBtn: "Πίσω",
+        nextBtn: "Επόμενο Mission",
+        footerNote: "Διαδραστικός γρίφος με πολυγλωσσική και προσβάσιμη εμπειρία.",
+        feedbackCorrectTitle: "Σωστά!",
+        feedbackCorrectText: "Οι κίονες δεν είναι απλή διακόσμηση. Συμβολίζουν τη στήριξη, την τάξη και την επιβλητική είσοδο προς τη γνώση.",
+        feedbackWrongTitle: "Όχι ακόμα",
+        feedbackWrongText: "Σκέψου ποιο στοιχείο δεν στολίζει απλώς τον χώρο, αλλά τον κρατά και τον ορίζει αρχιτεκτονικά.",
+        hintText: "Υπόδειξη: αναζήτησε το στοιχείο που σηκώνει βάρος και ταυτόχρονα καθοδηγεί το βλέμμα προς την είσοδο.",
+        timeoutTitle: "Ο χρόνος τελείωσε",
+        timeoutText: "Η αποστολή έκλεισε προσωρινά. Μπορείς να δοκιμάσεις ξανά με επανεκκίνηση του χρόνου.",
+        selectedMessage: "Επέλεξες απάντηση:",
+        timerUnit: "s",
+        scoreUnit: "pts",
+        rewardText: "Κέρδισες 10 πόντους και ξεκλείδωσες το επόμενο mission.",
+        noSelection: "Πρώτα επίλεξε μία απάντηση.",
+        narrationText: "Οι Σιωπηλές Κολόνες. Εκεί όπου η μνήμη συναντά τη μορφή, ένα στοιχείο κρατά όρθια την είσοδο της γνώσης. Ποιο βασικό στοιχείο της αρχιτεκτονικής συνδέεται περισσότερο με την έννοια της στήριξης και της επιβλητικής εισόδου σε έναν αρχαίο χώρο γνώσης;"
+      },
+      en: {
+        pageTitle: "ATHRIAN | Mission I",
+        logoAlt: "ATHRIAN logo",
+        brandTagline: "In ATHens you WANDER and UNcover knowledge",
+        darkModeBtn: "Dark mode",
+        contrastBtn: "High contrast",
+        muteOn: "Sound: On",
+        muteOff: "Sound: Off",
+        missionEyebrow: "Mission I",
+        missionTitle: "The Silent Columns",
+        missionIntro1: "The first mission invites you to read the space as if it were a text.",
+        missionIntro2: "Listen to the narration or read the riddle and choose the correct answer before time runs out.",
+        playNarrationBtn: "Listen to the riddle",
+        restartTimerBtn: "Restart timer",
+        audioStatus: "The narration reads the riddle in the selected language.",
+        statusTitle: "Mission status",
+        timerCaption: "Time remaining",
+        scoreCaption: "Points",
+        rankCaption: "Current role",
+        progressCaption: "Missions",
+        rankLabel: "Seeker",
+        progressLabel: "1/6",
+        riddleBadge: "Architectural Riddle",
+        storyTitle: "Narration",
+        storyText: "Where memory meets form, one element keeps the entrance to knowledge standing.",
+        questionText: "Which basic architectural element is most strongly connected with support and with the imposing entrance to an ancient place of knowledge?",
+        optionAText: "The roof",
+        optionBText: "The columns",
+        optionCText: "The decoration",
+        optionDText: "The statue",
+        checkAnswerBtn: "Check answer",
+        hintBtn: "Hint",
+        bottomNote: "Choose one answer to continue.",
+        backBtn: "Back",
+        nextBtn: "Next Mission",
+        footerNote: "Interactive riddle with a multilingual and accessible experience.",
+        feedbackCorrectTitle: "Correct!",
+        feedbackCorrectText: "Columns are not mere decoration. They symbolize support, order and the majestic entrance to knowledge.",
+        feedbackWrongTitle: "Not yet",
+        feedbackWrongText: "Think of the element that does not simply decorate the place, but structurally defines and supports it.",
+        hintText: "Hint: look for the element that carries weight and guides the eye toward the entrance.",
+        timeoutTitle: "Time is over",
+        timeoutText: "The mission has paused. You can try again by restarting the timer.",
+        selectedMessage: "You selected:",
+        timerUnit: "s",
+        scoreUnit: "pts",
+        rewardText: "You earned 10 points and unlocked the next mission.",
+        noSelection: "Select an answer first.",
+        narrationText: "The Silent Columns. Where memory meets form, one element keeps the entrance to knowledge standing. Which basic architectural element is most strongly connected with support and with the imposing entrance to an ancient place of knowledge?"
+      },
+      fr: {
+        pageTitle: "ATHRIAN | Mission I",
+        logoAlt: "Logo ATHRIAN",
+        brandTagline: "À ATHènes, vous ERRez et déCOUVREZ le savoir",
+        darkModeBtn: "Mode sombre",
+        contrastBtn: "Contraste élevé",
+        muteOn: "Son : activé",
+        muteOff: "Son : désactivé",
+        missionEyebrow: "Mission I",
+        missionTitle: "Les Colonnes Silencieuses",
+        missionIntro1: "La première mission vous invite à lire l’espace comme s’il s’agissait d’un texte.",
+        missionIntro2: "Écoutez la narration ou lisez l’énigme et choisissez la bonne réponse avant la fin du temps.",
+        playNarrationBtn: "Écouter l’énigme",
+        restartTimerBtn: "Relancer le temps",
+        audioStatus: "La narration lit l’énigme dans la langue sélectionnée.",
+        statusTitle: "État de la mission",
+        timerCaption: "Temps restant",
+        scoreCaption: "Points",
+        rankCaption: "Rôle actuel",
+        progressCaption: "Missions",
+        rankLabel: "Seeker",
+        progressLabel: "1/6",
+        riddleBadge: "Énigme architecturale",
+        storyTitle: "Narration",
+        storyText: "Là où la mémoire rencontre la forme, un élément maintient debout l’entrée du savoir.",
+        questionText: "Quel élément fondamental de l’architecture est le plus lié à l’idée de soutien et à l’entrée imposante d’un ancien lieu de savoir ?",
+        optionAText: "Le toit",
+        optionBText: "Les colonnes",
+        optionCText: "La décoration",
+        optionDText: "La statue",
+        checkAnswerBtn: "Vérifier la réponse",
+        hintBtn: "Indice",
+        bottomNote: "Choisissez une réponse pour continuer.",
+        backBtn: "Retour",
+        nextBtn: "Mission Suivante",
+        footerNote: "Énigme interactive avec une expérience multilingue et accessible.",
+        feedbackCorrectTitle: "Correct !",
+        feedbackCorrectText: "Les colonnes ne sont pas une simple décoration. Elles symbolisent le soutien, l’ordre et l’entrée majestueuse vers le savoir.",
+        feedbackWrongTitle: "Pas encore",
+        feedbackWrongText: "Pensez à l’élément qui ne se contente pas d’orner l’espace, mais qui le définit et le soutient structurellement.",
+        hintText: "Indice : cherchez l’élément qui porte du poids et guide le regard vers l’entrée.",
+        timeoutTitle: "Le temps est écoulé",
+        timeoutText: "La mission s’est arrêtée temporairement. Vous pouvez réessayer en relançant le temps.",
+        selectedMessage: "Vous avez choisi :",
+        timerUnit: "s",
+        scoreUnit: "pts",
+        rewardText: "Vous avez gagné 10 points et débloqué la mission suivante.",
+        noSelection: "Choisissez d’abord une réponse.",
+        narrationText: "Les Colonnes Silencieuses. Là où la mémoire rencontre la forme, un élément maintient debout l’entrée du savoir. Quel élément fondamental de l’architecture est le plus lié à l’idée de soutien et à l’entrée imposante d’un ancien lieu de savoir ?"
+      },
+      de: {
+        pageTitle: "ATHRIAN | Mission I",
+        logoAlt: "ATHRIAN-Logo",
+        brandTagline: "In ATHen IRRst du und ENTdeckst Wissen",
+        darkModeBtn: "Dunkelmodus",
+        contrastBtn: "Hoher Kontrast",
+        muteOn: "Ton: An",
+        muteOff: "Ton: Aus",
+        missionEyebrow: "Mission I",
+        missionTitle: "Die Stillen Säulen",
+        missionIntro1: "Die erste Mission lädt dich ein, den Raum zu lesen, als wäre er ein Text.",
+        missionIntro2: "Höre die Erzählung oder lies das Rätsel und wähle die richtige Antwort, bevor die Zeit abläuft.",
+        playNarrationBtn: "Rätsel anhören",
+        restartTimerBtn: "Zeit neu starten",
+        audioStatus: "Die Erzählung liest das Rätsel in der gewählten Sprache vor.",
+        statusTitle: "Missionsstatus",
+        timerCaption: "Verbleibende Zeit",
+        scoreCaption: "Punkte",
+        rankCaption: "Aktuelle Rolle",
+        progressCaption: "Missionen",
+        rankLabel: "Seeker",
+        progressLabel: "1/6",
+        riddleBadge: "Architektonisches Rätsel",
+        storyTitle: "Erzählung",
+        storyText: "Dort, wo Erinnerung auf Form trifft, hält ein Element den Eingang zum Wissen aufrecht.",
+        questionText: "Welches grundlegende architektonische Element ist am stärksten mit Stütze und mit dem imposanten Eingang zu einem antiken Ort des Wissens verbunden?",
+        optionAText: "Das Dach",
+        optionBText: "Die Säulen",
+        optionCText: "Die Dekoration",
+        optionDText: "Die Statue",
+        checkAnswerBtn: "Antwort prüfen",
+        hintBtn: "Hinweis",
+        bottomNote: "Wähle eine Antwort, um fortzufahren.",
+        backBtn: "Zurück",
+        nextBtn: "Nächste Mission",
+        footerNote: "Interaktives Rätsel mit mehrsprachigem und barrierearmem Erlebnis.",
+        feedbackCorrectTitle: "Richtig!",
+        feedbackCorrectText: "Säulen sind nicht nur Dekoration. Sie symbolisieren Stütze, Ordnung und den würdevollen Eingang zum Wissen.",
+        feedbackWrongTitle: "Noch nicht",
+        feedbackWrongText: "Denke an das Element, das den Ort nicht nur schmückt, sondern ihn strukturell trägt und definiert.",
+        hintText: "Hinweis: Suche nach dem Element, das Gewicht trägt und den Blick zum Eingang lenkt.",
+        timeoutTitle: "Die Zeit ist abgelaufen",
+        timeoutText: "Die Mission wurde pausiert. Du kannst es erneut versuchen, indem du die Zeit neu startest.",
+        selectedMessage: "Du hast gewählt:",
+        timerUnit: "s",
+        scoreUnit: "Pkt",
+        rewardText: "Du hast 10 Punkte erhalten und die nächste Mission freigeschaltet.",
+        noSelection: "Wähle zuerst eine Antwort aus.",
+        narrationText: "Die Stillen Säulen. Dort, wo Erinnerung auf Form trifft, hält ein Element den Eingang zum Wissen aufrecht. Welches grundlegende architektonische Element ist am stärksten mit Stütze und mit dem imposanten Eingang zu einem antiken Ort des Wissens verbunden?"
+      },
+      it: {
+        pageTitle: "ATHRIAN | Missione I",
+        logoAlt: "Logo ATHRIAN",
+        brandTagline: "Ad ATEne VAGHi e SCopri la conoscenza",
+        darkModeBtn: "Modalità scura",
+        contrastBtn: "Alto contrasto",
+        muteOn: "Audio: On",
+        muteOff: "Audio: Off",
+        missionEyebrow: "Missione I",
+        missionTitle: "Le Colonne Silenziose",
+        missionIntro1: "La prima missione ti invita a leggere lo spazio come se fosse un testo.",
+        missionIntro2: "Ascolta la narrazione o leggi l’enigma e scegli la risposta corretta prima che il tempo finisca.",
+        playNarrationBtn: "Ascolta l’enigma",
+        restartTimerBtn: "Riavvia il tempo",
+        audioStatus: "La narrazione legge l’enigma nella lingua selezionata.",
+        statusTitle: "Stato della missione",
+        timerCaption: "Tempo rimanente",
+        scoreCaption: "Punti",
+        rankCaption: "Ruolo attuale",
+        progressCaption: "Missioni",
+        rankLabel: "Seeker",
+        progressLabel: "1/6",
+        riddleBadge: "Enigma architettonico",
+        storyTitle: "Narrazione",
+        storyText: "Là dove la memoria incontra la forma, un elemento mantiene in piedi l’ingresso della conoscenza.",
+        questionText: "Quale elemento fondamentale dell’architettura è più legato all’idea di sostegno e all’ingresso imponente di un antico luogo del sapere?",
+        optionAText: "Il tetto",
+        optionBText: "Le colonne",
+        optionCText: "La decorazione",
+        optionDText: "La statua",
+        checkAnswerBtn: "Controlla la risposta",
+        hintBtn: "Suggerimento",
+        bottomNote: "Scegli una risposta per continuare.",
+        backBtn: "Indietro",
+        nextBtn: "Missione Successiva",
+        footerNote: "Enigma interattivo con esperienza multilingue e accessibile.",
+        feedbackCorrectTitle: "Corretto!",
+        feedbackCorrectText: "Le colonne non sono una semplice decorazione. Simboleggiano sostegno, ordine e l’ingresso solenne verso la conoscenza.",
+        feedbackWrongTitle: "Non ancora",
+        feedbackWrongText: "Pensa all’elemento che non decora soltanto lo spazio, ma lo sostiene e lo definisce strutturalmente.",
+        hintText: "Suggerimento: cerca l’elemento che porta peso e guida lo sguardo verso l’ingresso.",
+        timeoutTitle: "Il tempo è scaduto",
+        timeoutText: "La missione si è fermata temporaneamente. Puoi riprovare riavviando il tempo.",
+        selectedMessage: "Hai scelto:",
+        timerUnit: "s",
+        scoreUnit: "pt",
+        rewardText: "Hai guadagnato 10 punti e sbloccato la missione successiva.",
+        noSelection: "Seleziona prima una risposta.",
+        narrationText: "Le Colonne Silenziose. Là dove la memoria incontra la forma, un elemento mantiene in piedi l’ingresso della conoscenza. Quale elemento fondamentale dell’architettura è più legato all’idea di sostegno e all’ingresso imponente di un antico luogo del sapere?"
+      },
+      es: {
+        pageTitle: "ATHRIAN | Misión I",
+        logoAlt: "Logotipo de ATHRIAN",
+        brandTagline: "En ATEnas deAMBULAS y DESCubres conocimiento",
+        darkModeBtn: "Modo oscuro",
+        contrastBtn: "Alto contraste",
+        muteOn: "Sonido: On",
+        muteOff: "Sonido: Off",
+        missionEyebrow: "Misión I",
+        missionTitle: "Las Columnas Silenciosas",
+        missionIntro1: "La primera misión te invita a leer el espacio como si fuera un texto.",
+        missionIntro2: "Escucha la narración o lee el acertijo y elige la respuesta correcta antes de que se acabe el tiempo.",
+        playNarrationBtn: "Escuchar acertijo",
+        restartTimerBtn: "Reiniciar tiempo",
+        audioStatus: "La narración lee el acertijo en el idioma seleccionado.",
+        statusTitle: "Estado de la misión",
+        timerCaption: "Tiempo restante",
+        scoreCaption: "Puntos",
+        rankCaption: "Rol actual",
+        progressCaption: "Misiones",
+        rankLabel: "Seeker",
+        progressLabel: "1/6",
+        riddleBadge: "Acertijo arquitectónico",
+        storyTitle: "Narración",
+        storyText: "Donde la memoria encuentra la forma, un elemento mantiene en pie la entrada del conocimiento.",
+        questionText: "¿Qué elemento básico de la arquitectura está más relacionado con la idea de soporte y con la entrada imponente a un antiguo lugar de conocimiento?",
+        optionAText: "El techo",
+        optionBText: "Las columnas",
+        optionCText: "La decoración",
+        optionDText: "La estatua",
+        checkAnswerBtn: "Comprobar respuesta",
+        hintBtn: "Pista",
+        bottomNote: "Elige una respuesta para continuar.",
+        backBtn: "Atrás",
+        nextBtn: "Siguiente Misión",
+        footerNote: "Acertijo interactivo con experiencia multilingüe y accesible.",
+        feedbackCorrectTitle: "¡Correcto!",
+        feedbackCorrectText: "Las columnas no son simple decoración. Simbolizan soporte, orden y la entrada majestuosa hacia el conocimiento.",
+        feedbackWrongTitle: "Aún no",
+        feedbackWrongText: "Piensa en el elemento que no solo adorna el espacio, sino que también lo sostiene y lo define estructuralmente.",
+        hintText: "Pista: busca el elemento que soporta peso y guía la mirada hacia la entrada.",
+        timeoutTitle: "Se acabó el tiempo",
+        timeoutText: "La misión se ha detenido temporalmente. Puedes intentarlo de nuevo reiniciando el tiempo.",
+        selectedMessage: "Has elegido:",
+        timerUnit: "s",
+        scoreUnit: "pts",
+        rewardText: "Has ganado 10 puntos y desbloqueado la siguiente misión.",
+        noSelection: "Primero selecciona una respuesta.",
+        narrationText: "Las Columnas Silenciosas. Donde la memoria encuentra la forma, un elemento mantiene en pie la entrada del conocimiento. ¿Qué elemento básico de la arquitectura está más relacionado con la idea de soporte y con la entrada imponente a un antiguo lugar de conocimiento?"
+      }
+    };
+
+    const root = document.documentElement;
+    const body = document.body;
+
+    const languageSelect = document.getElementById("languageSelect");
+    const decreaseFontBtn = document.getElementById("decreaseFontBtn");
+    const increaseFontBtn = document.getElementById("increaseFontBtn");
+    const darkModeBtn = document.getElementById("darkModeBtn");
+    const contrastBtn = document.getElementById("contrastBtn");
+    const muteBtn = document.getElementById("muteBtn");
+
+    const playNarrationBtn = document.getElementById("playNarrationBtn");
+    const restartTimerBtn = document.getElementById("restartTimerBtn");
+    const checkAnswerBtn = document.getElementById("checkAnswerBtn");
+    const hintBtn = document.getElementById("hintBtn");
+
+    const timerLabel = document.getElementById("timerLabel");
+    const timerBoxText = document.getElementById("timerBoxText");
+    const scoreLabel = document.getElementById("scoreLabel");
+    const scoreBoxText = document.getElementById("scoreBoxText");
+
+    const feedbackPanel = document.getElementById("feedbackPanel");
+    const feedbackTitle = document.getElementById("feedbackTitle");
+    const feedbackText = document.getElementById("feedbackText");
+    const nextBtn = document.getElementById("nextBtn");
+    const bottomNote = document.getElementById("bottomNote");
+    const audioStatus = document.getElementById("audioStatus");
+
+    const optionButtons = Array.from(document.querySelectorAll(".option-btn"));
+    const bgMusic = document.getElementById("bgMusic");
+
+    let currentLang = localStorage.getItem("athrian-language") || "el";
+    let fontScale = parseFloat(localStorage.getItem("athrian-font-scale")) || 1;
+    let isMuted = localStorage.getItem("athrian-muted") === "true";
+    let timeLeft = 45;
+    let timerInterval = null;
+    let selectedOption = null;
+    let answered = false;
+    let score = parseInt(localStorage.getItem("athrian-score") || "0", 10);
+
+    const correctOption = "B";
+
+    function setLanguage(lang) {
+      currentLang = translations[lang] ? lang : "el";
+      const t = translations[currentLang];
+
+      document.documentElement.lang = currentLang;
+      document.title = t.pageTitle;
+
+      document.getElementById("logoAlt").alt = t.logoAlt;
+      document.getElementById("brandTagline").textContent = t.brandTagline;
+      darkModeBtn.textContent = t.darkModeBtn;
+      contrastBtn.textContent = t.contrastBtn;
+      muteBtn.textContent = isMuted ? t.muteOff : t.muteOn;
+
+      document.getElementById("missionEyebrow").textContent = t.missionEyebrow;
+      document.getElementById("missionTitle").textContent = t.missionTitle;
+      document.getElementById("missionIntro1").textContent = t.missionIntro1;
+      document.getElementById("missionIntro2").textContent = t.missionIntro2;
+      playNarrationBtn.textContent = t.playNarrationBtn;
+      restartTimerBtn.textContent = t.restartTimerBtn;
+      audioStatus.textContent = t.audioStatus;
+
+      document.getElementById("statusTitle").textContent = t.statusTitle;
+      document.getElementById("timerCaption").textContent = t.timerCaption;
+      document.getElementById("scoreCaption").textContent = t.scoreCaption;
+      document.getElementById("rankCaption").textContent = t.rankCaption;
+      document.getElementById("progressCaption").textContent = t.progressCaption;
+      document.getElementById("rankLabel").textContent = t.rankLabel;
+      document.getElementById("progressLabel").textContent = t.progressLabel;
+
+      document.getElementById("riddleBadge").textContent = t.riddleBadge;
+      document.getElementById("storyTitle").textContent = t.storyTitle;
+      document.getElementById("storyText").textContent = t.storyText;
+      document.getElementById("questionText").textContent = t.questionText;
+
+      document.getElementById("optionAText").textContent = t.optionAText;
+      document.getElementById("optionBText").textContent = t.optionBText;
+      document.getElementById("optionCText").textContent = t.optionCText;
+      document.getElementById("optionDText").textContent = t.optionDText;
+
+      checkAnswerBtn.textContent = t.checkAnswerBtn;
+      hintBtn.textContent = t.hintBtn;
+      document.getElementById("backBtn").textContent = t.backBtn;
+      nextBtn.textContent = t.nextBtn;
+      document.getElementById("footerNote").textContent = t.footerNote;
+
+      if (!answered) {
+        bottomNote.textContent = t.bottomNote;
+      }
+
+      updateTimerUI();
+      updateScoreUI();
+      languageSelect.value = currentLang;
+      localStorage.setItem("athrian-language", currentLang);
+    }
+
+    function applyFontScale() {
+      if (fontScale < 0.85) fontScale = 0.85;
+      if (fontScale > 1.35) fontScale = 1.35;
+      root.style.setProperty("--font-scale", fontScale.toFixed(2));
+      localStorage.setItem("athrian-font-scale", fontScale.toFixed(2));
+    }
+
+    function updateMuteState() {
+      bgMusic.muted = isMuted;
+      muteBtn.textContent = isMuted
+        ? translations[currentLang].muteOff
+        : translations[currentLang].muteOn;
+      localStorage.setItem("athrian-muted", String(isMuted));
+    }
+
+    function updateTimerUI() {
+      const t = translations[currentLang];
+      timerLabel.textContent = `${timeLeft}${t.timerUnit}`;
+      timerBoxText.textContent = `${timeLeft}${t.timerUnit}`;
+    }
+
+    function updateScoreUI() {
+      const t = translations[currentLang];
+      scoreLabel.textContent = score;
+      scoreBoxText.textContent = `${score} ${t.scoreUnit}`;
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (answered) {
+          clearInterval(timerInterval);
+          return;
+        }
+
+        timeLeft -= 1;
+        updateTimerUI();
+
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timeLeft = 0;
+          updateTimerUI();
+          handleTimeout();
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      timeLeft = 45;
+      answered = false;
+      selectedOption = null;
+
+      optionButtons.forEach((btn) => {
+        btn.classList.remove("selected", "correct", "wrong");
+        btn.disabled = false;
+      });
+
+      feedbackPanel.className = "feedback-panel";
+      feedbackTitle.textContent = "";
+      feedbackText.textContent = "";
+      nextBtn.classList.add("hidden");
+      bottomNote.textContent = translations[currentLang].bottomNote;
+
+      startTimer();
+    }
+
+    function handleTimeout() {
+      answered = true;
+      optionButtons.forEach((btn) => btn.disabled = true);
+
+      feedbackPanel.className = "feedback-panel show wrong";
+      feedbackTitle.textContent = translations[currentLang].timeoutTitle;
+      feedbackText.textContent = translations[currentLang].timeoutText;
+      bottomNote.textContent = translations[currentLang].timeoutText;
+    }
+
+    function selectOption(option) {
+      if (answered) return;
+
+      selectedOption = option;
+      optionButtons.forEach((btn) => {
+        btn.classList.toggle("selected", btn.dataset.option === option);
+      });
+
+      bottomNote.textContent = `${translations[currentLang].selectedMessage} ${option}`;
+    }
+
+    function checkAnswer() {
+      const t = translations[currentLang];
+
+      if (!selectedOption) {
+        bottomNote.textContent = t.noSelection;
+        return;
+      }
+
+      answered = true;
+      clearInterval(timerInterval);
+
+      optionButtons.forEach((btn) => {
+        btn.disabled = true;
+        if (btn.dataset.option === correctOption) {
+          btn.classList.add("correct");
+        }
+        if (btn.dataset.option === selectedOption && selectedOption !== correctOption) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      if (selectedOption === correctOption) {
+        feedbackPanel.className = "feedback-panel show correct";
+        feedbackTitle.textContent = t.feedbackCorrectTitle;
+        feedbackText.textContent = `${t.feedbackCorrectText} ${t.rewardText}`;
+        bottomNote.textContent = t.rewardText;
+        nextBtn.classList.remove("hidden");
+
+        const alreadyWon = sessionStorage.getItem("athrian-riddle1-complete") === "true";
+        if (!alreadyWon) {
+          score += 10;
+          localStorage.setItem("athrian-score", String(score));
+          sessionStorage.setItem("athrian-riddle1-complete", "true");
+          updateScoreUI();
+        }
+      } else {
+        feedbackPanel.className = "feedback-panel show wrong";
+        feedbackTitle.textContent = t.feedbackWrongTitle;
+        feedbackText.textContent = t.feedbackWrongText;
+        bottomNote.textContent = t.feedbackWrongText;
+      }
+    }
+
+    function showHint() {
+      feedbackPanel.className = "feedback-panel show";
+      feedbackTitle.textContent = translations[currentLang].hintBtn;
+      feedbackText.textContent = translations[currentLang].hintText;
+    }
+
+    function speakNarration() {
+      const t = translations[currentLang];
+      const text = t.narrationText;
+
+      if (!("speechSynthesis" in window)) {
+        audioStatus.textContent = "Speech synthesis is not supported on this device.";
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang =
+        currentLang === "el" ? "el-GR" :
+        currentLang === "en" ? "en-GB" :
+        currentLang === "fr" ? "fr-FR" :
+        currentLang === "de" ? "de-DE" :
+        currentLang === "it" ? "it-IT" :
+        "es-ES";
+
+      utterance.rate = 0.95;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function restorePreferences() {
+      const darkMode = localStorage.getItem("athrian-dark-mode") === "true";
+      const highContrast = localStorage.getItem("athrian-high-contrast") === "true";
+
+      if (darkMode) body.classList.add("dark-mode");
+      if (highContrast) {
+        body.classList.remove("dark-mode");
+        body.classList.add("high-contrast");
+      }
+
+      applyFontScale();
+      updateMuteState();
+      setLanguage(currentLang);
+      updateScoreUI();
+      updateTimerUI();
+
+      if (!isMuted) {
+        bgMusic.play().catch(() => {});
+      }
+    }
+
+    languageSelect.addEventListener("change", (e) => {
+      setLanguage(e.target.value);
+    });
+
+    increaseFontBtn.addEventListener("click", () => {
+      fontScale += 0.05;
+      applyFontScale();
+    });
+
+    decreaseFontBtn.addEventListener("click", () => {
+      fontScale -= 0.05;
+      applyFontScale();
+    });
+
+    darkModeBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      if (body.classList.contains("dark-mode")) {
+        body.classList.remove("high-contrast");
+        localStorage.setItem("athrian-dark-mode", "true");
+        localStorage.setItem("athrian-high-contrast", "false");
+      } else {
+        localStorage.setItem("athrian-dark-mode", "false");
+      }
+    });
+
+    contrastBtn.addEventListener("click", () => {
+      body.classList.toggle("high-contrast");
+      if (body.classList.contains("high-contrast")) {
+        body.classList.remove("dark-mode");
+        localStorage.setItem("athrian-high-contrast", "true");
+        localStorage.setItem("athrian-dark-mode", "false");
+      } else {
+        localStorage.setItem("athrian-high-contrast", "false");
+      }
+    });
+
+    muteBtn.addEventListener("click", () => {
+      isMuted = !isMuted;
+      updateMuteState();
+
+      if (!isMuted) {
+        bgMusic.play().catch(() => {});
+      }
+    });
+
+    playNarrationBtn.addEventListener("click", speakNarration);
+    restartTimerBtn.addEventListener("click", resetTimer);
+    checkAnswerBtn.addEventListener("click", checkAnswer);
+    hintBtn.addEventListener("click", showHint);
+
+    optionButtons.forEach((btn) => {
+      btn.addEventListener("click", () => selectOption(btn.dataset.option));
+    });
+
+    restorePreferences();
+    startTimer();
+  </script>
+</body>
+</html>
